@@ -13,6 +13,10 @@ screen = pygame.display.set_mode((width, height))
 font_conthrax60 = pygame.font.Font('assets/fonts/conthrax-sb.ttf', 60)
 font_conthrax42 = pygame.font.Font('assets/fonts/conthrax-sb.ttf', 42)
 
+pygame.mixer.init()
+title_1 = pygame.mixer.Sound('assets/sounds/title_1.wav')
+title_2 = pygame.mixer.Sound('assets/sounds/title_2.wav')
+
 
 # Game loop.
 total_time = 0
@@ -30,11 +34,11 @@ while  True:
             sys.exit()
     
     #check time for logo display
-    if total_time <= 200:
+    if 30 <= total_time <= 200:
         #display logo1
 
         #fade out control
-        if total_time >= 100:
+        if total_time >= 120:
             logo1_line1_alpha -= 2
             logo1_line1_alpha -= 2
         #render lines
@@ -48,6 +52,8 @@ while  True:
         logo_box2.center = (width/2, (height/2)+30)
         screen.blit(logo1_line1, logo_box1)
         screen.blit(logo1_line2, logo_box2)
+        if total_time == 30:
+            title_1.play()
         
     #time +1
     total_time += 1
