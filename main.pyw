@@ -54,14 +54,14 @@ while  True:
         line2 = renderlogo1("Shimyytrov Studio", font_conthrax42, +30)
         screen.blit(line1[0], line1[1])
         screen.blit(line2[0], line2[1])
-    if 180 <= total_time <= 340:
+    if 240 <= total_time <= 400:
         title2_pic_box = pygame.transform.scale(title2_pic, (title2_size_width/2, title2_size_height/2)).get_rect()
         title2_pic.set_alpha(logo2_alpha)
-        if total_time >= 250:
+        if total_time >= 310:
             logo2_alpha -= 4
         title2_pic_box.center = (width/2, (height/2))
         screen.blit(pygame.transform.scale(title2_pic, (title2_size_width/2, title2_size_height/2)), (title2_pic_box))    
-    if total_time == 180:
+    if total_time == 240:
         title_2.play()
         
     # time +1
