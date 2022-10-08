@@ -7,8 +7,9 @@ import sys
 pygame.init()
 fps = 60
 fpsClock = pygame.time.Clock()
-width, height = 1920, 1080
-screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+screen_info = pygame.display.Info()
+width, height = screen_info.current_w, screen_info.current_h
+screen = pygame.display.set_mode((width, height))
 game_font = pygame.font.Font('assets/fonts/conthrax-sb.ttf', 30)
 
 
