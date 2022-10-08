@@ -20,8 +20,7 @@ while  True:
             if event.key == pygame.K_ESCAPE:
                 pygame.quit()
                 sys.exit()
-        else:
-            if event.type == pygame.QUIT:
+            elif event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
 
