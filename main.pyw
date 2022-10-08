@@ -2,16 +2,16 @@
 from telnetlib import theNULL
 import pygame
 import sys
+
 # Configuration
 pygame.init()
 fps = 60
 fpsClock = pygame.time.Clock()
 width, height = 1920, 1080
-screen = pygame.display.set_mode(
-    (width, height),
-    pygame.FULLSCREEN
-)
-imp = pygame.image.load('assets//imgs//overview_1.png')
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+game_font = pygame.font.Font('assets/fonts/conthrax-sb.ttf', 30)
+
+
 # Game loop.
 total_time = 0
 while  True:
@@ -24,8 +24,16 @@ while  True:
         elif event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+    
+    #check time for logo display
     if total_time <= 100:
-        screen.blit(imp, (0, 0))
+        #display logo1
+        logo1_line1 = game_font.render('PRODUCE BY', True, (255, 255, 255))
+        logo1_line2 = game_font.render('Shimyytrov Studio', True, (255, 255, 255))
+        logo_box1 = logo1_line1.get_rect()
+        logo_box1.center = (width/2, height/2)
+        screen.blit(logo1_line1, logo_box1)
+    #time +1
     total_time += 1
 
     # Main Loop Code belongs here
