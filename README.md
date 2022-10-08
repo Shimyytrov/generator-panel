@@ -1,2 +1,2 @@
-# generator-panel
- A game by Shimyytrov Studio
+# Shimyytrov's Generator Panel
+ A game by Shimyytrov Studio.
