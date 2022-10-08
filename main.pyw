@@ -47,7 +47,7 @@ while  True:
         elif total_time == 30:
             title_1.play()
         # render lines
-        line1 = renderlogo1("PRODUCE BY", font_conthrax60, -30)
+        line1 = renderlogo1("PRODUCED BY", font_conthrax60, -30)
         line2 = renderlogo1("Shimyytrov Studio", font_conthrax42, +30)
         screen.blit(line1[0], line1[1])
         screen.blit(line2[0], line2[1])
