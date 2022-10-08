@@ -14,10 +14,13 @@ font_conthrax60 = pygame.font.Font('assets/fonts/conthrax-sb.ttf', 60)
 font_conthrax42 = pygame.font.Font('assets/fonts/conthrax-sb.ttf', 42)
 title_1 = pygame.mixer.Sound('assets/sounds/title_1.wav')
 title_2 = pygame.mixer.Sound('assets/sounds/title_2.wav')
+title2_pic = pygame.image.load('assets/imgs/title_2.png')
+title2_size_width, title2_size_height = title2_pic.get_size()
 
 # variables
 total_time = 0
 logo1_line_alpha = 255
+logo2_alpha = 255
 
 # function to render logo1
 def renderlogo1(line_text, font, offset):
@@ -51,6 +54,15 @@ while  True:
         line2 = renderlogo1("Shimyytrov Studio", font_conthrax42, +30)
         screen.blit(line1[0], line1[1])
         screen.blit(line2[0], line2[1])
+    if 180 <= total_time <= 340:
+        title2_pic_box = pygame.transform.scale(title2_pic, (title2_size_width/2, title2_size_height/2)).get_rect()
+        title2_pic.set_alpha(logo2_alpha)
+        if total_time >= 250:
+            logo2_alpha -= 4
+        title2_pic_box.center = (width/2, (height/2))
+        screen.blit(pygame.transform.scale(title2_pic, (title2_size_width/2, title2_size_height/2)), (title2_pic_box))    
+    if total_time == 180:
+        title_2.play()
         
     # time +1
     total_time += 1
