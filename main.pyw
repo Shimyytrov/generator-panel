@@ -16,9 +16,14 @@ screen = pygame.display.set_mode(
 while  True:
     screen.fill((0, 0, 0))
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                pygame.quit()
+                sys.exit()
+        else:
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
 
     # Main Loop Code belongs here
 
