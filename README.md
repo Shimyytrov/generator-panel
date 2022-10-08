@@ -30,4 +30,3 @@ Game idea inspired by a roblox game called "[Pinewood Computer Core](https://www
 ### 3. Something else
 * Please remember it will take ***30 ~ 45 seconds*** to turn on/off a coolant/fuel supply. So you may need to turn off coolant once the temperature hit 3500, or turn on coolant once the temperature hit -3500
 * Fixing a pipe also takes 30 ~ 45 seconds.
-* It have a secret ending, find it out yourself.
