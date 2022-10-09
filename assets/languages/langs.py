@@ -21,15 +21,3 @@ class zhTW:
     text_freezedownDES = "由於溫度過低(-4000°C)，一個黑洞產生了，並\n摧毀了整個設施，災害甚至蔓延到整個\n世界。\n“遊戲結束了，兄弟！遊戲結束！”\n \n提示：記得隨時檢查兩個發電機的溫度，並在適當時機關閉或開啟冷凍液。"
     text_blackout = "設施停電"
     text_blackoutDES = "由於發電機的能源用盡，沒有能量繼續泵動顏料，\n設施無法再繼續產生電力，遊戲結束。\n \n提示：記得及時維修運輸燃料的管道！"
-
-class en:
-    # Language window
-    text_langSelect = "Select Your Language"
-    text_langContinue = "Continue"
-    # Endings
-    text_meltdown = "Meltdown"
-    text_meltdownDES = "The generator temperature is beyond the acceptable limit (4000°C)!\nA huge explosion occurred in the whole facility. For the result,\nthe facility and the surrounding have been destroyed.\n \nHint: Remember to check if the coolant is activated and if there are no broken pipes."
-    text_freezedown = "凍毀"
-    text_freezedownDES = "由於溫度過低(-4000°C)，一個黑洞產生了，並\n摧毀了整個設施，災害甚至蔓延到整個\n世界。\n“遊戲結束了，兄弟！遊戲結束！”\n \n提示：記得隨時檢查兩個發電機的溫度，並在適當時機關閉或開啟冷凍液。"
-    text_blackout = "設施停電"
-    text_blackoutDES = "由於發電機的能源用盡，沒有能量繼續泵動顏料，\n設施無法再繼續產生電力，遊戲結束。\n \n提示：記得及時維修運輸燃料的管道！"
