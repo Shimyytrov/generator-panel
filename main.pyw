@@ -27,7 +27,8 @@ total_time = 0
 logo1_line_alpha = 255
 logo2_alpha = 255
 lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = 255
-langseleted = False
+langseleted1 = False
+langseleted2 = False
 
 # function to render logo1
 def renderlogo1(line_text, font, offset):
@@ -77,7 +78,7 @@ while  True:
 
     if total_time == 450:
         swap_wav.play()
-    if total_time >= 450 and not langseleted:
+    if total_time >= 450 and not langseleted1:
         langname = langs.selected_language.text_langSelect[0]
         langsel = font_mindustry(2).render(langname, True, (255, 255, 255))
         langsel_box = langsel.get_rect()
@@ -87,7 +88,8 @@ while  True:
         langcon = font_mindustry(3).render(langs.selected_language.text_langContinue[0], True, (255, 255, 255))
         langcon_box = langcon.get_rect()
         langcon_box.center = (width*(9/10), height*(9/10))
-        screen.blit(langcon, langcon_box)
+        if langseleted2:
+            screen.blit(langcon, langcon_box)
 
         lang1 = font_mindustry(3.5).render("中文 (台灣正體)", True, (255, 255, lang1_Bcolor))
         lang1_box = lang1.get_rect()
@@ -110,26 +112,30 @@ while  True:
             langs.selected_language = langs.zhTW
             lang1_Bcolor = 0
             lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = 255
+            langseleted2 = True
             click_wav.play()
         elif lang2_box.collidepoint(mouse_pos):
             langs.selected_language = langs.zhCN
             lang2_Bcolor = 0
             lang1_Bcolor = lang3_Bcolor = lang4_Bcolor = 255
+            langseleted2 = True
             click_wav.play()
         elif lang3_box.collidepoint(mouse_pos):
             langs.selected_language = langs.EN
             lang3_Bcolor = 0
             lang1_Bcolor = lang2_Bcolor = lang4_Bcolor = 255
+            langseleted2 = True
             click_wav.play()
         elif lang4_box.collidepoint(mouse_pos):
             langs.selected_language = langs.DE
             lang4_Bcolor = 0
             lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = 255
+            langseleted2 = True
             click_wav.play()
         
         if langcon_box.collidepoint(mouse_pos):
             swap_wav.play()
-            langseleted = True
+            langseleted1 = True
 
     # time +1
     total_time += 1
