@@ -1,4 +1,5 @@
 # imports
+from tkinter import Button
 import pygame
 import sys
 import assets.languages.langs as langs
@@ -12,17 +13,21 @@ width, height = screen_info.current_w, screen_info.current_h
 screen = pygame.display.set_mode((width, height))
 font_conthrax64 = pygame.font.Font('assets/fonts/conthrax-sb.ttf', 64)
 font_conthrax48 = pygame.font.Font('assets/fonts/conthrax-sb.ttf', 48)
-font24 = pygame.font.Font('assets/fonts/mindustry.woff', 24)
-font72 = pygame.font.Font('assets/fonts/mindustry.woff', 72)
+def font_mindustry(fontsize):
+    return pygame.font.Font('assets/fonts/mindustry.ttf', int(128/fontsize))
 title_1 = pygame.mixer.Sound('assets/sounds/title_1.wav')
 title_2 = pygame.mixer.Sound('assets/sounds/title_2.wav')
 title2_pic = pygame.image.load('assets/imgs/title_2.png')
+click_wav = pygame.mixer.Sound('assets/sounds/click.wav')
+swap_wav = pygame.mixer.Sound('assets/sounds/swap.wav')
 title2_size_width, title2_size_height = title2_pic.get_size()
 
 # variables
 total_time = 0
 logo1_line_alpha = 255
 logo2_alpha = 255
+lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = 255
+langseleted = False
 
 # function to render logo1
 def renderlogo1(line_text, font, offset):
@@ -34,6 +39,7 @@ def renderlogo1(line_text, font, offset):
 
 # game loop
 while  True:
+    mouse_pos = (-255, -255)
     screen.fill((0, 0, 0))
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
@@ -43,7 +49,9 @@ while  True:
         elif event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-    
+        if event.type == pygame.MOUSEBUTTONDOWN and total_time >= 450:
+            mouse_pos = event.pos
+
     # check time for logo display
     if 30 <= total_time <= 200:
         #fade out control
@@ -65,6 +73,63 @@ while  True:
         screen.blit(pygame.transform.scale(title2_pic, (title2_size_width/2, title2_size_height/2)), (title2_pic_box))    
     if total_time == 240:
         title_2.play()
+
+
+    if total_time == 450:
+        swap_wav.play()
+    if total_time >= 450 and not langseleted:
+        langname = langs.selected_language.text_langSelect[0]
+        langsel = font_mindustry(2).render(langname, True, (255, 255, 255))
+        langsel_box = langsel.get_rect()
+        langsel_box.center = (width/2, height/7)
+        screen.blit(langsel, langsel_box)
+
+        langcon = font_mindustry(3).render(langs.selected_language.text_langContinue[0], True, (255, 255, 255))
+        langcon_box = langcon.get_rect()
+        langcon_box.center = (width*(9/10), height*(9/10))
+        screen.blit(langcon, langcon_box)
+
+        lang1 = font_mindustry(3.5).render("中文 (台灣正體)", True, (255, 255, lang1_Bcolor))
+        lang1_box = lang1.get_rect()
+        lang1_box.center = (width/2, height*(3/10))
+        screen.blit(lang1, lang1_box)
+        lang2 = font_mindustry(3.5).render("中文 (中国简体)", True, (255, 255, lang2_Bcolor))
+        lang2_box = lang2.get_rect()
+        lang2_box.center = (width/2, height*(4/10))
+        screen.blit(lang2, lang2_box)
+        lang3 = font_mindustry(3.5).render("English", True, (255, 255, lang3_Bcolor))
+        lang3_box = lang3.get_rect()
+        lang3_box.center = (width/2, height*(5/10))
+        screen.blit(lang3, lang3_box)
+        lang4 = font_mindustry(3.5).render("Deutsch", True, (255, 255, lang4_Bcolor))
+        lang4_box = lang4.get_rect()
+        lang4_box.center = (width/2, height*(6/10))
+        screen.blit(lang4, lang4_box)
+        
+        if lang1_box.collidepoint(mouse_pos):
+            langs.selected_language = langs.zhTW
+            lang1_Bcolor = 0
+            lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = 255
+            click_wav.play()
+        elif lang2_box.collidepoint(mouse_pos):
+            langs.selected_language = langs.zhCN
+            lang2_Bcolor = 0
+            lang1_Bcolor = lang3_Bcolor = lang4_Bcolor = 255
+            click_wav.play()
+        elif lang3_box.collidepoint(mouse_pos):
+            langs.selected_language = langs.EN
+            lang3_Bcolor = 0
+            lang1_Bcolor = lang2_Bcolor = lang4_Bcolor = 255
+            click_wav.play()
+        elif lang4_box.collidepoint(mouse_pos):
+            langs.selected_language = langs.DE
+            lang4_Bcolor = 0
+            lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = 255
+            click_wav.play()
+        
+        if langcon_box.collidepoint(mouse_pos):
+            swap_wav.play()
+            langseleted = True
 
     # time +1
     total_time += 1

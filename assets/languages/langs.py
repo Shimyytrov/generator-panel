@@ -1,3 +1,6 @@
+from select import select
+
+
 class zhCN:
     # Language window
     text_langSelect = ["选择你的语言"]
@@ -45,3 +48,5 @@ class DE:
     text_freezedownDES = ["Aufgrund der niedrigen Temperatur(-4000 ° C) wurde ein Schwarzes Loch geschaffen,", "Es zerstörte die ganze Anlage. Die Katastrophe breitete sich sogar auf", "der ganzen Welt aus.", "“Game over, mann, game over!” ", "Hinweis: Denken Sie daran, die Temperatur beider Generatoren jederzeit", "zu überprüfen und gegebenenfalls das Kühlmittel aus- oder einzuschalten."]
     text_blackout = ["Anlagenweiter Blackout"]
     text_blackoutDES = ["Wenn der Generator keine Energie mehr hat, gibt es keine Energie, um die Farbe weiter zu pumpen,", "Spiel vorbei.", "Hinweis: Denken Sie daran, die Rohre zu reparieren, die Kraftstoff transportieren!"]
+
+selected_language = EN
