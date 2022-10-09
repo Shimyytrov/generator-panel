@@ -1,5 +1,4 @@
 # imports
-from telnetlib import theNULL
 import pygame
 import sys
 
