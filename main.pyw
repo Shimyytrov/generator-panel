@@ -1,6 +1,7 @@
 # imports
 import pygame
 import sys
+import assets.languages.langs as langs
 
 # configuration
 pygame.init()
