@@ -10,8 +10,16 @@ fpsClock = pygame.time.Clock()
 screen_info = pygame.display.Info()
 width, height = screen_info.current_w, screen_info.current_h
 screen = pygame.display.set_mode((width, height))
-font_conthrax60 = pygame.font.Font('assets/fonts/conthrax-sb.ttf', 60)
-font_conthrax42 = pygame.font.Font('assets/fonts/conthrax-sb.ttf', 42)
+font_conthrax64 = pygame.font.Font('assets/fonts/conthrax-sb.ttf', 64)
+font_conthrax48 = pygame.font.Font('assets/fonts/conthrax-sb.ttf', 48)
+font_en = pygame.font.Font('assets/fonts/mindustry.woff', 24)
+font_de = pygame.font.Font('assets/fonts/mindustry.woff', 24)
+font_cn = pygame.font.Font('assets/fonts/mindustry.woff', 24)
+font_tw = pygame.font.Font('assets/fonts/mindustry.woff', 24)
+font_en_Heading = pygame.font.Font('assets/fonts/mindustry.woff', 72)
+font_de_Heading = pygame.font.Font('assets/fonts/mindustry.woff', 72)
+font_cn_Heading = pygame.font.Font('assets/fonts/mindustry.woff', 72)
+font_tw_Heading = pygame.font.Font('assets/fonts/mindustry.woff', 72)
 title_1 = pygame.mixer.Sound('assets/sounds/title_1.wav')
 title_2 = pygame.mixer.Sound('assets/sounds/title_2.wav')
 title2_pic = pygame.image.load('assets/imgs/title_2.png')
@@ -50,8 +58,8 @@ while  True:
         elif total_time == 30:
             title_1.play()
         # render lines
-        line1 = renderlogo1("PRODUCED BY", font_conthrax60, -30)
-        line2 = renderlogo1("Shimyytrov Studio", font_conthrax42, +30)
+        line1 = renderlogo1("PRODUCED BY", font_conthrax64, -30)
+        line2 = renderlogo1("Shimyytrov Studio", font_conthrax48, +30)
         screen.blit(line1[0], line1[1])
         screen.blit(line2[0], line2[1])
     if 240 <= total_time <= 400:
@@ -63,7 +71,7 @@ while  True:
         screen.blit(pygame.transform.scale(title2_pic, (title2_size_width/2, title2_size_height/2)), (title2_pic_box))    
     if total_time == 240:
         title_2.play()
-        
+
     # time +1
     total_time += 1
     # update frame
