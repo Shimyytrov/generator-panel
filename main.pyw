@@ -1,7 +1,10 @@
 # imports
+from pydoc import importfile
 import pygame
 import sys
-import assets.languages.langs as langs
+
+from assets.languages.zh_CN import zhCN
+importfile('assets/languages/zh_CN.py')
 
 # configuration
 pygame.init()
