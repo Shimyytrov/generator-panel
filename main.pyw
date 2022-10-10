@@ -65,6 +65,11 @@ while  True:
         line2 = renderlogo1("Shimyytrov Studio", font_conthrax48, +30)
         screen.blit(line1[0], line1[1])
         screen.blit(line2[0], line2[1])
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    total_time = 240
+
     if 240 <= total_time <= 400:
         title2_pic_box = pygame.transform.scale(title2_pic, (title2_size_width/2, title2_size_height/2)).get_rect()
         title2_pic.set_alpha(logo2_alpha)
@@ -74,6 +79,10 @@ while  True:
         screen.blit(pygame.transform.scale(title2_pic, (title2_size_width/2, title2_size_height/2)), (title2_pic_box))    
     if total_time == 240:
         title_2.play()
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                total_time = 450
 
 
     if total_time == 450:
