@@ -3,6 +3,7 @@ from select import select
 
 class zhCN:
     # Language window
+    text_lang = ["中文(中国简体)"]
     text_langSelect = ["选择你的语言"]
     text_langContinue = ["按此继续"]
     # Endings
@@ -15,6 +16,7 @@ class zhCN:
 
 class zhTW:
     # Language window
+    text_lang = ["中文(台灣正體)"]
     text_langSelect = ["選擇你的語言"]
     text_langContinue = ["按此繼續"]
     # Endings
@@ -27,6 +29,7 @@ class zhTW:
 
 class EN:
     # Language window
+    text_lang = ["English"]
     text_langSelect = ["Select Your Language"]
     text_langContinue = ["Continue"]
     # Endings
@@ -39,6 +42,7 @@ class EN:
 
 class DE:
     # Language window
+    text_lang = ["Deutsch"]
     text_langSelect = ["Wähle deine Sprache"]
     text_langContinue = ["Fortsetzen"]
     # Endings
@@ -46,6 +50,19 @@ class DE:
     text_meltdownDES = ["Die Generatortemperatur liegt außerhalb der zulässigen Grenze(4000 °C)!", "In der gesamten Anlage ereignete sich eine riesige Explosion.", "Dafür wurden die Anlage und die Umgebung zerstört.", "Hinweis: Denken Sie daran, zu prüfen, ob das Kühlmittel", "aktiviert ist und ob es keine gebrochenen Rohre gibt."]
     text_freezedown = ["Kerneinfriere(Kern Einfrieren)"]
     text_freezedownDES = ["Aufgrund der niedrigen Temperatur(-4000 ° C) wurde ein Schwarzes Loch geschaffen,", "Es zerstörte die ganze Anlage. Die Katastrophe breitete sich sogar auf", "der ganzen Welt aus.", "“Game over, mann, game over!” ", "Hinweis: Denken Sie daran, die Temperatur beider Generatoren jederzeit", "zu überprüfen und gegebenenfalls das Kühlmittel aus- oder einzuschalten."]
+    text_blackout = ["Anlagenweiter Blackout"]
+    text_blackoutDES = ["Wenn der Generator keine Energie mehr hat, gibt es keine Energie, um die Farbe weiter zu pumpen,", "Spiel vorbei.", "Hinweis: Denken Sie daran, die Rohre zu reparieren, die Kraftstoff transportieren!"]
+
+class BURGER:
+    # Language window
+    text_lang = ["Burgerishkiy"]
+    text_langSelect = ["Walking Burger"]
+    text_langContinue = ["Burger?"]
+    # Endings
+    text_meltdown = ["Burgermelt"]
+    text_meltdownDES = ["burger walk running burger", "hamham burburger walkk run", "Burger.", "Walking: burgerger run."]
+    text_freezedown = ["Burgerfreeze"]
+    text_freezedownDES = ["Burger,", "HAMBURGER", "Tomato.", "“BO'OH'O'WA'ER.” ", "Burger: Denken Sie daran, die Temperatur beider Generatoren jederzeit", "zu überprüfen und gegebenenfalls das Kühlmittel aus- oder einzuschalten."]
     text_blackout = ["Anlagenweiter Blackout"]
     text_blackoutDES = ["Wenn der Generator keine Energie mehr hat, gibt es keine Energie, um die Farbe weiter zu pumpen,", "Spiel vorbei.", "Hinweis: Denken Sie daran, die Rohre zu reparieren, die Kraftstoff transportieren!"]
 
