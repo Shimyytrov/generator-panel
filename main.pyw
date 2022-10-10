@@ -1,5 +1,5 @@
 # imports
-from tkinter import Button
+import time
 import pygame
 import sys
 import assets.languages.langs as langs
@@ -29,6 +29,7 @@ logo2_alpha = 255
 lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255
 langseleted1 = False
 langseleted2 = False
+button_cooldown = False
 
 # function to render logo1
 def renderlogo1(line_text, font, offset):
@@ -47,6 +48,12 @@ while  True:
             if event.key == pygame.K_ESCAPE:
                 pygame.quit()
                 sys.exit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                if 31 <= total_time <= 199:
+                    total_time = 230
+                if 241  <= total_time <= 399:
+                    total_time = 400
         elif event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
@@ -65,10 +72,6 @@ while  True:
         line2 = renderlogo1("Shimyytrov Studio", font_conthrax48, +30)
         screen.blit(line1[0], line1[1])
         screen.blit(line2[0], line2[1])
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    total_time = 240
 
     if 240 <= total_time <= 400:
         title2_pic_box = pygame.transform.scale(title2_pic, (title2_size_width/2, title2_size_height/2)).get_rect()
@@ -79,11 +82,6 @@ while  True:
         screen.blit(pygame.transform.scale(title2_pic, (title2_size_width/2, title2_size_height/2)), (title2_pic_box))    
     if total_time == 240:
         title_2.play()
-    for event in pygame.event.get():
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
-                total_time = 450
-
 
     if total_time == 450:
         swap.play()
@@ -126,42 +124,66 @@ while  True:
         screen.blit(lang6, lang6_box)
         
         if lang1_box.collidepoint(mouse_pos):
-            langs.selected_language = langs.zhTW
-            lang1_Bcolor = 0
-            lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255
-            langseleted2 = True
-            click.play()
+            if not button_cooldown:
+                button_cooldown = True
+                time.sleep(0.1)
+                langs.selected_language = langs.zhTW
+                lang1_Bcolor = 0
+                lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255
+                langseleted2 = True
+                click.play()
+                button_cooldown = False
         elif lang2_box.collidepoint(mouse_pos):
-            langs.selected_language = langs.zhCN
-            lang2_Bcolor = 0
-            lang1_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255
-            langseleted2 = True
-            click.play()
+            if not button_cooldown:
+                button_cooldown = True
+                time.sleep(0.1)
+                langs.selected_language = langs.zhCN
+                lang2_Bcolor = 0
+                lang1_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255
+                langseleted2 = True
+                click.play()
+                button_cooldown = False
         elif lang3_box.collidepoint(mouse_pos):
-            langs.selected_language = langs.EN
-            lang3_Bcolor = 0
-            lang1_Bcolor = lang2_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255
-            langseleted2 = True
-            click.play()
+            if not button_cooldown:
+                button_cooldown = True
+                time.sleep(0.1)
+                langs.selected_language = langs.EN
+                lang3_Bcolor = 0
+                lang1_Bcolor = lang2_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255
+                langseleted2 = True
+                click.play()
+                button_cooldown = False
         elif lang4_box.collidepoint(mouse_pos):
-            langs.selected_language = langs.DE
-            lang4_Bcolor = 0
-            lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang5_Bcolor = lang6_Bcolor = 255
-            langseleted2 = True
-            click.play()
+            if not button_cooldown:
+                button_cooldown = True
+                time.sleep(0.1)
+                langs.selected_language = langs.DE
+                lang4_Bcolor = 0
+                lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang5_Bcolor = lang6_Bcolor = 255
+                langseleted2 = True
+                click.play()
+                button_cooldown = False
         elif lang5_box.collidepoint(mouse_pos):
-            langs.selected_language = langs.BURGER
-            lang5_Bcolor = 0
-            lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang6_Bcolor = 255
-            langseleted2 = True
-            click.play()
+            if not button_cooldown:
+                button_cooldown = True
+                time.sleep(0.1)
+                langs.selected_language = langs.BURGER
+                lang5_Bcolor = 0
+                lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang6_Bcolor = 255
+                langseleted2 = True
+                click.play()
+                button_cooldown = False
         elif lang6_box.collidepoint(mouse_pos):
-            langs.selected_language = langs.BRUH
-            lang6_Bcolor = 0
-            lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = 255
-            langseleted2 = True
-            click.play()
-        
+            if not button_cooldown:
+                button_cooldown = True
+                time.sleep(0.1)
+                langs.selected_language = langs.BRUH
+                lang6_Bcolor = 0
+                lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = 255
+                langseleted2 = True
+                click.play()
+                button_cooldown = False
+                
         if langcon_box.collidepoint(mouse_pos):
             swap.play()
             langseleted1 = True
