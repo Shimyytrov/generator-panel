@@ -56,14 +56,14 @@ class DE:
 class BURGER:
     # Language window
     text_lang = ["Burgerishkiy"]
-    text_langSelect = ["Walking Burger"]
+    text_langSelect = ["Select Your Burger"]
     text_langContinue = ["Burger?"]
     # Endings
     text_meltdown = ["Burgermelt"]
     text_meltdownDES = ["burger walk running burger", "hamham burburger walkk run", "Burger.", "Walking: burgerger run."]
     text_freezedown = ["Burgerfreeze"]
-    text_freezedownDES = ["Burger,", "HAMBURGER", "Tomato.", "“BO'OH'O'WA'ER.” ", "Burger: Denken Sie daran, die Temperatur beider Generatoren jederzeit", "zu überprüfen und gegebenenfalls das Kühlmittel aus- oder einzuschalten."]
-    text_blackout = ["Anlagenweiter Blackout"]
-    text_blackoutDES = ["Wenn der Generator keine Energie mehr hat, gibt es keine Energie, um die Farbe weiter zu pumpen,", "Spiel vorbei.", "Hinweis: Denken Sie daran, die Rohre zu reparieren, die Kraftstoff transportieren!"]
+    text_freezedownDES = ["Burger,", "HAMBURGER", "Tomato.", "“BO'OH'O'WA'ER.” ", "Burger: Run Walk burtomager, run run ger ger hamhamgerbur."]
+    text_blackout = ["Burger-wide Walking"]
+    text_blackoutDES = ["Burgergertam ran out of burgers, the whole tomato and burger just ran away.", "Burger Over.", "Burger: Burh."]
 
 selected_language = EN

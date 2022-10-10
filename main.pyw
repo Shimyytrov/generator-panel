@@ -18,15 +18,15 @@ def font_mindustry(fontsize):
 title_1 = pygame.mixer.Sound('assets/sounds/title_1.wav')
 title_2 = pygame.mixer.Sound('assets/sounds/title_2.wav')
 title2_pic = pygame.image.load('assets/imgs/title_2.png')
-click_wav = pygame.mixer.Sound('assets/sounds/click.wav')
-swap_wav = pygame.mixer.Sound('assets/sounds/swap.wav')
+click = pygame.mixer.Sound('assets/sounds/click.wav')
+swap = pygame.mixer.Sound('assets/sounds/swap.wav')
 title2_size_width, title2_size_height = title2_pic.get_size()
 
 # variables
 total_time = 0
 logo1_line_alpha = 255
 logo2_alpha = 255
-lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = 255
+lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = 255
 langseleted1 = False
 langseleted2 = False
 
@@ -77,7 +77,7 @@ while  True:
 
 
     if total_time == 450:
-        swap_wav.play()
+        swap.play()
     if total_time >= 450 and not langseleted1:
         langname = langs.selected_language.text_langSelect[0]
         langsel = font_mindustry(2).render(langname, True, (255, 255, 255))
@@ -91,11 +91,11 @@ while  True:
         if langseleted2:
             screen.blit(langcon, langcon_box)
 
-        lang1 = font_mindustry(3.5).render("中文 (台灣正體)", True, (255, 255, lang1_Bcolor))
+        lang1 = font_mindustry(3.5).render("中文(台灣正體)", True, (255, 255, lang1_Bcolor))
         lang1_box = lang1.get_rect()
         lang1_box.center = (width/2, height*(3/10))
         screen.blit(lang1, lang1_box)
-        lang2 = font_mindustry(3.5).render("中文 (中国简体)", True, (255, 255, lang2_Bcolor))
+        lang2 = font_mindustry(3.5).render("中文(中国简体)", True, (255, 255, lang2_Bcolor))
         lang2_box = lang2.get_rect()
         lang2_box.center = (width/2, height*(4/10))
         screen.blit(lang2, lang2_box)
@@ -107,34 +107,44 @@ while  True:
         lang4_box = lang4.get_rect()
         lang4_box.center = (width/2, height*(6/10))
         screen.blit(lang4, lang4_box)
+        lang5 = font_mindustry(3.5).render("Burgerishkiy", True, (255, 255, lang5_Bcolor))
+        lang5_box = lang5.get_rect()
+        lang5_box.center = (width/2, height*(7/10))
+        screen.blit(lang5, lang5_box)
         
         if lang1_box.collidepoint(mouse_pos):
             langs.selected_language = langs.zhTW
             lang1_Bcolor = 0
-            lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = 255
+            lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = 255
             langseleted2 = True
-            click_wav.play()
+            click.play()
         elif lang2_box.collidepoint(mouse_pos):
             langs.selected_language = langs.zhCN
             lang2_Bcolor = 0
-            lang1_Bcolor = lang3_Bcolor = lang4_Bcolor = 255
+            lang1_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = 255
             langseleted2 = True
-            click_wav.play()
+            click.play()
         elif lang3_box.collidepoint(mouse_pos):
             langs.selected_language = langs.EN
             lang3_Bcolor = 0
-            lang1_Bcolor = lang2_Bcolor = lang4_Bcolor = 255
+            lang1_Bcolor = lang2_Bcolor = lang4_Bcolor = lang5_Bcolor = 255
             langseleted2 = True
-            click_wav.play()
+            click.play()
         elif lang4_box.collidepoint(mouse_pos):
             langs.selected_language = langs.DE
             lang4_Bcolor = 0
-            lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = 255
+            lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang5_Bcolor = 255
             langseleted2 = True
-            click_wav.play()
+            click.play()
+        elif lang5_box.collidepoint(mouse_pos):
+            langs.selected_language = langs.BURGER
+            lang5_Bcolor = 0
+            lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = 255
+            langseleted2 = True
+            click.play()
         
         if langcon_box.collidepoint(mouse_pos):
-            swap_wav.play()
+            swap.play()
             langseleted1 = True
 
     # time +1
