@@ -26,7 +26,7 @@ title2_size_width, title2_size_height = title2_pic.get_size()
 total_time = 0
 logo1_line_alpha = 255
 logo2_alpha = 255
-lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = 255
+lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255
 langseleted1 = False
 langseleted2 = False
 
@@ -111,35 +111,45 @@ while  True:
         lang5_box = lang5.get_rect()
         lang5_box.center = (width/2, height*(7/10))
         screen.blit(lang5, lang5_box)
+        lang6 = font_mindustry(3.5).render("Bruhwtf", True, (255, 255, lang6_Bcolor))
+        lang6_box = lang6.get_rect()
+        lang6_box.center = (width/2, height*(8/10))
+        screen.blit(lang6, lang6_box)
         
         if lang1_box.collidepoint(mouse_pos):
             langs.selected_language = langs.zhTW
             lang1_Bcolor = 0
-            lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = 255
+            lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255
             langseleted2 = True
             click.play()
         elif lang2_box.collidepoint(mouse_pos):
             langs.selected_language = langs.zhCN
             lang2_Bcolor = 0
-            lang1_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = 255
+            lang1_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255
             langseleted2 = True
             click.play()
         elif lang3_box.collidepoint(mouse_pos):
             langs.selected_language = langs.EN
             lang3_Bcolor = 0
-            lang1_Bcolor = lang2_Bcolor = lang4_Bcolor = lang5_Bcolor = 255
+            lang1_Bcolor = lang2_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255
             langseleted2 = True
             click.play()
         elif lang4_box.collidepoint(mouse_pos):
             langs.selected_language = langs.DE
             lang4_Bcolor = 0
-            lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang5_Bcolor = 255
+            lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang5_Bcolor = lang6_Bcolor = 255
             langseleted2 = True
             click.play()
         elif lang5_box.collidepoint(mouse_pos):
             langs.selected_language = langs.BURGER
             lang5_Bcolor = 0
-            lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = 255
+            lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang6_Bcolor = 255
+            langseleted2 = True
+            click.play()
+        elif lang6_box.collidepoint(mouse_pos):
+            langs.selected_language = langs.BRUH
+            lang6_Bcolor = 0
+            lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = 255
             langseleted2 = True
             click.play()
         

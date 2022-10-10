@@ -66,4 +66,17 @@ class BURGER:
     text_blackout = ["Burger-wide Walking"]
     text_blackoutDES = ["Burgergertam ran out of burgers, the whole tomato and burger just ran away.", "Burger Over.", "Burger: Burh."]
 
+class BRUH:
+    # Language window
+    text_lang = ["Bruhwtf"]
+    text_langSelect = ["Bruh WHAT DA FOCK"]
+    text_langContinue = ["Free robux?"]
+    # Endings
+    text_meltdown = ["Bruht"]
+    text_meltdownDES = ["Walking: run bruhman run", "bruh do it just ruuuuuunnnnnnnnnn", "Bruhman.", "Walking: bruhman run."]
+    text_freezedown = ["bruhGGfreEZe"]
+    text_freezedownDES = ["(i cant know wat should I type so it blank lol)"]
+    text_blackout = ["Bruh-wide Putin Walking"]
+    text_blackoutDES = ["Bruh.", "Bruh Over.", "Bruhman: a yo wtf."]
+
 selected_language = EN
