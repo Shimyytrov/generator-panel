@@ -15,11 +15,11 @@ font_conthrax64 = pygame.font.Font('assets/fonts/conthrax-sb.ttf', 64)
 font_conthrax48 = pygame.font.Font('assets/fonts/conthrax-sb.ttf', 48)
 def font_mindustry(fontsize):
     return pygame.font.Font('assets/fonts/mindustry.ttf', int(128/fontsize))
-title_1 = pygame.mixer.Sound('assets/sounds/title_1.wav')
-title_2 = pygame.mixer.Sound('assets/sounds/title_2.wav')
+title_1 = pygame.mixer.Sound('assets/sounds/title_1.ogg')
+title_2 = pygame.mixer.Sound('assets/sounds/title_2.ogg')
 title2_pic = pygame.image.load('assets/imgs/title_2.png')
-click = pygame.mixer.Sound('assets/sounds/click.wav')
-swap = pygame.mixer.Sound('assets/sounds/swap.wav')
+click = pygame.mixer.Sound('assets/sounds/click.ogg')
+swap = pygame.mixer.Sound('assets/sounds/swap.ogg')
 title2_size_width, title2_size_height = title2_pic.get_size()
 
 # variables
