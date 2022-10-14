@@ -48,7 +48,6 @@ def udl1Ani(): # underline1 animation
     if 450 <= total_time <= 509 and not langseleted1:
         y=round(pow(((sin(((total_time-450)/6)/3.1416))*10), 1.42), 3)
         global underline1
-        print(y)
         underline1 = underline1 + (underline1*y)/underline1
     
 
