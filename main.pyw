@@ -44,11 +44,6 @@ def renderlogo1(line_text, font, offset): # render logo1line
     logo1_box = logo1_line.get_rect()
     logo1_box.center = (width/2, (height/2)+offset)
     return logo1_line, logo1_box
-def udl1Ani(): # underline1 animation
-    if 450 <= total_time <= 509 and not langseleted1:
-        y=round(pow(((sin(((total_time-450)/6)/3.1416))*10), 1.42), 3)
-        global underline1
-        underline1 = underline1 + (underline1*y)/underline1
     
 
 # game loop
@@ -93,8 +88,7 @@ while  True:
         langsel_box.center = (width/2, height/7)
         screen.blit(langsel, langsel_box)
         # underline
-        udl1Ani()
-        pygame.draw.rect(screen, (255, 214, 99), ((width-(width/1.75))/2, (height/7)+(height/15), underline1, height/150))
+        pygame.draw.rect(screen, (255, 214, 99), ((width-(width/1.75))/2, (height/7)+(height/15), width/1.75, height/150))
 
 
         langcon = font_mindustry(3).render(langs.selected_language.text_langContinue[0], True, (255, 214, 99))
