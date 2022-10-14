@@ -1,4 +1,5 @@
 # imports
+from math import sin
 import time
 import pygame
 import sys
@@ -34,7 +35,7 @@ lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6
 langseleted1 = False
 langseleted2 = False
 button_cooldown = False
-underline1 = 0
+underline1 = 1
 
 # functions
 def renderlogo1(line_text, font, offset): # render logo1line
@@ -43,7 +44,12 @@ def renderlogo1(line_text, font, offset): # render logo1line
     logo1_box = logo1_line.get_rect()
     logo1_box.center = (width/2, (height/2)+offset)
     return logo1_line, logo1_box
-#def udl1Ani(): # underline1 animation
+def udl1Ani(): # underline1 animation
+    if 450 <= total_time <= 509 and not langseleted1:
+        y=round(pow(((sin(((total_time-450)/6)/3.1416))*10), 1.42), 3)
+        global underline1
+        print(y)
+        underline1 = underline1 + (underline1*y)/underline1
     
 
 # game loop
@@ -63,16 +69,14 @@ while  True:
 
 
     # logo display
-    if total_time == 30:
-        sound_title_1.play()
+    if total_time == 30:sound_title_1.play()
     if 30 <= total_time <= 200:     # logo 1
         if total_time >= 120:   logo1_line_alpha -= 4
         line1 = renderlogo1("PRODUCED BY", font_conthrax64, -30)
         line2 = renderlogo1("Shimyytrov Studio", font_conthrax48, +30)
         screen.blit(line1[0], line1[1])
         screen.blit(line2[0], line2[1])
-    if total_time == 240:
-        sound_title_2.play()
+    if total_time == 240:sound_title_2.play()
     if 240 <= total_time <= 400:    # logo 2
         if total_time >= 310:   logo2_alpha -= 4
         title2_pic.set_alpha(logo2_alpha)
@@ -83,15 +87,15 @@ while  True:
 
 
     # language select menu
-    if total_time == 450 and not langseleted1:
-        sound_swap.play()
+    if total_time == 450: sound_swap.play()
     if total_time >= 450 and not langseleted1: # lang select
         langsel = font_mindustry(2).render(langs.selected_language.text_langSelect[0], True, (255, 255, 255))
         langsel_box = langsel.get_rect()
         langsel_box.center = (width/2, height/7)
         screen.blit(langsel, langsel_box)
         # underline
-        pygame.draw.rect(screen, (255, 214, 99), ((width-(width/1.75))/2, (height/7)+(height/15), width/1.75, height/150))
+        udl1Ani()
+        pygame.draw.rect(screen, (255, 214, 99), ((width-(width/1.75))/2, (height/7)+(height/15), underline1, height/150))
 
 
         langcon = font_mindustry(3).render(langs.selected_language.text_langContinue[0], True, (255, 214, 99))
