@@ -22,6 +22,8 @@ sound_title_1 = pygame.mixer.Sound('assets/sounds/title_1.wav')
 sound_title_2 = pygame.mixer.Sound('assets/sounds/title_2.wav')
 sound_swap = pygame.mixer.Sound('assets/sounds/swap.wav')
 sound_click = pygame.mixer.Sound('assets/sounds/click.wav')
+sound_clickBURGER = pygame.mixer.Sound('assets/sounds/click_burger.wav')
+sound_clickBRUH = pygame.mixer.Sound('assets/sounds/click_bruh.wav')
 
 
 # variables
@@ -81,6 +83,8 @@ while  True:
 
 
     # language select menu
+    if total_time == 450 and not langseleted1:
+        sound_swap.play()
     if total_time >= 450 and not langseleted1: # lang select
         langsel = font_mindustry(2).render(langs.selected_language.text_langSelect[0], True, (255, 255, 255))
         langsel_box = langsel.get_rect()
@@ -128,67 +132,73 @@ while  True:
             if not button_cooldown:
                 button_cooldown = True
                 langW, langH = lang1.get_size()
-                time.sleep(0.1)
+                sound_click.play()
                 langs.selected_language = langs.zhTW
                 lang1_Bcolor = 255, 214, 99
                 lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255, 255, 255
                 Hlocation = height*(3/10)
                 langseleted2 = True
+                time.sleep(0.1)
                 button_cooldown = False
         elif lang2_box.collidepoint(mouse_pos):
             if not button_cooldown:
                 button_cooldown = True
                 langW, langH = lang2.get_size()
-                time.sleep(0.1)
+                sound_click.play()
                 langs.selected_language = langs.zhCN
                 lang2_Bcolor = 255, 214, 99
                 lang1_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255, 255, 255
                 Hlocation = height*(4/10)
                 langseleted2 = True
+                time.sleep(0.1)
                 button_cooldown = False
         elif lang3_box.collidepoint(mouse_pos):
             if not button_cooldown:
                 button_cooldown = True
                 langW, langH = lang3.get_size()
-                time.sleep(0.1)
+                sound_click.play()
                 langs.selected_language = langs.EN
                 lang3_Bcolor = 255, 214, 99
                 lang1_Bcolor = lang2_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255, 255, 255
                 Hlocation = height*(5/10)
                 langseleted2 = True
+                time.sleep(0.1)
                 button_cooldown = False
         elif lang4_box.collidepoint(mouse_pos):
             if not button_cooldown:
                 button_cooldown = True
                 langW, langH = lang4.get_size()
-                time.sleep(0.1)
+                sound_click.play()
                 langs.selected_language = langs.DE
                 lang4_Bcolor = 255, 214, 99
                 lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang5_Bcolor = lang6_Bcolor = 255, 255, 255
                 Hlocation = height*(6/10)
                 langseleted2 = True
+                time.sleep(0.1)
                 button_cooldown = False
         elif lang5_box.collidepoint(mouse_pos):
             if not button_cooldown:
                 button_cooldown = True
                 langW, langH = lang5.get_size()
-                time.sleep(0.1)
+                sound_clickBURGER.play()
                 langs.selected_language = langs.BURGER
                 lang5_Bcolor = 255, 214, 99
                 lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang6_Bcolor = 255, 255, 255
                 Hlocation = height*(7/10)
                 langseleted2 = True
+                time.sleep(0.1)
                 button_cooldown = False
         elif lang6_box.collidepoint(mouse_pos):
             if not button_cooldown:
                 button_cooldown = True
                 langW, langH = lang6.get_size()
-                time.sleep(0.1)
+                sound_clickBRUH.play()
                 langs.selected_language = langs.BRUH
                 lang6_Bcolor = 255, 214, 99
                 lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = 255, 255, 255
                 Hlocation = height*(8/10)
                 langseleted2 = True
+                time.sleep(0.1)
                 button_cooldown = False
                 
         if langcon_box.collidepoint(mouse_pos):
