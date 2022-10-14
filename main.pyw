@@ -16,11 +16,10 @@ font_conthrax64 = pygame.font.Font('assets/fonts/conthrax-sb.ttf', 64)
 font_conthrax48 = pygame.font.Font('assets/fonts/conthrax-sb.ttf', 48)
 def font_mindustry(fontsize):
     return pygame.font.Font('assets/fonts/mindustry.ttf', int(128/fontsize))
-title_1 = pygame.mixer.Sound('assets/sounds/title_1.wav')
-title_2 = pygame.mixer.Sound('assets/sounds/title_2.wav')
+def loadaudio(filepath):
+    pygame.mixer.music.load(filepath)
+    pygame.mixer.music.play()
 title2_pic = pygame.image.load('assets/imgs/title_2.png')
-click = pygame.mixer.Sound('assets/sounds/click.wav')
-swap = pygame.mixer.Sound('assets/sounds/swap.wav')
 title2_size_width, title2_size_height = title2_pic.get_size()
 
 
@@ -41,7 +40,8 @@ def renderlogo1(line_text, font, offset): # render logo1line
     logo1_box = logo1_line.get_rect()
     logo1_box.center = (width/2, (height/2)+offset)
     return logo1_line, logo1_box
-
+#def udl1Ani(): # underline1 animation
+    
 
 # game loop
 while  True:
@@ -62,13 +62,13 @@ while  True:
     # logo display
     if 30 <= total_time <= 200:     # logo 1
         if total_time >= 120:   logo1_line_alpha -= 4
-        if total_time == 30:    title_1.play()
+        if total_time == 30:    loadaudio('assets/sounds/title_1.ogg')
         line1 = renderlogo1("PRODUCED BY", font_conthrax64, -30)
         line2 = renderlogo1("Shimyytrov Studio", font_conthrax48, +30)
         screen.blit(line1[0], line1[1])
         screen.blit(line2[0], line2[1])
     if 240 <= total_time <= 400:    # logo 2
-        if total_time == 240:   title_2.play()
+        if total_time == 240:   loadaudio('assets/sounds/title_2.ogg')
         if total_time >= 310:   logo2_alpha -= 4
         title2_pic.set_alpha(logo2_alpha)
         title2_pic_box = pygame.transform.scale(title2_pic, (title2_size_width/2, title2_size_height/2)).get_rect()
@@ -78,12 +78,12 @@ while  True:
 
 
     # language select menu
-    if total_time == 450:   swap.play()
-    if total_time >= 450 and not langseleted1: # lang select title
+    if total_time == 450:   loadaudio('assets/sounds/swap.ogg')
+    if total_time >= 450 and not langseleted1: # lang select
         langsel = font_mindustry(2).render(langs.selected_language.text_langSelect[0], True, (255, 255, 255))
         langsel_box = langsel.get_rect()
         langsel_box.center = (width/2, height/7)
-        screen.blit(langsel, langsel.get_rect())
+        screen.blit(langsel, langsel_box)
         # underline
         pygame.draw.rect(screen, (255, 214, 99), ((width-(width/1.75))/2, (height/7)+(height/15), width/1.75, height/150))
 
@@ -132,7 +132,7 @@ while  True:
                 lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255, 255, 255
                 Hlocation = height*(3/10)
                 langseleted2 = True
-                click.play()
+                loadaudio('assets/sounds/click.ogg')
                 button_cooldown = False
         elif lang2_box.collidepoint(mouse_pos):
             if not button_cooldown:
@@ -144,7 +144,7 @@ while  True:
                 lang1_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255, 255, 255
                 Hlocation = height*(4/10)
                 langseleted2 = True
-                click.play()
+                loadaudio('assets/sounds/click.ogg')
                 button_cooldown = False
         elif lang3_box.collidepoint(mouse_pos):
             if not button_cooldown:
@@ -156,7 +156,7 @@ while  True:
                 lang1_Bcolor = lang2_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255, 255, 255
                 Hlocation = height*(5/10)
                 langseleted2 = True
-                click.play()
+                loadaudio('assets/sounds/click.ogg')
                 button_cooldown = False
         elif lang4_box.collidepoint(mouse_pos):
             if not button_cooldown:
@@ -168,7 +168,7 @@ while  True:
                 lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang5_Bcolor = lang6_Bcolor = 255, 255, 255
                 Hlocation = height*(6/10)
                 langseleted2 = True
-                click.play()
+                loadaudio('assets/sounds/click.ogg')
                 button_cooldown = False
         elif lang5_box.collidepoint(mouse_pos):
             if not button_cooldown:
@@ -180,7 +180,7 @@ while  True:
                 lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang6_Bcolor = 255, 255, 255
                 Hlocation = height*(7/10)
                 langseleted2 = True
-                click.play()
+                loadaudio('assets/sounds/click.ogg')
                 button_cooldown = False
         elif lang6_box.collidepoint(mouse_pos):
             if not button_cooldown:
@@ -192,11 +192,11 @@ while  True:
                 lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = 255, 255, 255
                 Hlocation = height*(8/10)
                 langseleted2 = True
-                click.play()
+                loadaudio('assets/sounds/click.ogg')
                 button_cooldown = False
                 
         if langcon_box.collidepoint(mouse_pos):
-            swap.play()
+            loadaudio('assets/sounds/swap.ogg')
             langseleted1 = True
 
     # time +1
