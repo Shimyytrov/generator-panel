@@ -1,6 +1,3 @@
-from select import select
-
-
 class zhCN:
     # Language window
     text_lang = ["中文(中国简体)"]

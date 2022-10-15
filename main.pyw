@@ -1,5 +1,4 @@
 # imports
-from math import sin
 import time
 import pygame
 import sys
@@ -36,6 +35,7 @@ langseleted1 = False
 langseleted2 = False
 button_cooldown = False
 underline1 = 1
+lang0W, lang0H = font_mindustry(3.5).render("######", True, (255,255,255)).get_size()
 
 # functions
 def renderlogo1(line_text, font, offset): # render logo1line
@@ -44,7 +44,32 @@ def renderlogo1(line_text, font, offset): # render logo1line
     logo1_box = logo1_line.get_rect()
     logo1_box.center = (width/2, (height/2)+offset)
     return logo1_line, logo1_box
-    
+def renderlangs(text, color, offset): # render langs button and outline
+    lang = font_mindustry(3.5).render(text, True, color)
+    lang_box = lang.get_rect()
+    lang_box.center = (width/2, height*(offset/10))
+    langW, langH = lang.get_size()
+    langoutline = pygame.Rect(0, 0 , langW+lang0W*0.2, lang0H*1.4)
+    langoutline.center = (width/2, height*(offset/10))
+    pygame.draw.rect(screen, (color), langoutline,  3, 4)
+    screen.blit(lang, lang_box)
+    return lang, langoutline
+def langpressed(lang, langsec, langcolor, offset): # when langs button pressed
+    global button_cooldown, Hlocation, langW, langH, langseleted2, lang1_Bcolor, lang2_Bcolor, lang3_Bcolor, lang4_Bcolor, lang5_Bcolor, lang6_Bcolor
+    if not button_cooldown:
+        button_cooldown = True
+        lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255, 255, 255
+        langs.selected_language = langsec
+        langW, langH = lang.get_size()
+        Hlocation = height*(offset/10)
+        langseleted2 = True
+        if lang == lang5: sound_clickBURGER.play()
+        elif lang == lang6: sound_clickBRUH.play()
+        else: sound_click.play()
+        time.sleep(0.1)
+        button_cooldown = False
+
+
 
 # game loop
 while  True:
@@ -87,122 +112,34 @@ while  True:
         langsel_box = langsel.get_rect()
         langsel_box.center = (width/2, height/7)
         screen.blit(langsel, langsel_box)
-        # underline
-        pygame.draw.rect(screen, (255, 214, 99), ((width-(width/1.75))/2, (height/7)+(height/15), width/1.75, height/150))
-
-
+        pygame.draw.rect(screen, (255, 214, 99), ((width-(width/1.75))/2, (height/7)+(height/15), width/1.75, height/200)) # underline
         langcon = font_mindustry(3).render(langs.selected_language.text_langContinue[0], True, (255, 214, 99))
-        langcon_box = langcon.get_rect()
-        langcon_box.center = (width*(9/10), height*(9/10))
-        if langseleted2:
-            screen.blit(langcon, langcon_box)
-            langselUL2 = pygame.Surface((langH/3, langH))
-            langselUL2.fill((255, 214, 99)) 
-            screen.blit(langselUL2, ((width/2)-langW/2-langH/2 , Hlocation-langH/2))
-
-        lang1 = font_mindustry(3.5).render("中文(台灣正體)", True, (lang1_Bcolor))
-        lang1_box = lang1.get_rect()
-        lang1_box.center = (width/2, height*(3/10))
-        screen.blit(lang1, lang1_box)
-        lang2 = font_mindustry(3.5).render("中文(中国简体)", True, (lang2_Bcolor))
-        lang2_box = lang2.get_rect()
-        lang2_box.center = (width/2, height*(4/10))
-        screen.blit(lang2, lang2_box)
-        lang3 = font_mindustry(3.5).render("English", True, (lang3_Bcolor))
-        lang3_box = lang3.get_rect()
-        lang3_box.center = (width/2, height*(5/10))
-        screen.blit(lang3, lang3_box)
-        lang4 = font_mindustry(3.5).render("Deutsch", True, (lang4_Bcolor))
-        lang4_box = lang4.get_rect()
-        lang4_box.center = (width/2, height*(6/10))
-        screen.blit(lang4, lang4_box)
-        lang5 = font_mindustry(3.5).render("Burgerishkiy", True, (lang5_Bcolor))
-        lang5_box = lang5.get_rect()
-        lang5_box.center = (width/2, height*(7/10))
-        screen.blit(lang5, lang5_box)
-        lang6 = font_mindustry(3.5).render("Bruhwtf", True, (lang6_Bcolor))
-        lang6_box = lang6.get_rect()
-        lang6_box.center = (width/2, height*(8/10))
-        screen.blit(lang6, lang6_box)
+        langconW, langconH = langcon.get_size()
+        langconOL = pygame.Rect(0, 0, langconW+lang0W/4, lang0H+lang0H/2)
+        langconOL.center = ((width-(langconW+width*0.03)+langconW/2), (height*(9/10)+langconH/2))
+        if langseleted2: # show continue button and highlight
+            screen.blit(langcon, (width-(langconW+width*0.03), height*(9/10)))
+            pygame.draw.rect(screen, (255, 214, 99), langconOL, 3, 4) 
+            langselUL2 = pygame.Rect(0, 0, lang0H/3, lang0H*1.4)
+            langselUL2.center = ((width/2)-(langW+lang0W*0.4)/2, Hlocation)
+            pygame.draw.rect(screen, (255, 214, 99), langselUL2) 
         
-        if lang1_box.collidepoint(mouse_pos):
-            if not button_cooldown:
-                button_cooldown = True
-                langW, langH = lang1.get_size()
-                sound_click.play()
-                langs.selected_language = langs.zhTW
-                lang1_Bcolor = 255, 214, 99
-                lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255, 255, 255
-                Hlocation = height*(3/10)
-                langseleted2 = True
-                time.sleep(0.1)
-                button_cooldown = False
-        elif lang2_box.collidepoint(mouse_pos):
-            if not button_cooldown:
-                button_cooldown = True
-                langW, langH = lang2.get_size()
-                sound_click.play()
-                langs.selected_language = langs.zhCN
-                lang2_Bcolor = 255, 214, 99
-                lang1_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255, 255, 255
-                Hlocation = height*(4/10)
-                langseleted2 = True
-                time.sleep(0.1)
-                button_cooldown = False
-        elif lang3_box.collidepoint(mouse_pos):
-            if not button_cooldown:
-                button_cooldown = True
-                langW, langH = lang3.get_size()
-                sound_click.play()
-                langs.selected_language = langs.EN
-                lang3_Bcolor = 255, 214, 99
-                lang1_Bcolor = lang2_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255, 255, 255
-                Hlocation = height*(5/10)
-                langseleted2 = True
-                time.sleep(0.1)
-                button_cooldown = False
-        elif lang4_box.collidepoint(mouse_pos):
-            if not button_cooldown:
-                button_cooldown = True
-                langW, langH = lang4.get_size()
-                sound_click.play()
-                langs.selected_language = langs.DE
-                lang4_Bcolor = 255, 214, 99
-                lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang5_Bcolor = lang6_Bcolor = 255, 255, 255
-                Hlocation = height*(6/10)
-                langseleted2 = True
-                time.sleep(0.1)
-                button_cooldown = False
-        elif lang5_box.collidepoint(mouse_pos):
-            if not button_cooldown:
-                button_cooldown = True
-                langW, langH = lang5.get_size()
-                sound_clickBURGER.play()
-                langs.selected_language = langs.BURGER
-                lang5_Bcolor = 255, 214, 99
-                lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang6_Bcolor = 255, 255, 255
-                Hlocation = height*(7/10)
-                langseleted2 = True
-                time.sleep(0.1)
-                button_cooldown = False
-        elif lang6_box.collidepoint(mouse_pos):
-            if not button_cooldown:
-                button_cooldown = True
-                langW, langH = lang6.get_size()
-                sound_clickBRUH.play()
-                langs.selected_language = langs.BRUH
-                lang6_Bcolor = 255, 214, 99
-                lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = 255, 255, 255
-                Hlocation = height*(8/10)
-                langseleted2 = True
-                time.sleep(0.1)
-                button_cooldown = False
-                
-        if langcon_box.collidepoint(mouse_pos):
-            langseleted1 = True
+        lang1, lang1_box = renderlangs("中文(台灣正體)", lang1_Bcolor, 3)
+        lang2, lang2_box = renderlangs("中文(中国简体)", lang2_Bcolor, 4)
+        lang3, lang3_box = renderlangs("English", lang3_Bcolor, 5)
+        lang4, lang4_box = renderlangs("Deutsch", lang4_Bcolor, 6)
+        lang5, lang5_box = renderlangs("Burgerishkiy", lang5_Bcolor, 7)
+        lang6, lang6_box = renderlangs("Bruhwtf", lang6_Bcolor, 8)
+        
+        if lang1_box.collidepoint(mouse_pos): langpressed(lang1, langs.zhTW, lang1_Bcolor, 3); lang1_Bcolor = 255, 214, 99
+        elif lang2_box.collidepoint(mouse_pos): langpressed(lang2, langs.zhCN, lang2_Bcolor, 4); lang2_Bcolor = 255, 214, 99
+        elif lang3_box.collidepoint(mouse_pos): langpressed(lang3, langs.EN, lang3_Bcolor, 5); lang3_Bcolor = 255, 214, 99
+        elif lang4_box.collidepoint(mouse_pos): langpressed(lang4, langs.DE, lang4_Bcolor, 6); lang4_Bcolor = 255, 214, 99
+        elif lang5_box.collidepoint(mouse_pos): langpressed(lang5, langs.BURGER, lang5_Bcolor, 7); lang5_Bcolor = 255, 214, 99
+        elif lang6_box.collidepoint(mouse_pos): langpressed(lang6, langs.BRUH, lang6_Bcolor, 8); lang6_Bcolor = 255, 214, 99
+        elif langconOL.collidepoint(mouse_pos):   langseleted1 = True; sound_clickBURGER.stop(), sound_clickBRUH.stop(), sound_click.stop(), sound_swap.play()
 
-    # time +1
-    total_time += 1
-    # update frame
-    pygame.display.flip()
+    
+    total_time += 1     # time +1
+    pygame.display.flip()   # update frame
     fpsClock.tick(fps)
