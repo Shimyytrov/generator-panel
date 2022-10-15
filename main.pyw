@@ -7,6 +7,9 @@ import assets.languages.langs as langs
 
 # configuration
 pygame.init()
+ICON = pygame.image.load('./assets/imgs/icon.png')
+pygame.display.set_icon(ICON)
+pygame.display.set_caption("Generator Panel")
 fps = 60
 fpsClock = pygame.time.Clock()
 screen_info = pygame.display.Info()
