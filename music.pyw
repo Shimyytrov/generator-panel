@@ -12,7 +12,7 @@ screen_info = pygame.display.Info()
 width, height = screen_info.current_w, screen_info.current_h
 screen = pygame.display.set_mode((width, height))
 
-pygame.mixer.music.load('./assets/tracks/normal.wav')
+pygame.mixer.music.load('./assets/tracks/normal.ogg')
 pygame.mixer.music.play(-1)
 
 # game loop
