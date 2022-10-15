@@ -13,7 +13,9 @@ width, height = screen_info.current_w, screen_info.current_h
 screen = pygame.display.set_mode((width, height))
 
 pygame.mixer.music.load('./assets/tracks/normal.ogg')
-pygame.mixer.music.play(-1)
+pygame.mixer.music.play(loops=2, fade_ms=2000)
+pygame.mixer.music.fadeout
+pygame.mixer.music.stop
 
 # game loop
 while  True:

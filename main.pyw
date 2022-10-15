@@ -24,7 +24,6 @@ sound_swap = pygame.mixer.Sound('./assets/sounds/swap.wav')
 sound_click = pygame.mixer.Sound('./assets/sounds/click.wav')
 sound_clickBURGER = pygame.mixer.Sound('./assets/sounds/click_burger.wav')
 sound_clickBRUH = pygame.mixer.Sound('./assets/sounds/click_bruh.wav')
-music_normal = pygame.mixer.music.load('./assets/tracks/normal.wav')
 
 
 # variables
