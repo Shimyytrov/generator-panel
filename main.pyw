@@ -12,18 +12,18 @@ fpsClock = pygame.time.Clock()
 screen_info = pygame.display.Info()
 width, height = screen_info.current_w, screen_info.current_h
 screen = pygame.display.set_mode((width, height))
-font_conthrax64 = pygame.font.Font('assets/fonts/conthrax-sb.ttf', 64)
-font_conthrax48 = pygame.font.Font('assets/fonts/conthrax-sb.ttf', 48)
+font_conthrax64 = pygame.font.Font('./assets/fonts/conthrax-sb.ttf', 64)
+font_conthrax48 = pygame.font.Font('./assets/fonts/conthrax-sb.ttf', 48)
 def font_mindustry(fontsize):
-    return pygame.font.Font('assets/fonts/mindustry.ttf', int(128/fontsize))
-title2_pic = pygame.image.load('assets/imgs/title_2.png')
+    return pygame.font.Font('./assets/fonts/mindustry.ttf', int(128/fontsize))
+title2_pic = pygame.image.load('./assets/imgs/title_2.png')
 title2_size_width, title2_size_height = title2_pic.get_size()
-sound_title_1 = pygame.mixer.Sound('assets/sounds/title_1.wav')
-sound_title_2 = pygame.mixer.Sound('assets/sounds/title_2.wav')
-sound_swap = pygame.mixer.Sound('assets/sounds/swap.wav')
-sound_click = pygame.mixer.Sound('assets/sounds/click.wav')
-sound_clickBURGER = pygame.mixer.Sound('assets/sounds/click_burger.wav')
-sound_clickBRUH = pygame.mixer.Sound('assets/sounds/click_bruh.wav')
+sound_title_1 = pygame.mixer.Sound('./assets/sounds/title_1.wav')
+sound_title_2 = pygame.mixer.Sound('./assets/sounds/title_2.wav')
+sound_swap = pygame.mixer.Sound('./assets/sounds/swap.wav')
+sound_click = pygame.mixer.Sound('./assets/sounds/click.wav')
+sound_clickBURGER = pygame.mixer.Sound('./assets/sounds/click_burger.wav')
+sound_clickBRUH = pygame.mixer.Sound('./assets/sounds/click_bruh.wav')
 
 
 # variables
