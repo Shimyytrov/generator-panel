@@ -1,5 +1,4 @@
 # imports
-import time
 import pygame
 import sys
 
@@ -13,9 +12,7 @@ width, height = screen_info.current_w, screen_info.current_h
 screen = pygame.display.set_mode((width, height))
 
 pygame.mixer.music.load('./assets/tracks/normal.ogg')
-pygame.mixer.music.play(loops=2, fade_ms=2000)
-pygame.mixer.music.fadeout(time=2000)
-pygame.mixer.music.unload('./assets/tracks/normal.ogg')
+pygame.mixer.music.play(loops=1, fade_ms=2000)
 
 # game loop
 while  True:
