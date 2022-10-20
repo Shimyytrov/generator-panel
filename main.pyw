@@ -27,6 +27,7 @@ sound_swap = pygame.mixer.Sound('./assets/sounds/swap.wav')
 sound_click = pygame.mixer.Sound('./assets/sounds/click.wav')
 sound_clickBURGER = pygame.mixer.Sound('./assets/sounds/click_burger.wav')
 sound_clickBRUH = pygame.mixer.Sound('./assets/sounds/click_bruh.wav')
+sound_endingBOOM = pygame.mixer.Sound('./assets/sounds/endingBOOM.wav')
 def play_track(file, loop, fade_ms):
     pygame.mixer.music.load(f'./assets/tracks/{file}.ogg')
     pygame.mixer.music.play(loop, fade_ms)
@@ -98,6 +99,8 @@ def render_game_title(): # render the game title with delays
         sound_title_1.play()
     if total_time >= 120:
         screen.blit(game_title2, game_title2_rec)
+    if total_time == 120:
+        sound_endingBOOM.play()
     if total_time == 240:
         play_track("title", -1, 0)
     if total_time == 300:
