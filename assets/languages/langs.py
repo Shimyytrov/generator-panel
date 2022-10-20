@@ -3,6 +3,10 @@ class zhCN:
     text_lang = ["中文(中国简体)"]
     text_lang_select = ["选择你的语言"]
     text_lang_continue = ["按此继续"]
+
+    # Start Screen
+    text_play = ["按此开始"]
+
     # Endings
     text_meltdown = ["熔毁"]
     text_meltdownDES = ["发电机温度超出了可承受的极限(4000°C)！整座 ", "设施发生了一场巨大的爆炸，并且摧毁了 ", "整个设施以及周边的环境。 ", "提示：记得检查冷冻液是否开启，以及是否有管道破裂。"]
@@ -16,6 +20,10 @@ class zhTW:
     text_lang = ["中文(台灣正體)"]
     text_lang_select = ["選擇你的語言"]
     text_lang_continue = ["按此繼續"]
+    
+    # Start Screen
+    text_play = ["按此開始"]
+
     # Endings
     text_meltdown = ["熔毀"]
     text_meltdownDES = ["發電機溫度超出了可承受的極限(4000°C)！整座 ", "設施發生了一場巨大的爆炸，並且摧毀了 ", "整個設施以及周邊的環境。 ", "提示：記得檢查冷凍液是否開啟，以及是否有管道破裂。"]
@@ -29,6 +37,10 @@ class EN:
     text_lang = ["English"]
     text_lang_select = ["Select Your Language"]
     text_lang_continue = ["Continue"]
+
+    # Start Screen
+    text_play = ["Press to Start"]
+
     # Endings
     text_meltdown = ["Meltdown"]
     text_meltdownDES = ["The generator temperature is beyond the acceptable limit(4000°C)!", "A huge explosion occurred in the whole facility. For the result,", "the facility and the surrounding have been destroyed.", "Hint: Remember to check if the coolant is activated and if there are no broken pipes."]
@@ -42,6 +54,10 @@ class DE:
     text_lang = ["Deutsch"]
     text_lang_select = ["Wähle deine Sprache"]
     text_lang_continue = ["Fortsetzen"]
+
+    # Start Screen
+    text_play = ["Zum Starten Drücken"]
+    
     # Endings
     text_meltdown = ["Kernschmelze"]
     text_meltdownDES = ["Die Generatortemperatur liegt außerhalb der zulässigen Grenze(4000 °C)!", "In der gesamten Anlage ereignete sich eine riesige Explosion.", "Dafür wurden die Anlage und die Umgebung zerstört.", "Hinweis: Denken Sie daran, zu prüfen, ob das Kühlmittel", "aktiviert ist und ob es keine gebrochenen Rohre gibt."]
@@ -55,6 +71,10 @@ class BURGER:
     text_lang = ["Burgerishkiy"]
     text_lang_select = ["Select Your Burger"]
     text_lang_continue = ["Burger?"]
+
+    # Start Screen
+    text_play = ["Press to BURGER"]
+    
     # Endings
     text_meltdown = ["Burgermelt"]
     text_meltdownDES = ["burger walk running burger", "hamham burburger walkk run", "Burger.", "Walking: burgerger run."]
@@ -68,6 +88,10 @@ class BRUH:
     text_lang = ["Bruhwtf"]
     text_lang_select = ["Bruh WHAT DA FOCK"]
     text_lang_continue = ["Free robux?"]
+    
+    # Start Screen
+    text_play = ["Fuck you."]
+    
     # Endings
     text_meltdown = ["Bruht"]
     text_meltdownDES = ["Walking: run bruhman run", "bruh do it just ruuuuuunnnnnnnnnn", "Bruhman.", "Walking: bruhman run."]
