@@ -153,9 +153,8 @@ while not lang_selected2:
     if 30 <= total_time <= 200:     # logo 1
         if total_time >= 120:
             logo1_line_alpha -= 4
-        if one_time("logo_lines_render"):
-            line1 = render_logo1("PRODUCED BY", font_conthrax64, -30)
-            line2 = render_logo1("Shimyytrov Studio", font_conthrax48, +30)
+        line1 = render_logo1("PRODUCED BY", font_conthrax64, -30)
+        line2 = render_logo1("Shimyytrov Studio", font_conthrax48, +30)
         screen.blit(line1[0], line1[1])
         screen.blit(line2[0], line2[1])
     if total_time == 240:
