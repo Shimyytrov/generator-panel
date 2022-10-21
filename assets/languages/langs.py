@@ -20,6 +20,9 @@ class zhCN:
     text_gra_PlayerAnimation = ["玩家动画"]
     text_gra_BrokenPipe = ["管道破裂"]
 
+    text_sound_Sound = ["声音"]
+    text_sound_Music = ["音乐"]
+
     # Endings
     text_meltdown = ["熔毁"]
     text_meltdownDES = ["发电机温度超出了可承受的极限(4000°C)！整座 ", "设施发生了一场巨大的爆炸，并且摧毁了 ", "整个设施以及周边的环境。 ", "提示：记得检查冷冻液是否开启，以及是否有管道破裂。"]
@@ -49,6 +52,9 @@ class zhTW:
     text_gra_Bloom = ["高光"]
     text_gra_PlayerAnimation = ["玩家動畫"]
     text_gra_BrokenPipe = ["管道破裂"]
+
+    text_sound_Sound = ["聲音"]
+    text_sound_Music = ["音樂"]
 
     # Endings
     text_meltdown = ["熔毀"]
@@ -80,6 +86,9 @@ class EN:
     text_gra_PlayerAnimation = ["Player Animation"]
     text_gra_BrokenPipe = ["Broken Pipe"]
 
+    text_sound_Sound = ["Sound"]
+    text_sound_Music = ["Music"]
+
     # Endings
     text_meltdown = ["Meltdown"]
     text_meltdownDES = ["The generator temperature is beyond the acceptable limit(4000°C)!", "A huge explosion occurred in the whole facility. For the result,", "the facility and the surrounding have been destroyed.", "Hint: Remember to check if the coolant is activated and if there are no broken pipes."]
@@ -109,6 +118,9 @@ class DE:
     text_gra_Bloom = ["Bloom"]
     text_gra_PlayerAnimation = ["Spieleranimation"]
     text_gra_BrokenPipe = ["Rohrbruch"]
+
+    text_sound_Sound = ["Klang"]
+    text_sound_Music = ["Musik"]
     
     # Endings
     text_meltdown = ["Kernschmelze"]
@@ -139,6 +151,9 @@ class BURGER:
     text_gra_Bloom = ["Kaboom?"]
     text_gra_PlayerAnimation = ["Yes, Kaboom."]
     text_gra_BrokenPipe = ["Broken Burger"]
+
+    text_sound_Sound = ["PAY ME"]
+    text_sound_Music = ["TRACKS N' NUTZ"]
     
     # Endings
     text_meltdown = ["Burgermelt"]
@@ -169,6 +184,9 @@ class BRUH:
     text_gra_Bloom = ["Yeah, I'm sorry :("]
     text_gra_PlayerAnimation = ["MLG bucket"]
     text_gra_BrokenPipe = ["Слава наше СССР"]
+
+    text_sound_Sound = ["BRUH"]
+    text_sound_Music = ["NGGYU"]
     
     # Endings
     text_meltdown = ["Bruht"]
