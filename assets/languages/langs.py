@@ -6,6 +6,8 @@ class zhCN:
 
     # Start Screen
     text_play = ["按此开始"]
+    text_title1 = ["希米特罗夫"]
+    text_title2 = ["发电机控制台"]
 
     # Endings
     text_meltdown = ["熔毁"]
@@ -23,6 +25,8 @@ class zhTW:
     
     # Start Screen
     text_play = ["按此開始"]
+    text_title1 = ["希米特羅夫"]
+    text_title2 = ["發電機控制臺"]
 
     # Endings
     text_meltdown = ["熔毀"]
@@ -40,6 +44,8 @@ class EN:
 
     # Start Screen
     text_play = ["Press to Start"]
+    text_title1 = ["Shimyytrov's"]
+    text_title2 = ["Generator Panel"]
 
     # Endings
     text_meltdown = ["Meltdown"]
@@ -57,6 +63,8 @@ class DE:
 
     # Start Screen
     text_play = ["Zum Starten Drücken"]
+    text_title1 = ["Schmitrov"]
+    text_title2 = ["Generator-Bedienfeld"]
     
     # Endings
     text_meltdown = ["Kernschmelze"]
@@ -74,6 +82,8 @@ class BURGER:
 
     # Start Screen
     text_play = ["Press to BURGER"]
+    text_title1 = ["BURGER's"]
+    text_title2 = ["Fucking Raw Steak"]
     
     # Endings
     text_meltdown = ["Burgermelt"]
@@ -91,6 +101,8 @@ class BRUH:
     
     # Start Screen
     text_play = ["Fuck you."]
+    text_title1 = ["BRUH"]
+    text_title2 = ["What Da Fock is This"]
     
     # Endings
     text_meltdown = ["Bruht"]
