@@ -95,7 +95,7 @@ class BURGER:
 
 class BRUH:
     # Language window
-    text_lang = ["Bruhwtf"]
+    text_lang = ["WTF is that"]
     text_lang_select = ["Bruh WHAT DA FOCK"]
     text_lang_continue = ["Free robux?"]
     
@@ -107,7 +107,7 @@ class BRUH:
     # Endings
     text_meltdown = ["Bruht"]
     text_meltdownDES = ["Walking: run bruhman run", "bruh do it just ruuuuuunnnnnnnnnn", "Bruhman.", "Walking: bruhman run."]
-    text_freezedown = ["bruhGGfreEZe"]
+    text_freezedown = ["freEZe"]
     text_freezedownDES = ["(i cant know wat should I type so it blank lol)"]
     text_blackout = ["Bruh-wide Putin Walking"]
     text_blackoutDES = ["Bruh.", "Bruh Over.", "Bruhman: a yo wtf."]
