@@ -8,6 +8,20 @@ class zhCN:
     text_play = ["按此开始"]
     text_title1 = ["希米特罗夫"]
     text_title2 = ["发电机控制台"]
+    text_ini = ["设定"]
+
+    # Settings
+    text_graINI = ["图形设定"]
+    text_langINI = ["语言"]
+    text_soundINI = ["声音设定"]
+
+    text_gra_DynamicLight = ["动态光"]
+    text_gra_Bloom = ["高光"]
+    text_gra_PlayerAnimation = ["玩家动画"]
+    text_gra_BrokenPipe = ["管道破裂"]
+
+    text_sound_Sound = ["声音"]
+    text_sound_Music = ["音乐"]
 
     # Endings
     text_meltdown = ["熔毁"]
@@ -27,6 +41,20 @@ class zhTW:
     text_play = ["按此開始"]
     text_title1 = ["希米特羅夫"]
     text_title2 = ["發電機控制臺"]
+    text_ini = ["設定"]
+
+    # Settings
+    text_graINI = ["圖形設定"]
+    text_langINI = ["語言"]
+    text_soundINI = ["聲音設定"]
+
+    text_gra_DynamicLight = ["動態光"]
+    text_gra_Bloom = ["高光"]
+    text_gra_PlayerAnimation = ["玩家動畫"]
+    text_gra_BrokenPipe = ["管道破裂"]
+
+    text_sound_Sound = ["聲音"]
+    text_sound_Music = ["音樂"]
 
     # Endings
     text_meltdown = ["熔毀"]
@@ -46,6 +74,20 @@ class EN:
     text_play = ["Press to Start"]
     text_title1 = ["Shimyytrov's"]
     text_title2 = ["Generator Panel"]
+    text_ini = ["Settings"]
+    
+    # Settings
+    text_graINI = ["Graphics Setting"]
+    text_langINI = ["Languages"]
+    text_soundINI = ["Sound Settings"]
+
+    text_gra_DynamicLight = ["Dynamic Light"]
+    text_gra_Bloom = ["Bloom"]
+    text_gra_PlayerAnimation = ["Player Animation"]
+    text_gra_BrokenPipe = ["Broken Pipe"]
+
+    text_sound_Sound = ["Sound"]
+    text_sound_Music = ["Music"]
 
     # Endings
     text_meltdown = ["Meltdown"]
@@ -65,6 +107,20 @@ class DE:
     text_play = ["Zum Starten Drücken"]
     text_title1 = ["Schmitrov"]
     text_title2 = ["Generator-Bedienfeld"]
+    text_ini = ["Einstellungen"]
+
+    # Settings
+    text_graINI = ["Grafikeinstellungen"]
+    text_langINI = ["Sprachen"]
+    text_soundINI = ["Toneinstellungen"]
+
+    text_gra_DynamicLight = ["Dynamisches Licht"]
+    text_gra_Bloom = ["Bloom"]
+    text_gra_PlayerAnimation = ["Spieleranimation"]
+    text_gra_BrokenPipe = ["Rohrbruch"]
+
+    text_sound_Sound = ["Klang"]
+    text_sound_Music = ["Musik"]
     
     # Endings
     text_meltdown = ["Kernschmelze"]
@@ -84,6 +140,20 @@ class BURGER:
     text_play = ["Press to BURGER"]
     text_title1 = ["BURGER's"]
     text_title2 = ["Fucking Raw Steak"]
+    text_ini = ["HAMBURGER"]
+
+    # Settings
+    text_graINI = ["Big Mac - 5$"]
+    text_langINI = ["Select Your Burger"]
+    text_soundINI = ["MOYAI SOUND EFFECT"]
+
+    text_gra_DynamicLight = ["Dynamic TOMATO"]
+    text_gra_Bloom = ["Kaboom?"]
+    text_gra_PlayerAnimation = ["Yes, Kaboom."]
+    text_gra_BrokenPipe = ["Broken Burger"]
+
+    text_sound_Sound = ["PAY ME"]
+    text_sound_Music = ["TRACKS N' NUTZ"]
     
     # Endings
     text_meltdown = ["Burgermelt"]
@@ -103,6 +173,20 @@ class BRUH:
     text_play = ["Fuck you."]
     text_title1 = ["BRUH"]
     text_title2 = ["What Da Fock is This"]
+    text_ini = ["YOUR DICK SMALL"]
+
+    # Settings
+    text_graINI = ["MLG"]
+    text_langINI = ["BURHWTF"]
+    text_soundINI = ["RICKROLL'D"]
+
+    text_gra_DynamicLight = ["BO'OH'O'WA'ER(Not racist)"]
+    text_gra_Bloom = ["Yeah, I'm sorry :("]
+    text_gra_PlayerAnimation = ["MLG bucket"]
+    text_gra_BrokenPipe = ["Слава наше СССР"]
+
+    text_sound_Sound = ["BRUH"]
+    text_sound_Music = ["NGGYU"]
     
     # Endings
     text_meltdown = ["Bruht"]
