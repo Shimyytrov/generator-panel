@@ -247,11 +247,11 @@ while lang_selected2:
 
     # start screen
     if one_time("game_tile1_render"): # load all things in start screen 
-        game_title1 = font_mindustry(3).render("Shimyytrov's", True, (255, 214, 99))
+        game_title1 = font_mindustry(3).render(langs.selected_language.text_title1[0], True, (255, 214, 99))
         game_title1W, game_title1H = game_title1.get_size()
         game_title1_rec = game_title1.get_rect()
         game_title1_rec.center = (width/2, height/8)
-        game_title2 = font_mindustry(1.6).render("Generator Panel", True, (255, 255, 255))
+        game_title2 = font_mindustry(1.6).render(langs.selected_language.text_title2[0], True, (255, 255, 255))
         game_title2W, game_title2H = game_title2.get_size()
         game_title2_rec = game_title2.get_rect()
         game_title2_rec.center = (width/2, (height/8)+(game_title1H)+(game_title1H/2))
