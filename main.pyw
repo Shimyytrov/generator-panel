@@ -19,7 +19,7 @@ font_conthrax64 = pygame.font.Font('./assets/fonts/conthrax-sb.ttf', 64)
 font_conthrax48 = pygame.font.Font('./assets/fonts/conthrax-sb.ttf', 48)
 def font_mindustry(fontsize):
     return pygame.font.Font('./assets/fonts/mindustry.ttf', int(128/fontsize))
-title2_pic = pygame.image.load('./assets/imgs/title_2.png')
+title2_pic = pygame.image.load('./assets/imgs/title_2.png').convert()
 title2_size_width, title2_size_height = title2_pic.get_size()
 sound_title_1 = pygame.mixer.Sound('./assets/sounds/title_1.wav')
 sound_title_2 = pygame.mixer.Sound('./assets/sounds/title_2.wav')
@@ -31,6 +31,8 @@ sound_endingBOOM = pygame.mixer.Sound('./assets/sounds/endingBOOM.wav')
 def play_track(file, loop, fade_ms):
     pygame.mixer.music.load(f'./assets/tracks/{file}.ogg')
     pygame.mixer.music.play(loop, fade_ms)
+start_screen_bg = pygame.image.load('./assets/imgs/sprites/room1/startscreen.png').convert()
+start_core = pygame.image.load('./assets/imgs/sprites/room1/core-blackout.png').convert_alpha()
 
 
 # variables
@@ -46,6 +48,9 @@ lang0W, lang0H = font_mindustry(3.5).render("######", True, (255,255,255)).get_s
 ticks = 0
 title_delay = False
 one_time_var = False
+game_start_alpha = 0
+core_ang = 0
+
 
 # functions
 def one_time(i): # make things run only once
@@ -103,9 +108,22 @@ def render_game_title(): # render the game title with delays
         sound_endingBOOM.play()
     if total_time == 240:
         play_track("title", -1, 0)
-    if total_time == 300:
+    if total_time >= 300:
+        global game_start_alpha
+        game_start_alpha += 2
+        game_start.set_alpha(game_start_alpha)
+        screen.blit(game_start, game_start_rec)
+    if total_time == 600:
         title_delay = False
-
+def drawbloom(cirs, expand, dens, center, color):
+    surf = pygame.Surface((((dens*(cirs-1))+expand)*2,((dens*(cirs-1))+expand)*2))
+    surfW, surfH = surf.get_size()
+    for i in range(cirs):
+        i += 1
+        pygame.draw.circle(surf, ((color[0]*i)/cirs, (color[1]*i)/cirs, (color[2]*i)/cirs), (surfW/2, surfH/2), (dens*(cirs-i))+expand)
+    surf_rec = surf.get_rect()
+    surf_rec.center = center
+    screen.blit(surf, surf_rec, special_flags = pygame.BLEND_RGB_ADD)
 
 
 # intro loop
@@ -229,7 +247,7 @@ while lang_selected2:
 
 
     # start screen
-    if one_time("game_tile1_render"):
+    if one_time("game_tile1_render"): # load all things in start screen 
         game_title1 = font_mindustry(3).render("Shimyytrov's", True, (255, 214, 99))
         game_title1W, game_title1H = game_title1.get_size()
         game_title1_rec = game_title1.get_rect()
@@ -238,8 +256,27 @@ while lang_selected2:
         game_title2W, game_title2H = game_title2.get_size()
         game_title2_rec = game_title2.get_rect()
         game_title2_rec.center = (width/2, (height/8)+(game_title1H)+(game_title1H/2))
-    render_game_title()
+        game_start = font_mindustry(3).render(langs.selected_language.text_play[0], True, (255, 255, 255))
+        game_startW, game_startH = game_start.get_size()
+        game_start_rec = game_start.get_rect()
+        game_start_rec.center = (width/2, height*7/8)
+        start_screen_bgW, start_screen_bgH = start_screen_bg.get_size()
+        start_screen_bg = pygame.transform.scale(start_screen_bg, (start_screen_bgW*12, start_screen_bgH*12))
+        start_screen_bg_rec = start_screen_bg.get_rect()
+        start_screen_bg_rec.center = (width/2, height/2)
+        start_coreW, start_coreH = start_core.get_size()
+        start_core = pygame.transform.scale(start_core, (start_coreW*12, start_coreH*12))
 
+    # rendering them
+    screen.blit(start_screen_bg, start_screen_bg_rec)   # background
+    drawbloom(20, 80, 10, (width/2, height/2), (25,25,25))  # draw bloom
+    core_ang -= 0.1 # spins core
+    if core_ang == -360:
+        core_ang = 0
+    rotated_start_core = pygame.transform.rotate(start_core, core_ang)
+    rotated_start_core_rec = rotated_start_core.get_rect(center = (width/2, height/2))
+    screen.blit(rotated_start_core, rotated_start_core_rec) # draw core
+    render_game_title() # draw game title
 
 
 
