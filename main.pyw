@@ -282,15 +282,15 @@ while lang_selected2:
     inter[0] = (offset[0])/2 # inter force to make sure not flies away
     inter[1] = (offset[1])/2
     if shake == 10: # create offset
-        offset[0] += random.randint(int(-8-inter[0]), int(8-inter[0]))
-        offset[1] += random.randint(int(-8-inter[1]), int(8-inter[1]))
+        offset[0] += random.randint(int(-10-inter[0]), int(10-inter[0]))
+        offset[1] += random.randint(int(-10-inter[1]), int(10-inter[1]))
     end_center = (width/2)+offset[0], (height/2)+offset[1] # find end point
-    if shake >= 5: # acceleration
+    if shake >= 5: # deceleration
         acc_x = shake
         acc_y = shake
-    else: # deceleration
-        acc_x = ((10-shake)-velocity_x/3)+1
-        acc_y = ((10-shake)-velocity_y/3)+1
+    else: # acceleration
+        acc_x = ((10-shake)+velocity_x/shake)+shake
+        acc_y = ((10-shake)+velocity_y/shake)+shake
     distance_x = start_center[0]-end_center[0] # get x distance
     distance_y = start_center[1]-end_center[1] # get y distance
     velocity_x = (distance_x/(acc_x)) # get x velocity
