@@ -121,6 +121,14 @@ def render_game_title(): # render the game title with delays
         screen.blit(game_ini, game_ini_rec)
     if total_time == 600:
         title_delay = False
+def render_game_ini():
+    if total_time == 0:
+        sound_swap.play()
+        total_time = 1
+    if total_time >= 60:
+        screen.blit(ini_title, ini_title_rec)
+    if total_time == 60:
+        sound_title_1.play
 def drawbloom(cirs, expand, dens, center, color):   # draw light bloom effect
     surf = pygame.Surface((((dens*(cirs-1))+expand)*2,((dens*(cirs-1))+expand)*2))
     surfW, surfH = surf.get_size()
@@ -241,7 +249,7 @@ while not lang_selected2:
 while lang_selected2:
     mouse_pos = (-255, -255)
     screen.fill((0, 0, 0))
-    CurretWindow = "START"
+    CurretWindow = "INI"
 
     #----- events
     for event in pygame.event.get():
@@ -281,6 +289,25 @@ while lang_selected2:
         start_center = (width/2, height/2)
         core_ang = 0 # variable for core angle
 
+    #----- setting screen
+    if one_time("game_tile1_render"): # load all things in setting screen
+        ini_title = font_mindustry(1.6).render(langs.selected_language.text_ini[0], True, (255, 255, 255)) # setting title
+        ini_titleW, ini_titleH = ini_title.get_size()
+        ini_title_rec = ini_title.get_rect()
+        ini_title_rec.center = (width/2, height/8)# get ini_title center to position
+        graINI = font_mindustry(3).render(langs.selected_language.text_play[0], True, (255, 255, 255)) # graphic button
+        graINIW, graINIH = graINI.get_size()
+        graINI_rec = graINI.get_rect()
+        graINI_rec.center = (width/2, height*9/16) # get graphic ini button center to position
+        langINI = font_mindustry(3).render(langs.selected_language.text_play[0], True, (255, 255, 255)) # language button
+        langINIW, langINIH = langINI.get_size()
+        langINI_rec = langINI.get_rect()
+        langINI_rec.center = (width/2, height*8/16) # get language ini button center to position
+        soundINI = font_mindustry(3).render(langs.selected_language.text_play[0], True, (255, 255, 255)) # language button
+        soundINIW, soundINIH = soundINI.get_size()
+        soundINI_rec = soundINI.get_rect()
+        soundINI_rec.center = (width/2, height*9/16) # get language ini button center to position
+
     #----- core spin and shake
     core_ang -= 0.1 # spins core
     if core_ang == -360:
@@ -314,6 +341,9 @@ while lang_selected2:
         drawbloom(20, 80, 10, (start_center), (25,25,25))  # draw bloom
         screen.blit(rotated_start_core, rotated_start_core_rec) # draw core
         render_game_title() # draw game title
+    if CurretWindow == "INI":
+        screen.fill((0, 0, 0))
+        render_game_ini
 
 
 
