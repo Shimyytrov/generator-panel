@@ -51,6 +51,7 @@ lang0W, lang0H = font_mindustry(3.5).render("######", True, (255,255,255)).get_s
 title_delay = False # variable for controlling title delay
 one_time_var = False    # variables for controlling one-time use function
 game_start_alpha = 0    # variable for controlling start button aphla
+game_ini_alpha = 0    # variable for controlling setting button aphla
 
 
 #========== functions ============#
@@ -110,10 +111,13 @@ def render_game_title(): # render the game title with delays
     if total_time == 240:
         play_track("title", -1, 0)
     if total_time >= 300:
-        global game_start_alpha
+        global game_start_alpha, game_ini_alpha
         game_start_alpha += 2
+        game_ini_alpha += 2
         game_start.set_alpha(game_start_alpha)
+        game_ini.set_alpha(game_ini_alpha)
         screen.blit(game_start, game_start_rec)
+        screen.blit(game_ini, game_ini_rec)
     if total_time == 600:
         title_delay = False
 def drawbloom(cirs, expand, dens, center, color):   # draw light bloom effect
@@ -258,6 +262,10 @@ while lang_selected2:
         game_startW, game_startH = game_start.get_size()
         game_start_rec = game_start.get_rect()
         game_start_rec.center = (width/2, height*7/8) # get start button center to position
+        game_ini = font_mindustry(3).render(langs.selected_language.text_ini[0], True, (255, 255, 255)) # setting button
+        game_iniW, game_iniH = game_ini.get_size()
+        game_ini_rec = game_ini.get_rect()
+        game_ini_rec.center = (width/2, height*13/16) # get setting button center to position
         start_screen_bgW, start_screen_bgH = start_screen_bg.get_size()
         start_screen_bg = pygame.transform.scale(start_screen_bg, (start_screen_bgW*12, start_screen_bgH*12)) # scale background
         start_screen_bg_rec = start_screen_bg.get_rect()
