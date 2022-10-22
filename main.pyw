@@ -1,26 +1,32 @@
-# imports
+#========== imports ==========#
 import time
 import pygame
 import sys
 import assets.languages.langs as langs
+import random
+import math
 
-
-# configuration
+#========== configuration ==========#
 pygame.init()
-ICON = pygame.image.load('./assets/imgs/icon.png')
-pygame.display.set_icon(ICON)
-pygame.display.set_caption("Generator Panel")
-fps = 60
-fps_clock = pygame.time.Clock()
-screen_info = pygame.display.Info()
-width, height = screen_info.current_w, screen_info.current_h
-screen = pygame.display.set_mode((width, height))
+ICON = pygame.image.load('./assets/imgs/icon.png')  # load icon
+pygame.display.set_icon(ICON)   # set icon
+pygame.display.set_caption("Generator Panel")   # set caption
+fps = 60    # fps
+fps_clock = pygame.time.Clock() # clock
+screen_info = pygame.display.Info() # get screen info
+width, height = screen_info.current_w, screen_info.current_h    # get screen (width, height)
+screen = pygame.display.set_mode((width, height))   # full screen
+# load font
 font_conthrax64 = pygame.font.Font('./assets/fonts/conthrax-sb.ttf', 64)
 font_conthrax48 = pygame.font.Font('./assets/fonts/conthrax-sb.ttf', 48)
-def font_mindustry(fontsize):
+def font_mindustry(fontsize):   # load font custom size function
     return pygame.font.Font('./assets/fonts/mindustry.ttf', int(128/fontsize))
+# load imgs
 title2_pic = pygame.image.load('./assets/imgs/title_2.png').convert()
+start_screen_bg = pygame.image.load('./assets/imgs/sprites/room1/startscreen.png').convert()
+start_core = pygame.image.load('./assets/imgs/sprites/room1/core-blackout.png').convert_alpha()
 title2_size_width, title2_size_height = title2_pic.get_size()
+# load sfx
 sound_title_1 = pygame.mixer.Sound('./assets/sounds/title_1.wav')
 sound_title_2 = pygame.mixer.Sound('./assets/sounds/title_2.wav')
 sound_swap = pygame.mixer.Sound('./assets/sounds/swap.wav')
@@ -28,31 +34,26 @@ sound_click = pygame.mixer.Sound('./assets/sounds/click.wav')
 sound_clickBURGER = pygame.mixer.Sound('./assets/sounds/click_burger.wav')
 sound_clickBRUH = pygame.mixer.Sound('./assets/sounds/click_bruh.wav')
 sound_endingBOOM = pygame.mixer.Sound('./assets/sounds/endingBOOM.wav')
-def play_track(file, loop, fade_ms):
+def play_track(file, loop, fade_ms):    # play track function
     pygame.mixer.music.load(f'./assets/tracks/{file}.ogg')
     pygame.mixer.music.play(loop, fade_ms)
-start_screen_bg = pygame.image.load('./assets/imgs/sprites/room1/startscreen.png').convert()
-start_core = pygame.image.load('./assets/imgs/sprites/room1/core-blackout.png').convert_alpha()
 
 
-# variables
-total_time = 0
-logo1_line_alpha = 255
-logo2_alpha = 255
-lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255, 255, 255
-lang_selected2 = False
-lang_selected1 = False
-button_cooldown = False
-underline1 = 1
-lang0W, lang0H = font_mindustry(3.5).render("######", True, (255,255,255)).get_size()
-ticks = 0
-title_delay = False
-one_time_var = False
-game_start_alpha = 0
-core_ang = 0
+
+#========== variables ==========#
+total_time = 0  # track time
+logo2_alpha = logo1_line_alpha = 255 # variables for logo fadout
+lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255, 255, 255 # languages button color control
+lang_selected2 = False # variables for detecting after language selected (done intro)
+lang_selected1 = False # variables for detecting after language pressed (button pressed)
+button_cooldown = False # variable for button cooldown
+lang0W, lang0H = font_mindustry(3.5).render("######", True, (255,255,255)).get_size()   # default use font size (width, height)
+title_delay = False # variable for controlling title delay
+one_time_var = False    # variables for controlling one-time use function
+game_start_alpha = 0    # variable for controlling start button aphla
 
 
-# functions
+#========== functions ============#
 def one_time(i): # make things run only once
     global one_time_var
     if i == one_time_var:
@@ -115,7 +116,7 @@ def render_game_title(): # render the game title with delays
         screen.blit(game_start, game_start_rec)
     if total_time == 600:
         title_delay = False
-def drawbloom(cirs, expand, dens, center, color):
+def drawbloom(cirs, expand, dens, center, color):   # draw light bloom effect
     surf = pygame.Surface((((dens*(cirs-1))+expand)*2,((dens*(cirs-1))+expand)*2))
     surfW, surfH = surf.get_size()
     for i in range(cirs):
@@ -126,7 +127,7 @@ def drawbloom(cirs, expand, dens, center, color):
     screen.blit(surf, surf_rec, special_flags = pygame.BLEND_RGB_ADD)
 
 
-# intro loop
+#========== intro loop ==========#
 while not lang_selected2:
     mouse_pos = (-255, -255)
     screen.fill((0, 0, 0))
@@ -198,7 +199,7 @@ while not lang_selected2:
         lang3, lang3_rec = render_langs("English", lang3_Bcolor, 5)
         lang4, lang4_rec = render_langs("Deutsch", lang4_Bcolor, 6)
         lang5, lang5_rec = render_langs("Burgerishkiy", lang5_Bcolor, 7)
-        lang6, lang6_rec = render_langs("WTF is this", lang6_Bcolor, 8)
+        lang6, lang6_rec = render_langs("Bruhwtf", lang6_Bcolor, 8)
         
         if lang1_rec.collidepoint(mouse_pos):
             lang_pressed(lang1, langs.zhTW, lang1_Bcolor, 3)
@@ -231,55 +232,81 @@ while not lang_selected2:
     fps_clock.tick(fps)
 
 
-# game loop
+#========== game loop ==========#
 while lang_selected2:
     mouse_pos = (-255, -255)
     screen.fill((0, 0, 0))
 
-    # events
+    #----- events
     for event in pygame.event.get():
-        if event.type == pygame.MOUSEBUTTONDOWN and total_time >= 450:
-            mouse_pos = event.pos
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE or event.type == pygame.QUIT: # quit
             pygame.quit()
             sys.exit()
 
 
-    # start screen
+    #----- start screen
     if one_time("game_tile1_render"): # load all things in start screen 
-        game_title1 = font_mindustry(3).render(langs.selected_language.text_title1[0], True, (255, 214, 99))
+        game_title1 = font_mindustry(3).render(langs.selected_language.text_title1[0], True, (255, 214, 99)) # title 1
         game_title1W, game_title1H = game_title1.get_size()
         game_title1_rec = game_title1.get_rect()
-        game_title1_rec.center = (width/2, height/8)
-        game_title2 = font_mindustry(1.6).render(langs.selected_language.text_title2[0], True, (255, 255, 255))
+        game_title1_rec.center = (width/2, height/8) # get title 1 center to position
+        game_title2 = font_mindustry(1.6).render(langs.selected_language.text_title2[0], True, (255, 255, 255)) # title 2
         game_title2W, game_title2H = game_title2.get_size()
         game_title2_rec = game_title2.get_rect()
-        game_title2_rec.center = (width/2, (height/8)+(game_title1H)+(game_title1H/2))
-        game_start = font_mindustry(3).render(langs.selected_language.text_play[0], True, (255, 255, 255))
+        game_title2_rec.center = (width/2, (height/8)+(game_title1H)+(game_title1H/2))# get title 2 center to position
+        game_start = font_mindustry(3).render(langs.selected_language.text_play[0], True, (255, 255, 255)) # start button
         game_startW, game_startH = game_start.get_size()
         game_start_rec = game_start.get_rect()
-        game_start_rec.center = (width/2, height*7/8)
+        game_start_rec.center = (width/2, height*7/8) # get start button center to position
         start_screen_bgW, start_screen_bgH = start_screen_bg.get_size()
-        start_screen_bg = pygame.transform.scale(start_screen_bg, (start_screen_bgW*12, start_screen_bgH*12))
+        start_screen_bg = pygame.transform.scale(start_screen_bg, (start_screen_bgW*12, start_screen_bgH*12)) # scale background
         start_screen_bg_rec = start_screen_bg.get_rect()
-        start_screen_bg_rec.center = (width/2, height/2)
+        start_screen_bg_rec.center = (width/2, height/2)  # get background center to position  
         start_coreW, start_coreH = start_core.get_size()
-        start_core = pygame.transform.scale(start_core, (start_coreW*12, start_coreH*12))
+        start_core = pygame.transform.scale(start_core, (start_coreW*12, start_coreH*12)) # scale core
+        velocity_x = velocity_y = 0 # set velocity variables
+        offset = [0, 0] # offset variable for core shake
+        inter = [0, 0]  # inter foce variable for core pulling back to center
+        shake = 10 # shake variable for shake cooldwon
+        start_center = (width/2, height/2)
+        core_ang = 0 # variable for core angle
 
-    # rendering them
-    screen.blit(start_screen_bg, start_screen_bg_rec)   # background
-    drawbloom(20, 80, 10, (width/2, height/2), (25,25,25))  # draw bloom
+    #----- core spin and shake
     core_ang -= 0.1 # spins core
     if core_ang == -360:
         core_ang = 0
     rotated_start_core = pygame.transform.rotate(start_core, core_ang)
-    rotated_start_core_rec = rotated_start_core.get_rect(center = (width/2, height/2))
+    shake -= 1 # shake cooldown
+    if shake == 0:
+        shake = 10
+    inter[0] = (offset[0])/2 # inter force to make sure not flies away
+    inter[1] = (offset[1])/2
+    if shake == 10: # create offset
+        offset[0] += random.randint(int(-8-inter[0]), int(8-inter[0]))
+        offset[1] += random.randint(int(-8-inter[1]), int(8-inter[1]))
+    end_center = (width/2)+offset[0], (height/2)+offset[1] # find end point
+    if shake >= 5: # acceleration
+        acc_x = shake
+        acc_y = shake
+    else: # deceleration
+        acc_x = ((10-shake)-velocity_x/3)+1
+        acc_y = ((10-shake)-velocity_y/3)+1
+    distance_x = start_center[0]-end_center[0] # get x distance
+    distance_y = start_center[1]-end_center[1] # get y distance
+    velocity_x = (distance_x/(acc_x)) # get x velocity
+    velocity_y = (distance_y/(acc_y)) # get y velocity
+    rotated_start_core_rec = rotated_start_core.get_rect(center = (start_center[0]-velocity_x, start_center[1]-velocity_y))# apply velocity
+    start_center = rotated_start_core_rec.center # get new start point
+    
+    #----- rendering
+    screen.blit(start_screen_bg, start_screen_bg_rec)   # background
+    drawbloom(20, 80, 10, (start_center), (25,25,25))  # draw bloom
     screen.blit(rotated_start_core, rotated_start_core_rec) # draw core
     render_game_title() # draw game title
 
 
 
     if title_delay:
-        total_time += 1
+        total_time += 1 # time + 1
     pygame.display.flip()   # update frame
     fps_clock.tick(fps)
