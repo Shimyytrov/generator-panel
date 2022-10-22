@@ -41,6 +41,7 @@ def play_track(file, loop, fade_ms):    # play track function
 
 
 #========== variables ==========#
+CurretWindow = "START"
 total_time = 0  # track time
 logo2_alpha = logo1_line_alpha = 255 # variables for logo fadout
 lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255, 255, 255 # languages button color control
