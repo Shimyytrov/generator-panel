@@ -249,7 +249,7 @@ while not lang_selected2:
 while lang_selected2:
     mouse_pos = (-255, -255)
     screen.fill((0, 0, 0))
-    CurretWindow = "INI"
+    CurretWindow = "START"
 
     #----- events
     for event in pygame.event.get():

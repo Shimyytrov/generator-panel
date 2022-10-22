@@ -11,6 +11,7 @@ class zhCN:
     text_ini = ["设定"]
 
     # Settings
+    text_return = ["返回"]
     text_graINI = ["图形设定"]
     text_langINI = ["语言"]
     text_soundINI = ["声音设定"]
@@ -44,6 +45,7 @@ class zhTW:
     text_ini = ["設定"]
 
     # Settings
+    text_return = ["返回"]
     text_graINI = ["圖形設定"]
     text_langINI = ["語言"]
     text_soundINI = ["聲音設定"]
@@ -77,6 +79,7 @@ class EN:
     text_ini = ["Settings"]
     
     # Settings
+    text_return = ["Return"]
     text_graINI = ["Graphics Setting"]
     text_langINI = ["Languages"]
     text_soundINI = ["Sound Settings"]
@@ -110,6 +113,7 @@ class DE:
     text_ini = ["Einstellungen"]
 
     # Settings
+    text_return = ["Zurückkehren"]
     text_graINI = ["Grafikeinstellungen"]
     text_langINI = ["Sprachen"]
     text_soundINI = ["Toneinstellungen"]
@@ -143,6 +147,7 @@ class BURGER:
     text_ini = ["HAMBURGER"]
 
     # Settings
+    text_return = ["NAZI"]
     text_graINI = ["Big Mac - 5$"]
     text_langINI = ["Select Your Burger"]
     text_soundINI = ["MOYAI SOUND EFFECT"]
@@ -176,6 +181,7 @@ class BRUH:
     text_ini = ["YOUR DICK SMALL"]
 
     # Settings
+    text_return = ["BRUH."]
     text_graINI = ["MLG"]
     text_langINI = ["BURHWTF"]
     text_soundINI = ["RICKROLL'D"]
