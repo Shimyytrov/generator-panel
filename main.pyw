@@ -241,6 +241,7 @@ while not lang_selected2:
 while lang_selected2:
     mouse_pos = (-255, -255)
     screen.fill((0, 0, 0))
+    CurretWindow = "START"
 
     #----- events
     for event in pygame.event.get():
@@ -308,10 +309,11 @@ while lang_selected2:
     start_center = rotated_start_core_rec.center # get new start point
     
     #----- rendering
-    screen.blit(start_screen_bg, start_screen_bg_rec)   # background
-    drawbloom(20, 80, 10, (start_center), (25,25,25))  # draw bloom
-    screen.blit(rotated_start_core, rotated_start_core_rec) # draw core
-    render_game_title() # draw game title
+    if CurretWindow == "START":
+        screen.blit(start_screen_bg, start_screen_bg_rec)   # background
+        drawbloom(20, 80, 10, (start_center), (25,25,25))  # draw bloom
+        screen.blit(rotated_start_core, rotated_start_core_rec) # draw core
+        render_game_title() # draw game title
 
 
 
