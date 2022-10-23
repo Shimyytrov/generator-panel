@@ -16,7 +16,6 @@ sound_endingBOOM = pygame.mixer.Sound('./assets/sounds/endingBOOM.wav')
 
 time.sleep(1)
 sound_endingBOOM.play()
-screen.fill((0, 60, 0))
 time.sleep(2.1)
 pygame.mixer.music.load('./assets/tracks/game_over.ogg')
 pygame.mixer.music.play()
