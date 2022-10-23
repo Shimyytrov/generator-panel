@@ -16,10 +16,12 @@ class zhCN:
     text_langINI = ["语言"]
     text_soundINI = ["声音设定"]
 
-    text_gra_DynamicLight = ["动态光"]
-    text_gra_Bloom = ["高光"]
+    text_gra_DynamicLight = ["动态照明"]
+    text_gra_Bloom = ["高光效果"]
     text_gra_PlayerAnimation = ["玩家动画"]
-    text_gra_BrokenPipe = ["管道破裂"]
+    text_gra_Particles = ["粒子效果"]
+    text_gra_CameraShake = ["画面抖动"]
+    text_gra_EnAnimation = ["环境动画"]
 
     text_sound_Sound = ["声音"]
     text_sound_Music = ["音乐"]
@@ -50,10 +52,12 @@ class zhTW:
     text_langINI = ["語言"]
     text_soundINI = ["聲音設定"]
 
-    text_gra_DynamicLight = ["動態光"]
-    text_gra_Bloom = ["高光"]
+    text_gra_DynamicLight = ["動態照明"]
+    text_gra_Bloom = ["高光效果"]
     text_gra_PlayerAnimation = ["玩家動畫"]
-    text_gra_BrokenPipe = ["管道破裂"]
+    text_gra_Particles = ["粒子效果"]
+    text_gra_CameraShake = ["畫面抖動"]
+    text_gra_EnAnimation = ["環境動畫"]
 
     text_sound_Sound = ["聲音"]
     text_sound_Music = ["音樂"]
@@ -87,7 +91,9 @@ class EN:
     text_gra_DynamicLight = ["Dynamic Light"]
     text_gra_Bloom = ["Bloom"]
     text_gra_PlayerAnimation = ["Player Animation"]
-    text_gra_BrokenPipe = ["Broken Pipe"]
+    text_gra_Particles = ["Particles"]
+    text_gra_CameraShake = ["Camera Shake"]
+    text_gra_EnAnimation = ["Environment Animation"]
 
     text_sound_Sound = ["Sound"]
     text_sound_Music = ["Music"]
@@ -121,7 +127,9 @@ class DE:
     text_gra_DynamicLight = ["Dynamisches Licht"]
     text_gra_Bloom = ["Bloom"]
     text_gra_PlayerAnimation = ["Spieleranimation"]
-    text_gra_BrokenPipe = ["Rohrbruch"]
+    text_gra_Particles = ["Partikel"]
+    text_gra_CameraShake = ["Kamerawackeln"]
+    text_gra_EnAnimation = ["Umgebungsanimation"]
 
     text_sound_Sound = ["Klang"]
     text_sound_Music = ["Musik"]
@@ -155,7 +163,9 @@ class BURGER:
     text_gra_DynamicLight = ["Dynamic TOMATO"]
     text_gra_Bloom = ["Kaboom?"]
     text_gra_PlayerAnimation = ["Yes, Kaboom."]
-    text_gra_BrokenPipe = ["Broken Burger"]
+    text_gra_Particles = ["Bread"]
+    text_gra_CameraShake = ["Raw Steak"]
+    text_gra_EnAnimation = ["Uoi str hsu"]
 
     text_sound_Sound = ["PAY ME"]
     text_sound_Music = ["TRACKS N' NUTZ"]
@@ -183,13 +193,15 @@ class BRUH:
     # Settings
     text_return = ["BRUH."]
     text_graINI = ["MLG"]
-    text_langINI = ["Bruh WTF"]
+    text_langINI = ["BURHWTF"]
     text_soundINI = ["RICKROLL'D"]
 
     text_gra_DynamicLight = ["BO'OH'O'WA'ER(Not racist)"]
     text_gra_Bloom = ["Yeah, I'm sorry :("]
     text_gra_PlayerAnimation = ["MLG bucket"]
-    text_gra_BrokenPipe = ["Слава наше СССР"]
+    text_gra_Particles = ["Бабушка"]
+    text_gra_CameraShake = ["РОДИНА"]
+    text_gra_EnAnimation = ["Партия Ленина"]
 
     text_sound_Sound = ["BRUH"]
     text_sound_Music = ["NGGYU"]
