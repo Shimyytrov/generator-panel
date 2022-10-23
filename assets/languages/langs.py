@@ -183,7 +183,7 @@ class BRUH:
     # Settings
     text_return = ["BRUH."]
     text_graINI = ["MLG"]
-    text_langINI = ["BURHWTF"]
+    text_langINI = ["Bruh WTF"]
     text_soundINI = ["RICKROLL'D"]
 
     text_gra_DynamicLight = ["BO'OH'O'WA'ER(Not racist)"]
