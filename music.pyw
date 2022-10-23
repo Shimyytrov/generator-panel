@@ -1,6 +1,8 @@
 # imports
+import time
 import pygame
 import sys
+import assets.languages.langs as langs
 
 # configuration
 fla = 0
@@ -10,9 +12,14 @@ fpsClock = pygame.time.Clock()
 screen_info = pygame.display.Info()
 width, height = screen_info.current_w, screen_info.current_h
 screen = pygame.display.set_mode((width, height))
+sound_endingBOOM = pygame.mixer.Sound('./assets/sounds/endingBOOM.wav')
 
-pygame.mixer.music.load('./assets/tracks/normal.ogg')
-pygame.mixer.music.play(loops=1, fade_ms=2000)
+time.sleep(1)
+sound_endingBOOM.play()
+screen.fill((0, 60, 0))
+time.sleep(2.1)
+pygame.mixer.music.load('./assets/tracks/game_over.ogg')
+pygame.mixer.music.play()
 
 # game loop
 while  True:
