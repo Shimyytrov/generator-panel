@@ -217,17 +217,15 @@ while not lang_selected2:
     if total_time == 450:
         sound_swap.play()
     if total_time >= 450 and not lang_selected2: # lang select
-        if one_time("lang_sel_render"):
-            lang_sel = font_mindustry(2).render(langs.selected_language.text_lang_select[0], True, (255, 255, 255))
-            lang_sel_rec = lang_sel.get_rect()
-            lang_sel_rec.center = (width/2, height/7)
+        lang_sel = font_mindustry(2).render(langs.selected_language.text_lang_select[0], True, (255, 255, 255))
+        lang_sel_rec = lang_sel.get_rect()
+        lang_sel_rec.center = (width/2, height/7)
         screen.blit(lang_sel, lang_sel_rec)
         pygame.draw.rect(screen, (255, 214, 99), ((width-(width/1.75))/2, (height/7)+(height/15), width/1.75, height/200)) # underline
-        if one_time("lang_con_render"):
-            lang_con = font_mindustry(3).render(langs.selected_language.text_lang_continue[0], True, (255, 214, 99))
-            lang_conW, lang_conH = lang_con.get_size()
-            lang_conOL = pygame.Rect(0, 0, lang_conW+lang0W/4, lang0H+lang0H/2)
-            lang_conOL.center = ((width-(lang_conW+width*0.03)+lang_conW/2), (height*(9/10)+lang_conH/2))
+        lang_con = font_mindustry(3).render(langs.selected_language.text_lang_continue[0], True, (255, 214, 99))
+        lang_conW, lang_conH = lang_con.get_size()
+        lang_conOL = pygame.Rect(0, 0, lang_conW+lang0W/4, lang0H+lang0H/2)
+        lang_conOL.center = ((width-(lang_conW+width*0.03)+lang_conW/2), (height*(9/10)+lang_conH/2))
         if lang_selected1: # show continue button and highlight
             screen.blit(lang_con, (width-(lang_conW+width*0.03), height*(9/10)))
             pygame.draw.rect(screen, (255, 214, 99), lang_conOL, 3, 4) 
