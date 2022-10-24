@@ -21,7 +21,7 @@ class zhCN:
     text_gra_PlayerAnimation = ["玩家动画"]
     text_gra_Particles = ["粒子效果"]
     text_gra_CameraShake = ["画面抖动"]
-    text_gra_EnAnimation = ["环境动画"]
+    text_gra_EnvAnimation = ["环境动画"]
 
     text_sound_Sound = ["声音"]
     text_sound_Music = ["音乐"]
@@ -57,7 +57,7 @@ class zhTW:
     text_gra_PlayerAnimation = ["玩家動畫"]
     text_gra_Particles = ["粒子效果"]
     text_gra_CameraShake = ["畫面抖動"]
-    text_gra_EnAnimation = ["環境動畫"]
+    text_gra_EnvAnimation = ["環境動畫"]
 
     text_sound_Sound = ["聲音"]
     text_sound_Music = ["音樂"]
@@ -93,7 +93,7 @@ class EN:
     text_gra_PlayerAnimation = ["Player Animation"]
     text_gra_Particles = ["Particles"]
     text_gra_CameraShake = ["Camera Shake"]
-    text_gra_EnAnimation = ["Environment Animation"]
+    text_gra_EnvAnimation = ["Environment Animation"]
 
     text_sound_Sound = ["Sound"]
     text_sound_Music = ["Music"]
@@ -129,7 +129,7 @@ class DE:
     text_gra_PlayerAnimation = ["Spieleranimation"]
     text_gra_Particles = ["Partikel"]
     text_gra_CameraShake = ["Kamerawackeln"]
-    text_gra_EnAnimation = ["Umgebungsanimation"]
+    text_gra_EnvAnimation = ["Umgebungsanimation"]
 
     text_sound_Sound = ["Klang"]
     text_sound_Music = ["Musik"]
@@ -165,7 +165,7 @@ class BURGER:
     text_gra_PlayerAnimation = ["Yes, Kaboom."]
     text_gra_Particles = ["Bread"]
     text_gra_CameraShake = ["Raw Steak"]
-    text_gra_EnAnimation = ["Uoi str hsu"]
+    text_gra_EnvAnimation = ["Uoi str hsu"]
 
     text_sound_Sound = ["PAY ME"]
     text_sound_Music = ["TRACKS N' NUTZ"]
@@ -201,7 +201,7 @@ class BRUH:
     text_gra_PlayerAnimation = ["MLG bucket"]
     text_gra_Particles = ["Бабушка"]
     text_gra_CameraShake = ["РОДИНА"]
-    text_gra_EnAnimation = ["Партия Ленина"]
+    text_gra_EnvAnimation = ["Партия Ленина"]
 
     text_sound_Sound = ["BRUH"]
     text_sound_Music = ["NGGYU"]
