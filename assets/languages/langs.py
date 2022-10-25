@@ -210,7 +210,7 @@ class BRUH:
     text_meltdown = ["Bruht"]
     text_meltdownDES = ["Walking: run bruhman run", "bruh do it just ruuuuuunnnnnnnnnn", "Bruhman.", "Walking: bruhman run."]
     text_freezedown = ["freEZe"]
-    text_freezedownDES = ["(i cant know wat should I type so it blank lol)"]
+    text_freezedownDES = ["Step-bother help im stuck in the blackhole"]
     text_blackout = ["Bruh-wide Putin Walking"]
     text_blackoutDES = ["Bruh.", "Bruh Over.", "Bruhman: a yo wtf."]
 
