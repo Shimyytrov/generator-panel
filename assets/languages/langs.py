@@ -155,7 +155,7 @@ class BURGER:
     text_ini = ["HAMBURGER"]
 
     # Settings
-    text_return = ["NAZI"]
+    text_return = ["Press to get FREE ROBUX"]
     text_graINI = ["Big Mac - 5$"]
     text_langINI = ["Select Your Burger"]
     text_soundINI = ["MOYAI SOUND EFFECT"]
@@ -185,10 +185,10 @@ class BRUH:
     text_lang_continue = ["Free robux?"]
     
     # Start Screen
-    text_play = ["Fuck you."]
+    text_play = ["Roll'd"]
     text_title1 = ["BRUH"]
     text_title2 = ["What Da Fock is This"]
-    text_ini = ["YOUR DICK SMALL"]
+    text_ini = ["Rick"]
 
     # Settings
     text_return = ["BRUH."]
@@ -196,11 +196,11 @@ class BRUH:
     text_langINI = ["BURHWTF"]
     text_soundINI = ["RICKROLL'D"]
 
-    text_gra_DynamicLight = ["BO'OH'O'WA'ER(Not racist)"]
-    text_gra_Bloom = ["Yeah, I'm sorry :("]
-    text_gra_PlayerAnimation = ["MLG bucket"]
-    text_gra_Particles = ["Бабушка"]
-    text_gra_CameraShake = ["РОДИНА"]
+    text_gra_DynamicLight = ["Never"]
+    text_gra_Bloom = ["Gonna"]
+    text_gra_PlayerAnimation = ["Give"]
+    text_gra_Particles = ["You"]
+    text_gra_CameraShake = ["Up"]
     text_gra_EnvAnimation = ["Партия Ленина"]
 
     text_sound_Sound = ["BRUH"]
