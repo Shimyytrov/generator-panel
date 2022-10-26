@@ -163,7 +163,6 @@ def render_game_ini(CurretWindow):  # render inis windows
             if i >= 1:
                 b = pygame.draw.rect(screen, (255,255,255), ((width*4/5)-box_size,(v.center[1])-(box_size/2),box_size,box_size), int(box_size/10))
                 if graini_list[(i-1)]:
-                    print(graini_list[(i-1)])
                     pygame.draw.rect(screen, (255,255,255), (((width*4/5)-box_size)+box_size/4,(v.center[1])-(box_size/4),box_size/2,box_size/2))
                 if b not in box_list:
                     box_list.append(b)
