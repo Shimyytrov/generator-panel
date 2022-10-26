@@ -42,23 +42,22 @@ def play_track(file, loop, fade_ms):    # play track function
 
 #========== saving ==========#
 settings = {
-    "Gra": [{
+    "Gra": {
         "DynamicLight": True,
         "Bloom": True,
         "PlayerAnimation": True,
         "Particles": True,
         "CameraShake": True,
         "EnvAnimation": True,
-    }],
+    },
     "Lang": "EN",
-    "Sound": [{
+    "Sound": {
         "SoundEffects": 1,
         "Music": 1
-    }]
+    }
 }
-
-
-
+with open('./assets/saves/settings.json', 'r') as settings_json:
+    settings = json.load(settings_json)
 
 #========== variables ==========#
 CurretWindow = "START"
@@ -73,6 +72,7 @@ title_delay = False # variable for controlling title delay
 one_timed_list = []    # variables for controlling one-time use function
 game_start_alpha = 0    # variable for controlling start button aphla
 game_ini_alpha = 0    # variable for controlling setting button aphla
+box_list = []
 
 
 #========== functions ============#
@@ -141,22 +141,6 @@ def render_game_title(): # render the game title with delays
         screen.blit(game_ini, game_ini_rec)
     if total_time == 360:
         title_delay = False
-def render_game_ini(CurretWindow):
-    global gra_boxes
-    if CurretWindow == "INI":
-        for i, j in {ini_title: ini_title_rec, graINI: graINI_rec, langINI: langINI_rec, soundINI: soundINI_rec}.items():
-            screen.blit(i, j)
-    if CurretWindow == "GRAINI":
-        for i, j in {graini_title: graini_title_rec, graini_dynamic_light: graini_dynamic_light_rec,
-                    graini_bloom: graini_bloom_rec, graini_player_animation: graini_player_animation_rec,
-                    graini_particles: graini_particles_rec, graini_camera_shake: graini_camera_shake_rec,
-                    graini_env_animation: graini_env_animation_rec}.items():
-            screen.blit(i, j)
-            graini_dynamic_light_box = pygame.draw.rect(screen, (255,255,255), ((width*4/5)-box_size,(height*3/10)-(box_size/2),box_size,box_size), int(box_size/10))
-            gra_boxes = [graini_dynamic_light_box]
-    screen.blit(ini_return, ini_return_rec)    
-    pygame.draw.rect(screen, (255, 214, 99), ((width-(width/1.75))/2, (height/7)+(height/15), width/1.75, height/200))
-
 def drawbloom(cirs, expand, dens, center, color):   # draw light bloom effect
     surf = pygame.Surface((((dens*(cirs-1))+expand)*2,((dens*(cirs-1))+expand)*2))
     surfW, surfH = surf.get_size()
@@ -166,6 +150,36 @@ def drawbloom(cirs, expand, dens, center, color):   # draw light bloom effect
     surf_rec = surf.get_rect()
     surf_rec.center = center
     screen.blit(surf, surf_rec, special_flags = pygame.BLEND_RGB_ADD)
+def render_game_ini(CurretWindow):  # render inis windows
+    graini_list = [i for i in settings["Gra"].values()]
+    if CurretWindow == "INI":
+        for k,v in {ini_title: ini_title_rec, graINI: graINI_rec, langINI: langINI_rec, soundINI: soundINI_rec}.items():
+            screen.blit(k,v)
+    elif CurretWindow == "GRAINI":
+        for i,(k,v) in enumerate({graini_title:graini_title_rec, graini_dynamic_light:graini_dynamic_light_rec, graini_bloom:graini_bloom_rec,
+                                graini_player_animation:graini_player_animation_rec, graini_particles:graini_particles_rec,
+                                graini_camera_shake:graini_camera_shake_rec, graini_env_animation:graini_env_animation_rec}.items()):
+            screen.blit(k,v)
+            if i >= 1:
+                b = pygame.draw.rect(screen, (255,255,255), ((width*4/5)-box_size,(v.center[1])-(box_size/2),box_size,box_size), int(box_size/10))
+                if graini_list[(i-1)]:
+                    print(graini_list[(i-1)])
+                    pygame.draw.rect(screen, (255,255,255), (((width*4/5)-box_size)+box_size/4,(v.center[1])-(box_size/4),box_size/2,box_size/2))
+                if b not in box_list:
+                    box_list.append(b)
+    elif CurretWindow == "LANGINI":
+        for k,v in {langsini_title:[langsini_title_rec, None], langsini_zhTW:[langsini_zhTW_rec, langs.zhTW], langsini_zhCN:[langsini_zhCN_rec, langs.zhCN],
+                    langsini_EN:[langsini_EN_rec, langs.EN], langsini_DE:[langsini_DE_rec, langs.DE], langsini_BURGER:[langsini_BURGER_rec, langs.BURGER],
+                    langsini_BRUH:[langsini_BRUH_rec, langs.BRUH]}.items():
+            if langs.selected_language == v[1]:
+                k = font_mindustry(4).render(langs.selected_language.text_lang[0], True, (255, 214, 99))
+            screen.blit(k,v[0])
+
+    screen.blit(ini_return, ini_return_rec)
+    pygame.draw.rect(screen, (255, 214, 99), ((width-(width/1.75))/2, (height/7)+(height/15), width/1.75, height/200))
+def graini_box_pressed(box):    # events for gra ini boxes
+    sound_click.play()
+    settings["Gra"][box] = not settings["Gra"][box]
 
 
 #========== intro loop ==========#
@@ -324,7 +338,7 @@ while lang_selected2:
         soundINI = font_mindustry(4).render(langs.selected_language.text_soundINI[0], True, (255, 255, 255)) # sound button
         soundINI_rec = soundINI.get_rect(center = (width/2, height*6/10))# get sound ini button center to position
         ini_return = font_mindustry(4).render(langs.selected_language.text_return[0], True, (255, 255, 255)) # return button
-        ini_return_rec = ini_return.get_rect(center = (width/2, height*9/10))# get return button center to position
+        ini_return_rec = ini_return.get_rect(center = (width/2, height*9.5/10))# get return button center to position
         # gra ini
         graini_title = font_mindustry(2).render(langs.selected_language.text_graINI[0], True, (255, 255, 255)) # gra title
         graini_title_rec = graini_title.get_rect(center = (width/2, height/7))    # get gra title center to position
@@ -346,7 +360,22 @@ while lang_selected2:
         graini_env_animation = font_mindustry(4).render(langs.selected_language.text_gra_EnvAnimation[0], True, (255, 255, 255)) # env animation
         graini_env_animationW, graini_env_animationH = graini_env_animation.get_size()
         graini_env_animation_rec = graini_env_animation.get_rect(center = ((width/5)+(graini_env_animationW/2), height*8/10))   # get env animation center to position
-        # gra check boxes
+        # langs ini
+        langsini_title = font_mindustry(2).render(langs.selected_language.text_langINI[0], True, (255, 255, 255)) # langs title
+        langsini_title_rec = langsini_title.get_rect(center = (width/2, height/7))    # get langs title center to position
+        langsini_zhTW = font_mindustry(4).render(langs.zhTW.text_lang[0], True, (255, 255, 255))    # zhTW
+        langsini_zhTW_rec = langsini_zhTW.get_rect(center = (width/2, height*3/10))    # get zhCH title center to position
+        langsini_zhCN = font_mindustry(4).render(langs.zhCN.text_lang[0], True, (255, 255, 255))    # zhCN
+        langsini_zhCN_rec = langsini_zhCN.get_rect(center = (width/2, height*4/10))    # get zhCH title center to position
+        langsini_EN = font_mindustry(4).render(langs.EN.text_lang[0], True, (255, 255, 255))    # EN
+        langsini_EN_rec = langsini_EN.get_rect(center = (width/2, height*5/10))    # get EN title center to position
+        langsini_DE = font_mindustry(4).render(langs.DE.text_lang[0], True, (255, 255, 255))    # DE
+        langsini_DE_rec = langsini_DE.get_rect(center = (width/2, height*6/10))    # get DE title center to position
+        langsini_BURGER = font_mindustry(4).render(langs.BURGER.text_lang[0], True, (255, 255, 255))    # BURGER
+        langsini_BURGER_rec = langsini_BURGER.get_rect(center = (width/2, height*7/10))    # get BURGER title center to position
+        langsini_BRUH = font_mindustry(4).render(langs.BRUH.text_lang[0], True, (255, 255, 255))    # BRUH
+        langsini_BRUH_rec = langsini_BRUH.get_rect(center = (width/2, height*8/10))    # get BRUH title center to position
+        # check boxes
         box_size = font_mindustry(3).render("#", True, (255, 255, 255)).get_size()[1]
         
 
@@ -410,6 +439,24 @@ while lang_selected2:
         elif CurretWindow == "INI":
             CurretWindow = "START"
             sound_swap.play()
+    try:
+        if CurretWindow == "GRAINI" and box_list[0].collidepoint(mouse_pos):
+            graini_box_pressed("DynamicLight")
+        elif CurretWindow == "GRAINI" and box_list[1].collidepoint(mouse_pos):
+            graini_box_pressed("Bloom")
+        elif CurretWindow == "GRAINI" and box_list[2].collidepoint(mouse_pos):
+            graini_box_pressed("PlayerAnimation")
+        elif CurretWindow == "GRAINI" and box_list[3].collidepoint(mouse_pos):
+            graini_box_pressed("Particles")
+        elif CurretWindow == "GRAINI" and box_list[4].collidepoint(mouse_pos):
+            graini_box_pressed("CameraShake")
+        elif CurretWindow == "GRAINI" and box_list[5].collidepoint(mouse_pos):
+            graini_box_pressed("EnvAnimation")
+    except:
+        pass
+    
+
+
 
     #----- loop repeat
     if title_delay:
