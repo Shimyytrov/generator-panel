@@ -9,7 +9,8 @@
     },
     "Lang": "EN",
     "Sound": {
-        "SoundEffects": 1,
-        "Music": 1
-    }
+        "SoundEffects": 5,
+        "Music": 5
+    },
+    "Default": true
 }
