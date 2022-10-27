@@ -65,27 +65,6 @@ def music_set_volume():
 sound_set_volume(), music_set_volume()
 
 
-#========== saving ==========#
-
-settings = {
-    "Gra": [{
-        "DynamicLight": True,
-        "Bloom": True,
-        "PlayerAnimation": True,
-        "Particles": True,
-        "CameraShake": True,
-        "EnvAnimation": True,
-    }],
-    "Lang": "EN",
-    "Sound": [{
-        "SoundEffects": 1,
-        "Music": 1
-    }]
-}
-
-
-
-
 #========== variables ==========#
 CurretWindow = "START"
 total_time = 0  # track time
@@ -383,7 +362,7 @@ while not lang_selected2:
         lang3, lang3_rec = render_langs("English", lang3_Bcolor, 5)
         lang4, lang4_rec = render_langs("Deutsch", lang4_Bcolor, 6)
         lang5, lang5_rec = render_langs("Burgerishkiy", lang5_Bcolor, 7)
-        lang6, lang6_rec = render_langs("WTF is that", lang6_Bcolor, 8)
+        lang6, lang6_rec = render_langs("Bruhwtf", lang6_Bcolor, 8)
         
         if lang1_rec.collidepoint(mouse_pos):
             lang_pressed(lang1, langs.zhTW, lang1_Bcolor, 3)
