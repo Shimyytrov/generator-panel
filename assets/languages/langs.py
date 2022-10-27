@@ -1,3 +1,9 @@
+import json
+
+settings = {}
+with open('./assets/saves/settings.json', 'r') as settings_json:
+    settings = json.load(settings_json)
+
 class zhCN:
     # Language window
     text_lang = ["中文(中国简体)"]
@@ -15,6 +21,7 @@ class zhCN:
     text_graINI = ["图形设定"]
     text_langINI = ["语言"]
     text_soundINI = ["声音设定"]
+    text_resetINI = ["重置设定"]
 
     text_gra_DynamicLight = ["动态照明"]
     text_gra_Bloom = ["高光效果"]
@@ -25,6 +32,9 @@ class zhCN:
 
     text_sound_Sound = ["声音"]
     text_sound_Music = ["音乐"]
+
+    text_reset = ["重置会把设定设回默认.", "确定要重置吗?"]
+    text_reset_confirm = ["确定"]
 
     # Endings
     text_meltdown = ["熔毁"]
@@ -45,6 +55,7 @@ class zhTW:
     text_title1 = ["希米特羅夫"]
     text_title2 = ["發電機控制臺"]
     text_ini = ["設定"]
+    text_resetINI = ["重設設定"]
 
     # Settings
     text_return = ["返回"]
@@ -61,6 +72,9 @@ class zhTW:
 
     text_sound_Sound = ["聲音"]
     text_sound_Music = ["音樂"]
+
+    text_reset = ["重設會把設定設回預設.", "確定要重設嗎?"]
+    text_reset_confirm = ["確定"]
 
     # Endings
     text_meltdown = ["熔毀"]
@@ -81,6 +95,7 @@ class EN:
     text_title1 = ["Shimyytrov's"]
     text_title2 = ["Generator Panel"]
     text_ini = ["Settings"]
+    text_resetINI = ["Reset Settings"]
     
     # Settings
     text_return = ["Return"]
@@ -97,6 +112,9 @@ class EN:
 
     text_sound_Sound = ["Sound"]
     text_sound_Music = ["Music"]
+
+    text_reset = ["Reseting will makes your settings back to default.", "Are you sure you want to do that?"]
+    text_reset_confirm = ["Confirmed"]
 
     # Endings
     text_meltdown = ["Meltdown"]
@@ -117,6 +135,7 @@ class DE:
     text_title1 = ["Schmitrov"]
     text_title2 = ["Generator-Bedienfeld"]
     text_ini = ["Einstellungen"]
+    text_resetINI = ["Reset Settings(need translation)"]
 
     # Settings
     text_return = ["Zurückkehren"]
@@ -133,6 +152,9 @@ class DE:
 
     text_sound_Sound = ["Klang"]
     text_sound_Music = ["Musik"]
+
+    text_reset = ["(translation)", "(translation)"]
+    text_reset_confirm = ["(translation)"]
     
     # Endings
     text_meltdown = ["Kernschmelze"]
@@ -159,6 +181,7 @@ class BURGER:
     text_graINI = ["Big Mac - 5$"]
     text_langINI = ["Select Your Burger"]
     text_soundINI = ["MOYAI SOUND EFFECT"]
+    text_resetINI = ['"oh wait how it ignore a file when commit"']
 
     text_gra_DynamicLight = ["Dynamic TOMATO"]
     text_gra_Bloom = ["Kaboom?"]
@@ -169,6 +192,9 @@ class BURGER:
 
     text_sound_Sound = ["PAY ME"]
     text_sound_Music = ["TRACKS N' NUTZ"]
+
+    text_reset = ['"o so you mean we playtesting will affect the saving"', '"nah easy la, you reset the file lor"']
+    text_reset_confirm = ['"well thats a solution"']
     
     # Endings
     text_meltdown = ["Burgermelt"]
@@ -195,16 +221,20 @@ class BRUH:
     text_graINI = ["MLG"]
     text_langINI = ["BURHWTF"]
     text_soundINI = ["RICKROLL'D"]
+    text_resetINI = ["(translation)"]
 
-    text_gra_DynamicLight = ["Never"]
-    text_gra_Bloom = ["Gonna"]
-    text_gra_PlayerAnimation = ["Give"]
-    text_gra_Particles = ["You"]
-    text_gra_CameraShake = ["Up"]
+    text_gra_DynamicLight = ["BO'OH'O'WA'ER(Not racist)"]
+    text_gra_Bloom = ["Yeah, I'm sorry :("]
+    text_gra_PlayerAnimation = ["MLG bucket"]
+    text_gra_Particles = ["Бабушка"]
+    text_gra_CameraShake = ["РОДИНА"]
     text_gra_EnvAnimation = ["Партия Ленина"]
 
     text_sound_Sound = ["BRUH"]
     text_sound_Music = ["NGGYU"]
+
+    text_reset = ["(translation)", "(translation)"]
+    text_reset_confirm = ["(translation)"]
     
     # Endings
     text_meltdown = ["Bruht"]
@@ -214,4 +244,8 @@ class BRUH:
     text_blackout = ["Bruh-wide Putin Walking"]
     text_blackoutDES = ["Bruh.", "Bruh Over.", "Bruhman: a yo wtf."]
 
-selected_language = EN
+
+
+for k,v in {zhTW:"zhTW", zhCN:"zhCN", EN:"EN", DE:"DE", BURGER:"BURGER", BRUH:"BRUH"}.items():
+    if v == settings["Lang"]:
+        selected_language = k

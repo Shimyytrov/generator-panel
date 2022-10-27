@@ -1,0 +1,16 @@
+{
+    "Gra": {
+        "DynamicLight": true,
+        "Bloom": true,
+        "PlayerAnimation": true,
+        "Particles": true,
+        "CameraShake": true,
+        "EnvAnimation": true
+    },
+    "Lang": "EN",
+    "Sound": {
+        "SoundEffects": 5,
+        "Music": 5
+    },
+    "Default": true
+}
