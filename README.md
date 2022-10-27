@@ -1,5 +1,6 @@
 # Shimyytrov's Generator Panel
  A game by Shimyytrov Studio.
+ 
  ## The very first project by a new team
 This is a simple game. You need to control a panel of two generators to generate power.
 
