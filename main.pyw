@@ -52,10 +52,9 @@ sound_title_2 = pygame.mixer.Sound('./assets/sounds/title_2.wav')
 sound_swap = pygame.mixer.Sound('./assets/sounds/swap.wav')
 sound_click = pygame.mixer.Sound('./assets/sounds/click.wav')
 sound_clickBURGER = pygame.mixer.Sound('./assets/sounds/click_burger.wav')
-sound_clickBRUH = pygame.mixer.Sound('./assets/sounds/click_bruh.wav')
 sound_endingBOOM = pygame.mixer.Sound('./assets/sounds/endingBOOM.wav')
 def sound_set_volume():
-    for i in [sound_title_1, sound_title_2, sound_swap, sound_click, sound_clickBURGER, sound_clickBRUH, sound_endingBOOM]:
+    for i in [sound_title_1, sound_title_2, sound_swap, sound_click, sound_clickBURGER, sound_endingBOOM]:
         i.set_volume(settings["Sound"]["SoundEffects"]/10)
 def play_track(file, loop, fade_ms):    # play track function
     pygame.mixer.music.load(f'./assets/tracks/{file}.ogg')
@@ -119,7 +118,7 @@ def lang_pressed(lang, langsec, langcolor, offset): # when langs button pressed
         if lang == lang5:
             sound_clickBURGER.play()
         elif lang == lang6:
-            sound_clickBRUH.play()
+            sound_click.play()
         else:
             sound_click.play()
         time.sleep(0.1)
@@ -178,7 +177,7 @@ def render_game_ini(CurretWindow):  # render inis windows
     elif CurretWindow == "LANGINI":
         for k,v in {langsini_title:[langsini_title_rec, None], langsini_zhTW:[langsini_zhTW_rec, langs.zhTW], langsini_zhCN:[langsini_zhCN_rec, langs.zhCN],
                     langsini_EN:[langsini_EN_rec, langs.EN], langsini_DE:[langsini_DE_rec, langs.DE], langsini_BURGER:[langsini_BURGER_rec, langs.BURGER],
-                    langsini_BRUH:[langsini_BRUH_rec, langs.BRUH]}.items():
+                    langsini_SCH:[langsini_SCH_rec, langs.SCH]}.items():
             if langs.selected_language == v[1]:
                 langsini_UL = [v[0].center,k.get_size()[0]]
                 pygame.draw.rect(screen, (255,214,99), (langsini_UL[0][0]-(langsini_UL[1]/2)-langsini_UL_size[0],langsini_UL[0][1]-(langsini_UL_size[1]/2),langsini_UL_size[0]/3,langsini_UL_size[1]))
@@ -362,7 +361,7 @@ while not lang_selected2:
         lang3, lang3_rec = render_langs("English", lang3_Bcolor, 5)
         lang4, lang4_rec = render_langs("Deutsch", lang4_Bcolor, 6)
         lang5, lang5_rec = render_langs("Burgerishkiy", lang5_Bcolor, 7)
-        lang6, lang6_rec = render_langs("Bruhwtf", lang6_Bcolor, 8)
+        lang6, lang6_rec = render_langs("Shimyytrovkiy", lang6_Bcolor, 8)
         
         if lang1_rec.collidepoint(mouse_pos):
             lang_pressed(lang1, langs.zhTW, lang1_Bcolor, 3)
@@ -380,10 +379,10 @@ while not lang_selected2:
             lang_pressed(lang5, langs.BURGER, lang5_Bcolor, 7)
             lang5_Bcolor = 255, 214, 99
         elif lang6_rec.collidepoint(mouse_pos): 
-            lang_pressed(lang6, langs.BRUH, lang6_Bcolor, 8)
+            lang_pressed(lang6, langs.SCH, lang6_Bcolor, 8)
             lang6_Bcolor = 255, 214, 99
         elif lang_conOL.collidepoint(mouse_pos):
-            for i in [sound_clickBURGER, sound_clickBRUH, sound_click]:
+            for i in [sound_clickBURGER, sound_click]:
                 i.stop()
             sound_swap.play()
             lang_selected2 = True
@@ -489,8 +488,8 @@ while lang_selected2:
         langsini_DE_rec = langsini_DE.get_rect(center = (width/2, height*6/10))    # get DE title center to position
         langsini_BURGER = font_mindustry(4).render(langs.BURGER.text_lang[0], True, (255, 255, 255))    # BURGER
         langsini_BURGER_rec = langsini_BURGER.get_rect(center = (width/2, height*7/10))    # get BURGER title center to position
-        langsini_BRUH = font_mindustry(4).render(langs.BRUH.text_lang[0], True, (255, 255, 255))    # BRUH
-        langsini_BRUH_rec = langsini_BRUH.get_rect(center = (width/2, height*8/10))    # get BRUH title center to position
+        langsini_SCH = font_mindustry(4).render(langs.SCH.text_lang[0], True, (255, 255, 255))    # SCH
+        langsini_SCH_rec = langsini_SCH.get_rect(center = (width/2, height*8/10))    # get SCH title center to position
         langsini_UL = (0,0)
         langsini_UL_size = font_mindustry(4).render("#", True, (255, 255, 255)).get_size()
         # sound ini
@@ -636,10 +635,10 @@ while lang_selected2:
         settings["Default"] = False
         save_settings()
         langini_pressed(langs.BURGER, sound_clickBURGER)
-    elif CurretWindow == "LANGINI" and langsini_BRUH_rec.collidepoint(mouse_pos):
+    elif CurretWindow == "LANGINI" and langsini_SCH_rec.collidepoint(mouse_pos):
         settings["Default"] = False
         save_settings()
-        langini_pressed(langs.BRUH, sound_clickBRUH)
+        langini_pressed(langs.SCH, sound_click)
     
     if CurretWindow == "SOUNDINI" and pygame.mouse.get_pressed()[0]: 
         drag_mouse_pos = pygame.mouse.get_pos()
