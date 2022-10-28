@@ -73,7 +73,7 @@ class zhTW:
     text_sound_Sound = ["聲音"]
     text_sound_Music = ["音樂"]
 
-    text_reset = ["重設會把設定設回預設.", "確定要重設嗎?"]
+    text_reset = ["重設會把所有設定設回預設.", "你確定要重設嗎?"]
     text_reset_confirm = ["確定"]
 
     # Endings
@@ -153,8 +153,8 @@ class DE:
     text_sound_Sound = ["Klang"]
     text_sound_Music = ["Musik"]
 
-    text_reset = ["(translation)", "(translation)"]
-    text_reset_confirm = ["(translation)"]
+    text_reset = ["Durch das Zurücksetzen werden Ihre Einstellungen", "auf die Standardeinstellungen zurückgesetzt.", "Sind Sie sicher, dass Sie das tun möchten?"]
+    text_reset_confirm = ["Bestätigt"]
     
     # Endings
     text_meltdown = ["Kernschmelze"]
@@ -234,7 +234,7 @@ class SCH:
     text_sound_Music = ["Musiki"]
 
     text_reset = ["Risën werden duzh Einśtilli maçhenka zum das Rośteik khaten.", "Sind du siken du deçh maçhen wollen?"]
-    text_reset_confirm = ["Konfirmen"]
+    text_reset_confirm = ["Konfirmentva"]
     
     # Endings
     text_meltdown = ["Bruht"]
