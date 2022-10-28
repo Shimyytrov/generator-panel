@@ -218,20 +218,20 @@ class SCH:
 
     # Settings
     text_return = ["Khaten"]
-    text_graINI = ["MLG"]
-    text_langINI = ["BURHWTF"]
-    text_soundINI = ["RICKROLL'D"]
-    text_resetINI = ["(translation)"]
+    text_graINI = ["Graphikeinśtilli"]
+    text_langINI = ["Schtora"]
+    text_soundINI = ["Klangeinśtilli"]
+    text_resetINI = ["Das Einśtilli risen"]
 
-    text_gra_DynamicLight = ["BO'OH'O'WA'ER(Not racist)"]
-    text_gra_Bloom = ["Yeah, I'm sorry :("]
-    text_gra_PlayerAnimation = ["MLG bucket"]
-    text_gra_Particles = ["Бабушка"]
-    text_gra_CameraShake = ["РОДИНА"]
-    text_gra_EnvAnimation = ["Партия Ленина"]
+    text_gra_DynamicLight = ["Deinomiknaya Liçhtiki"]
+    text_gra_Bloom = ["Blühmi"]
+    text_gra_PlayerAnimation = ["Śpiela-Animationi"]
+    text_gra_Particles = ["Partikli"]
+    text_gra_CameraShake = ["Kamerashäki"]
+    text_gra_EnvAnimation = ["Enveironmentanimationi"]
 
-    text_sound_Sound = ["BRUH"]
-    text_sound_Music = ["NGGYU"]
+    text_sound_Sound = ["Klangki"]
+    text_sound_Music = ["Musiki"]
 
     text_reset = ["(translation)", "(translation)"]
     text_reset_confirm = ["(translation)"]
