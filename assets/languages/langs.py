@@ -204,20 +204,20 @@ class BURGER:
     text_blackout = ["Burger-wide Walking"]
     text_blackoutDES = ["Burgergertam ran out of burgers, the whole tomato and burger just ran away.", "Burger Over.", "Burger: Burh."]
 
-class BRUH:
+class SCH:
     # Language window
-    text_lang = ["WTF is that"]
-    text_lang_select = ["Bruh WHAT DA FOCK"]
-    text_lang_continue = ["Free robux?"]
+    text_lang = ["Shimyytrovkiy"]
+    text_lang_select = ["Duzhe Schtora Pikiten"]
+    text_lang_continue = ["Kontinen"]
     
     # Start Screen
-    text_play = ["Roll'd"]
-    text_title1 = ["BRUH"]
-    text_title2 = ["What Da Fock is This"]
-    text_ini = ["Rick"]
+    text_play = ["Zum Biginten Prasken"]
+    text_title1 = ["Schmitrov"]
+    text_title2 = ["Truktonekapanëła"]
+    text_ini = ["Einśtill"]
 
     # Settings
-    text_return = ["BRUH."]
+    text_return = ["Khaten"]
     text_graINI = ["MLG"]
     text_langINI = ["BURHWTF"]
     text_soundINI = ["RICKROLL'D"]
