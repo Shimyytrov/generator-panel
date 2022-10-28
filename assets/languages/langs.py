@@ -233,8 +233,8 @@ class SCH:
     text_sound_Sound = ["Klangki"]
     text_sound_Music = ["Musiki"]
 
-    text_reset = ["(translation)", "(translation)"]
-    text_reset_confirm = ["(translation)"]
+    text_reset = ["Risën werden duzh Einśtilli maçhenka zum das Rośteik khaten.", "Sind du siken du deçh maçhen wollen?"]
+    text_reset_confirm = ["Konfirmen"]
     
     # Endings
     text_meltdown = ["Bruht"]
