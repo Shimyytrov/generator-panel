@@ -244,6 +244,45 @@ class SCH:
     text_blackout = ["Bruh-wide Putin Walking"]
     text_blackoutDES = ["Bruh.", "Bruh Over.", "Bruhman: a yo wtf."]
 
+class BRUH:
+    # Language window
+    text_lang = ["WTF is this"]
+    text_lang_select = ["SAMSUNG"]
+    text_lang_continue = ["Free ROBUX"]
+    
+    # Start Screen
+    text_play = ["ÒwÓ!"]
+    text_title1 = ["You've been"]
+    text_title2 = ["RICKROLL'D"]
+    text_ini = ["SOKOŁY"]
+
+    # Settings
+    text_return = ["RICKROLL'D"]
+    text_graINI = ["KraSOKOŁY"]
+    text_langINI = ["RICKROLLSOKOŁY"]
+    text_soundINI = ["AyoSOKOŁY"]
+    text_resetINI = ["RĘŚEŢ DĄ SOKOŁY"]
+
+    text_gra_DynamicLight = ["DynamicRICKROLL"]
+    text_gra_Bloom = ["Explosion meme"]
+    text_gra_PlayerAnimation = ["/ban Schmitrovland"]
+    text_gra_Particles = ["Robux"]
+    text_gra_CameraShake = ["EARTHQUAKE!!!"]
+    text_gra_EnvAnimation = ["/give Schmitrovland tnt 64"]
+
+    text_sound_Sound = ["Ayo wtf?"]
+    text_sound_Music = ["Earrape"]
+
+    text_reset = ["Ayo what the fuck are you doing??", "DON'T YOU DARE DO IT!!!"]
+    text_reset_confirm = ["Press me"]
+    
+    # Endings
+    text_meltdown = ["Bruht"]
+    text_meltdownDES = ["Walking: run bruhman run", "bruh do it just ruuuuuunnnnnnnnnn", "Bruhman.", "Walking: bruhman run."]
+    text_freezedown = ["freEZe"]
+    text_freezedownDES = ["Step-bother help im stuck in the blackhole"]
+    text_blackout = ["Bruh-wide Putin Walking"]
+    text_blackoutDES = ["Bruh.", "Bruh Over.", "Bruhman: a yo wtf."]
 
 
 for k,v in {zhTW:"zhTW", zhCN:"zhCN", EN:"EN", DE:"DE", BURGER:"BURGER", BRUH:"BRUH"}.items():
