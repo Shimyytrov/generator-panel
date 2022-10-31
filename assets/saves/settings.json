@@ -7,10 +7,10 @@
         "CameraShake": true,
         "EnvAnimation": true
     },
-    "Lang": "EN",
+    "Lang": "SCH",
     "Sound": {
         "SoundEffects": 5,
         "Music": 5
     },
-    "Default": true
+    "Default": false
 }
