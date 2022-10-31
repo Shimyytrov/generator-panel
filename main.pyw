@@ -53,8 +53,9 @@ sound_swap = pygame.mixer.Sound('./assets/sounds/swap.wav')
 sound_click = pygame.mixer.Sound('./assets/sounds/click.wav')
 sound_clickBURGER = pygame.mixer.Sound('./assets/sounds/click_burger.wav')
 sound_endingBOOM = pygame.mixer.Sound('./assets/sounds/endingBOOM.wav')
+sound_clickSCH = pygame.mixer.Sound('./assets/sounds/click_SCH.wav')
 def sound_set_volume():
-    for i in [sound_title_1, sound_title_2, sound_swap, sound_click, sound_clickBURGER, sound_endingBOOM]:
+    for i in [sound_title_1, sound_title_2, sound_swap, sound_click, sound_clickBURGER, sound_endingBOOM, sound_clickSCH]:
         i.set_volume(settings["Sound"]["SoundEffects"]/10)
 def play_track(file, loop, fade_ms):    # play track function
     pygame.mixer.music.load(f'./assets/tracks/{file}.ogg')
@@ -118,7 +119,7 @@ def lang_pressed(lang, langsec, langcolor, offset): # when langs button pressed
         if lang == lang5:
             sound_clickBURGER.play()
         elif lang == lang6:
-            sound_click.play()
+            sound_clickSCH.play()
         else:
             sound_click.play()
         time.sleep(0.1)
@@ -638,7 +639,7 @@ while lang_selected2:
     elif CurretWindow == "LANGINI" and langsini_SCH_rec.collidepoint(mouse_pos):
         settings["Default"] = False
         save_settings()
-        langini_pressed(langs.SCH, sound_click)
+        langini_pressed(langs.SCH, sound_clickSCH)
     
     if CurretWindow == "SOUNDINI" and pygame.mouse.get_pressed()[0]: 
         drag_mouse_pos = pygame.mouse.get_pos()
