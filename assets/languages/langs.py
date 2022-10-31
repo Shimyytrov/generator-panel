@@ -212,7 +212,7 @@ class SCH:
     
     # Start Screen
     text_play = ["Zum Biginten Prasken"]
-    text_title1 = ["Schmitrov"]
+    text_title1 = ["Schmitŕov"]
     text_title2 = ["Truktonekapanëła"]
     text_ini = ["Einśtill"]
 
@@ -233,15 +233,15 @@ class SCH:
     text_sound_Sound = ["Klangki"]
     text_sound_Music = ["Musiki"]
 
-    text_reset = ["Risën werden duzh Einśtilli maçhenka zum das Rośteik khaten.", "Sind du siken du deçh maçhen wollen?"]
+    text_reset = ["Risën weŕden duzh Einśtilli maçhenka, zum das Rośteik khaten.", "Sind du siken du deçh maçhen wollen?"]
     text_reset_confirm = ["Konfirmentva"]
     
     # Endings
-    text_meltdown = ["Bruht"]
-    text_meltdownDES = ["Walking: run bruhman run", "bruh do it just ruuuuuunnnnnnnnnn", "Bruhman.", "Walking: bruhman run."]
-    text_freezedown = ["freEZe"]
-    text_freezedownDES = ["Step-bother help im stuck in the blackhole"]
-    text_blackout = ["Bruh-wide Putin Walking"]
+    text_meltdown = ["Köśteinmelten"]
+    text_meltdownDES = ["Das Temperätuŕ deŕ Truktoneka haat das akzept'betën Limit übeŕłyben!", "Din vitz Tukleinsion haat in das höłe Induska geschetentva. Füŕ das Ençhbik,", "das Induska und das Embratka haat krorruptentva.", "Hints: Zum checken jerneśten, sind das Akłafrieśkonpleitionsystemi aktivätentva, o'", "sind das Akłafrieśpeipy trorraptentva."]
+    text_freezedown = ["Köśteinfriezen"]
+    text_freezedownDES = ["Das öbuni Temperätuŕ bikönsen, din Bronkloçh haat schaffentvo,", "und haat das höłe Induska krorruptentvo. Das Disäska haat even das höłe Welt veŕbŕeitentvo.", "“Game over, mann, game over!”", "Hints: Zum alle Teim jerneśten, das Temperätuŕ deŕ beide Truktoneki checken,", "und das Akłafrieśkonpleitionsystemi aktiväten o' die'aktiväten wenn appropriät."]
+    text_blackout = ["Höłeinduskaelektriksityinterruption"]
     text_blackoutDES = ["Bruh.", "Bruh Over.", "Bruhman: a yo wtf."]
 
 class BRUH:
@@ -285,6 +285,6 @@ class BRUH:
     text_blackoutDES = ["Bruh.", "Bruh Over.", "Bruhman: a yo wtf."]
 
 
-for k,v in {zhTW:"zhTW", zhCN:"zhCN", EN:"EN", DE:"DE", BURGER:"BURGER", BRUH:"BRUH"}.items():
+for k,v in {zhTW:"zhTW", zhCN:"zhCN", EN:"EN", DE:"DE", BURGER:"BURGER", BRUH:"BRUH", SCH:"SCH"}.items():
     if v == settings["Lang"]:
         selected_language = k
