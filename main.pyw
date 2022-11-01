@@ -1,4 +1,5 @@
 #========== imports ==========#
+from ctypes import alignment
 import time
 import pygame
 import sys
@@ -69,7 +70,7 @@ sound_set_volume(), music_set_volume()
 CurretWindow = "START"
 total_time = 0  # track time
 logo2_alpha = logo1_line_alpha = 255 # variables for logo fadout
-lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255, 255, 255 # languages button color control
+lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = lang7_Bcolor = 255, 255, 255 # languages button color control
 lang_selected2 = False # variables for detecting after language selected (done intro)
 lang_selected1 = False # variables for detecting after language pressed (button pressed)
 button_cooldown = False # variable for button cooldown
@@ -106,10 +107,10 @@ def render_langs(text, color, offset): # render langs button and outline
     screen.blit(lang, lang_rec)
     return lang, lang_outline
 def lang_pressed(lang, langsec, langcolor, offset): # when langs button pressed
-    global button_cooldown, Hlocation, langW, langH, lang_selected1, lang1_Bcolor, lang2_Bcolor, lang3_Bcolor, lang4_Bcolor, lang5_Bcolor, lang6_Bcolor
+    global button_cooldown, Hlocation, langW, langH, lang_selected1, lang1_Bcolor, lang2_Bcolor, lang3_Bcolor, lang4_Bcolor, lang5_Bcolor, lang6_Bcolor, lang7_Bcolor
     if not button_cooldown:
         button_cooldown = True
-        lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = 255, 255, 255
+        lang1_Bcolor = lang2_Bcolor = lang3_Bcolor = lang4_Bcolor = lang5_Bcolor = lang6_Bcolor = lang7_Bcolor = 255, 255, 255
         langs.selected_language = langsec
         settings["Lang"] = f"{langs.selected_language.__name__}"
         save_settings()
@@ -362,7 +363,8 @@ while not lang_selected2:
         lang3, lang3_rec = render_langs("English", lang3_Bcolor, 5)
         lang4, lang4_rec = render_langs("Deutsch", lang4_Bcolor, 6)
         lang5, lang5_rec = render_langs("Burgerishkiy", lang5_Bcolor, 7)
-        lang6, lang6_rec = render_langs("Shimyytrovkiy", lang6_Bcolor, 8)
+        lang6, lang6_rec = render_langs("Schmitŕov Schtora", lang6_Bcolor, 8)
+        lang7, lang7_rec = render_langs("WTF is this", lang7_Bcolor, 9)
         
         if lang1_rec.collidepoint(mouse_pos):
             lang_pressed(lang1, langs.zhTW, lang1_Bcolor, 3)
@@ -382,6 +384,9 @@ while not lang_selected2:
         elif lang6_rec.collidepoint(mouse_pos): 
             lang_pressed(lang6, langs.SCH, lang6_Bcolor, 8)
             lang6_Bcolor = 255, 214, 99
+        elif lang7_rec.collidepoint(mouse_pos):
+            lang_pressed(lang7, langs.BRUH, lang7_Bcolor, 9)
+            lang7_Bcolor = 255, 214, 99
         elif lang_conOL.collidepoint(mouse_pos):
             for i in [sound_clickBURGER, sound_click]:
                 i.stop()
@@ -414,6 +419,15 @@ while lang_selected2:
             mouse_pos = event.pos
 
     
+    #----- quit confirm
+    if one_time("quit_confirm_render"): # load all things in quit confirm
+        CurrentWindow = "QUIT"
+        # quit confirm
+        quit_title = font_mindustry(2).render(langs.selected_language.text_quit[0], True, (255, 255, 255)) #quit title
+        quit_title_rec = quit_title.get_rect(center = (width/2, height/7))
+        quit_msg = font_mindustry(4).render(langs.selected_language.text_quitMSG[0], True, (255, 255, 255)) #quit confirm msg
+        quit_msg_rec = quit_msg.get_rect(center = (width/2, height/2))
+
     #----- start screen
     if one_time("game_tile_render"): # load all things in start screen 
         CurretWindow = "START"
@@ -480,17 +494,19 @@ while lang_selected2:
         langsini_title = font_mindustry(2).render(langs.selected_language.text_langINI[0], True, (255, 255, 255)) # langs title
         langsini_title_rec = langsini_title.get_rect(center = (width/2, height/7))    # get langs title center to position
         langsini_zhTW = font_mindustry(4).render(langs.zhTW.text_lang[0], True, (255, 255, 255))    # zhTW
-        langsini_zhTW_rec = langsini_zhTW.get_rect(center = (width/2, height*3/10))    # get zhCH title center to position
+        langsini_zhTW_rec = langsini_zhTW.get_rect(center = (width/2, height*5/18))    # get zhCH title center to position
         langsini_zhCN = font_mindustry(4).render(langs.zhCN.text_lang[0], True, (255, 255, 255))    # zhCN
-        langsini_zhCN_rec = langsini_zhCN.get_rect(center = (width/2, height*4/10))    # get zhCH title center to position
+        langsini_zhCN_rec = langsini_zhCN.get_rect(center = (width/2, height*6/18))    # get zhCH title center to position
         langsini_EN = font_mindustry(4).render(langs.EN.text_lang[0], True, (255, 255, 255))    # EN
-        langsini_EN_rec = langsini_EN.get_rect(center = (width/2, height*5/10))    # get EN title center to position
+        langsini_EN_rec = langsini_EN.get_rect(center = (width/2, height*7/18))    # get EN title center to position
         langsini_DE = font_mindustry(4).render(langs.DE.text_lang[0], True, (255, 255, 255))    # DE
-        langsini_DE_rec = langsini_DE.get_rect(center = (width/2, height*6/10))    # get DE title center to position
+        langsini_DE_rec = langsini_DE.get_rect(center = (width/2, height*8/18))    # get DE title center to position
+        langsini_SCH = font_mindustry(4).render(langs.SCH.text_lang[0], True, (130, 205, 71))    # SCH
+        langsini_SCH_rec = langsini_SCH.get_rect(center = (width/2, height*9/18))    # get SCH title center to position
         langsini_BURGER = font_mindustry(4).render(langs.BURGER.text_lang[0], True, (255, 255, 255))    # BURGER
-        langsini_BURGER_rec = langsini_BURGER.get_rect(center = (width/2, height*7/10))    # get BURGER title center to position
-        langsini_SCH = font_mindustry(4).render(langs.SCH.text_lang[0], True, (255, 255, 255))    # SCH
-        langsini_SCH_rec = langsini_SCH.get_rect(center = (width/2, height*8/10))    # get SCH title center to position
+        langsini_BURGER_rec = langsini_BURGER.get_rect(center = (width/2, height*10/18))    # get BURGER title center to position
+        langsini_BRUH = font_mindustry(4).render(langs.BRUH.text_lang[0], True, (255, 255, 255))    # BRUH
+        langsini_BRUH_rec = langsini_BRUH.get_rect(center = (width/2, height*11/18))    # get BRUH title center to position
         langsini_UL = (0,0)
         langsini_UL_size = font_mindustry(4).render("#", True, (255, 255, 255)).get_size()
         # sound ini
@@ -514,11 +530,14 @@ while lang_selected2:
         # reset ini
         resetini_title = font_mindustry(2).render(langs.selected_language.text_resetINI[0], True, (255, 255, 255))
         resetini_title_rec = resetini_title.get_rect(center = (width/2, height/7))
-        resetini1 = font_mindustry(4).render(langs.selected_language.text_reset[0], True, (255, 255, 255))
+        resetini1 = font_mindustry(4).render(langs.selected_language.text_reset[0], True, (255,82,82))
         resetini1_rec = resetini1.get_rect(center = (width/2, height*3/10))
-        resetini2 = font_mindustry(4).render(langs.selected_language.text_reset[1], True, (255, 255, 255))
+        resetini2 = font_mindustry(4).render(langs.selected_language.text_reset[1], True, (255,82,82))
         resetini2_rec = resetini2.get_rect(center = (width/2, (height*3/10)+resetini1.get_size()[1]*1.1))
-        resetini_confirm = font_mindustry(4).render(langs.selected_language.text_reset_confirm[0], True, (255, 255, 255))
+        if langs.selected_language == langs.DE:
+            resetini3 = font_mindustry(4).render(langs.selected_language.text_reset[2], True, (255,82,82))
+            resetini3_rec = resetini3.get_rect(center = (width/2, (height*3/10)+resetini2.get_size()[1]*1.1))
+        resetini_confirm = font_mindustry(4).render(langs.selected_language.text_reset_confirm[0], True, (255,82,82))
         resetini_confirm_rec = resetini_confirm.get_rect(center = (width*2/5, height*7/10))
 
         

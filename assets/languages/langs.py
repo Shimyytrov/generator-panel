@@ -5,6 +5,10 @@ with open('./assets/saves/settings.json', 'r') as settings_json:
     settings = json.load(settings_json)
 
 class zhCN:
+    # Quit confirm
+    text_quit = ["退出"]
+    text_quitMSG = ["您确定要退出吗？"]
+    
     # Title1
     text_intro1 = ["希米特罗夫"]
     text_intro2 = ["出品"]
@@ -49,6 +53,10 @@ class zhCN:
     text_blackoutDES = ["由于发电机的能源用尽，没有能量继续泵动颜料， ", "设施无法再继续产生电力，游戏结束。 ", "提示：记得及时维修运输燃料的管道！"]
 
 class zhTW:
+    # Quit confirm
+    text_quit = ["退出"]
+    text_quitMSG = ["你確定要退出嗎？"]
+    
     # Title1
     text_intro1 = ["希米特羅夫"]
     text_intro2 = ["出品"]
@@ -93,6 +101,10 @@ class zhTW:
     text_blackoutDES = ["由於發電機的能源用盡，沒有能量繼續泵動顏料， ", "設施無法再繼續產生電力，遊戲結束。 ", "提示：記得及時維修運輸燃料的管道！"]
 
 class EN:
+    # Quit confirm
+    text_quit = ["QUIT"]
+    text_quitMSG = ["Are you sure?"]
+    
     # Title1
     text_intro1 = ["PRODUCED BY"]
     text_intro2 = ["Shimyytrov Studio"]
@@ -137,6 +149,10 @@ class EN:
     text_blackoutDES = ["With the generator running out of energy, there is no energy to continue pumping the paint,", "Game over.", "Hint: Remember to repair the pipes that transport fuel!"]
 
 class DE:
+    # Quit confirm
+    text_quit = ["Verlassen"]
+    text_quitMSG = ["Bist du dir sicher?"]
+    
     # Title1
     text_intro1 = ["PRODUZIERT VON"]
     text_intro2 = ["Schmitrov Studio"]
@@ -181,6 +197,10 @@ class DE:
     text_blackoutDES = ["Wenn der Generator keine Energie mehr hat, gibt es keine Energie, um die Farbe weiter zu pumpen,", "Spiel vorbei.", "Hinweis: Denken Sie daran, die Rohre zu reparieren, die Kraftstoff transportieren!"]
 
 class BURGER:
+    # Quit confirm
+    text_quit = ["BURGER"]
+    text_quitMSG = ["What r u doin???"]
+    
     # Title1
     text_intro1 = ["Press Space to"]
     text_intro2 = ["Get a Fucking Burger"]
@@ -214,7 +234,7 @@ class BURGER:
     text_sound_Music = ["TRACKS N' NUTZ"]
 
     text_reset = ['"o so you mean we playtesting will affect the saving"', '"nah easy la, you reset the file lor"']
-    text_reset_confirm = ['"well thats a solution"']
+    text_reset_confirm = ['"well"']
     
     # Endings
     text_meltdown = ["Burgermelt"]
@@ -225,12 +245,16 @@ class BURGER:
     text_blackoutDES = ["Burgergertam ran out of burgers, the whole tomato and burger just ran away.", "Burger Over.", "Burger: Burh."]
 
 class SCH:
+    # Quit confirm
+    text_quit = ["Quitën"]
+    text_quitMSG = ["Sind du siken?"]
+    
     # Title1
     text_intro1 = ["Schmitŕov-Studio"]
     text_intro2 = ["PRODUZENTVA"]
     
     # Language window
-    text_lang = ["Schmitŕovkiy"]
+    text_lang = ["Schmitŕov Schtora"]
     text_lang_select = ["Duzhe Schtora Pikiten"]
     text_lang_continue = ["Kontinen"]
     
@@ -269,6 +293,10 @@ class SCH:
     text_blackoutDES = ["Bruh.", "Bruh Over.", "Bruhman: a yo wtf."]
 
 class BRUH:
+    # Quit confirm
+    text_quit = ["BRUH"]
+    text_quitMSG = ["Ayo WTF?"]
+    
     # Title1
     text_intro1 = ["Press ALT+F4"]
     text_intro2 = ["To Get Free Robux"]
