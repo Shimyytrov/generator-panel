@@ -23,6 +23,7 @@ class zhCN:
     text_title1 = ["希米特罗夫"]
     text_title2 = ["发电机控制台"]
     text_ini = ["设定"]
+    text_wiki = ["Wiki"]
 
     # Settings
     text_return = ["返回"]
@@ -71,13 +72,14 @@ class zhTW:
     text_title1 = ["希米特羅夫"]
     text_title2 = ["發電機控制臺"]
     text_ini = ["設定"]
-    text_resetINI = ["重設設定"]
+    text_wiki = ["Wiki"]
 
     # Settings
     text_return = ["返回"]
     text_graINI = ["圖形設定"]
     text_langINI = ["語言"]
     text_soundINI = ["聲音設定"]
+    text_resetINI = ["重設設定"]
 
     text_gra_DynamicLight = ["動態照明"]
     text_gra_Bloom = ["高光效果"]
@@ -119,6 +121,7 @@ class EN:
     text_title1 = ["Shimyytrov's"]
     text_title2 = ["Generator Panel"]
     text_ini = ["Settings"]
+    text_wiki = ["Wiki"]
     text_resetINI = ["Reset Settings"]
     
     # Settings
@@ -167,6 +170,7 @@ class DE:
     text_title1 = ["Schmitrov"]
     text_title2 = ["Generator-Bedienfeld"]
     text_ini = ["Einstellungen"]
+    text_wiki = ["Wiki"]
     text_resetINI = ["Einstellungen zurücksetzen"]
 
     # Settings
@@ -215,6 +219,7 @@ class BURGER:
     text_title1 = ["BURGER's"]
     text_title2 = ["Fucking Raw Steak"]
     text_ini = ["HAMBURGER"]
+    text_wiki = ["Wiki"]
 
     # Settings
     text_return = ["Press to get FREE ROBUX"]
@@ -263,6 +268,7 @@ class SCH:
     text_title1 = ["Schmitŕov"]
     text_title2 = ["Truktonekapanëła"]
     text_ini = ["Einśtill"]
+    text_wiki = ["Wiki"]
 
     # Settings
     text_return = ["Khaten"]
@@ -311,6 +317,7 @@ class BRUH:
     text_title1 = ["You've been"]
     text_title2 = ["RICKROLL'D"]
     text_ini = ["SOKOŁY"]
+    text_wiki = ["Wiki"]
 
     # Settings
     text_return = ["RICKROLL'D"]

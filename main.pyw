@@ -6,6 +6,7 @@ import sys
 import assets.languages.langs as langs
 import random
 import json
+import webbrowser
 
 #========== saving ==========#
 settings = {    # default settings
@@ -95,6 +96,7 @@ title_delay = False # variable for controlling title delay
 one_timed_list = []    # variables for controlling one-time use function
 game_start_alpha = 0    # variable for controlling start button aphla
 game_ini_alpha = 0    # variable for controlling setting button aphla
+game_wiki_alpha = 0    # variable for controlling wiki button aphla
 box_list = []
 
 
@@ -157,13 +159,16 @@ def render_game_title(): # render the game title with delays
     if total_time == 240:
         play_track("title", -1, 0)
     if total_time >= 300:
-        global game_start_alpha, game_ini_alpha
+        global game_start_alpha, game_ini_alpha, game_wiki_alpha
         game_start_alpha += 2
         game_ini_alpha += 2
+        game_wiki_alpha += 2
         game_start.set_alpha(game_start_alpha)
         game_ini.set_alpha(game_ini_alpha)
+        game_wiki.set_alpha(game_wiki_alpha)
         screen.blit(game_start, game_start_rec)
         screen.blit(game_ini, game_ini_rec)
+        screen.blit(game_wiki, game_wiki_rec)
     if total_time == 360:
         title_delay = False
 def drawbloom(cirs, expand, dens, center, color):   # draw light bloom effect
@@ -230,7 +235,7 @@ def graini_box_pressed(box):    # events for gra ini boxes
         time.sleep(0.1)
         button_cooldown = False
 def langini_pressed(lang, sound):
-    global button_cooldown, game_title1, game_title1W, game_title1H, game_title1_rec, game_title2, game_title2_rec, game_start, game_start_rec, game_ini, ini_title, ini_title_rec, graINI, graINI_rec, langINI, langINI_rec, soundINI, soundINI_rec, ini_return, ini_return_rec, graini_title, graini_title_rec, graini_dynamic_light, graini_dynamic_lightW, graini_dynamic_lightH, graini_dynamic_light_rec, graini_bloom, graini_bloomW, graini_bloomH, graini_bloom_rec, graini_player_animation, graini_player_animationW, graini_player_animationH, graini_player_animation_rec, graini_particles, graini_particlesW, graini_particlesH, graini_particles_rec, graini_camera_shake, graini_camera_shakeW, graini_camera_shakeH, graini_camera_shake_rec, graini_env_animation, graini_env_animationW, graini_env_animationH, graini_env_animation_rec, langsini_title, langsini_title_rec, game_ini_rec, soundini_title, soundini_title_rec, soundini_sound, soundini_soundW, soundini_sound_rec, soundini_music, soundini_musicW, soundini_music_rec, resetINI, resetINI_rec, resetini_title, resetini_title_rec, resetini1, resetini1_rec, resetini2, resetini2_rec, resetini_confirm, resetini_confirm_rec
+    global button_cooldown, game_title1, game_title1W, game_title1H, game_title1_rec, game_title2, game_title2_rec, game_start, game_start_rec, game_wiki, game_wiki_rec, game_ini, ini_title, ini_title_rec, graINI, graINI_rec, langINI, langINI_rec, soundINI, soundINI_rec, ini_return, ini_return_rec, graini_title, graini_title_rec, graini_dynamic_light, graini_dynamic_lightW, graini_dynamic_lightH, graini_dynamic_light_rec, graini_bloom, graini_bloomW, graini_bloomH, graini_bloom_rec, graini_player_animation, graini_player_animationW, graini_player_animationH, graini_player_animation_rec, graini_particles, graini_particlesW, graini_particlesH, graini_particles_rec, graini_camera_shake, graini_camera_shakeW, graini_camera_shakeH, graini_camera_shake_rec, graini_env_animation, graini_env_animationW, graini_env_animationH, graini_env_animation_rec, langsini_title, langsini_title_rec, game_ini_rec, soundini_title, soundini_title_rec, soundini_sound, soundini_soundW, soundini_sound_rec, soundini_music, soundini_musicW, soundini_music_rec, resetINI, resetINI_rec, resetini_title, resetini_title_rec, resetini1, resetini1_rec, resetini2, resetini2_rec, resetini_confirm, resetini_confirm_rec
     if not button_cooldown:
         button_cooldown = True
         sound.play()
@@ -246,6 +251,8 @@ def langini_pressed(lang, sound):
         game_start_rec = game_start.get_rect(center = (width/2, height*7/8))    # get start button center to position
         game_ini = font_mindustry(3).render(langs.selected_language.text_ini[0], True, (255, 255, 255)) # setting button
         game_ini_rec = game_ini.get_rect(center = (width/2, height*13/16))# get setting button center to position
+        game_wiki = font_mindustry(3).render(langs.selected_language.text_wiki[0], True, (255, 255, 255)) # Wiki button
+        game_wiki_rec = game_wiki.get_rect(center = (width/2, height*15/16))# get Wiki button center to position
         #ini
         ini_title = font_mindustry(2).render(langs.selected_language.text_ini[0], True, (255, 255, 255)) # setting title
         ini_title_rec = ini_title.get_rect(center = (width/2, height/7))    # get ini_title center to position
@@ -258,7 +265,7 @@ def langini_pressed(lang, sound):
         resetINI_rec = resetINI.get_rect(center = (width/2, height*7/10)) # get reset button center to position
         soundINI_rec = soundINI.get_rect(center = (width/2, height*6/10))# get sound ini button center to position
         ini_return = font_mindustry(4).render(langs.selected_language.text_return[0], True, (255, 255, 255)) # return button
-        ini_return_rec = ini_return.get_rect(center = (width/2, height*9.5/10))# get return button center to position
+        ini_return_rec = ini_return.get_rect(center = (width/2, height*9/10))# get return button center to position
         # gra ini
         graini_title = font_mindustry(2).render(langs.selected_language.text_graINI[0], True, (255, 255, 255)) # gra title
         graini_title_rec = graini_title.get_rect(center = (width/2, height/7))    # get gra title center to position
@@ -466,6 +473,8 @@ while lang_selected2:
         game_start_rec = game_start.get_rect(center = (width/2, height*7/8))    # get start button center to position
         game_ini = font_mindustry(3).render(langs.selected_language.text_ini[0], True, (255, 255, 255)) # setting button
         game_ini_rec = game_ini.get_rect(center = (width/2, height*13/16))# get setting button center to position
+        game_wiki = font_mindustry(3).render(langs.selected_language.text_wiki[0], True, (255, 255, 255)) # Wiki button
+        game_wiki_rec = game_wiki.get_rect(center = (width/2, height*15/16))# get Wiki button center to position
         start_screen_bgW, start_screen_bgH = start_screen_bg.get_size()
         start_screen_bg = pygame.transform.scale(start_screen_bg, (start_screen_bgW*12, start_screen_bgH*12)) # scale background
         start_screen_bg_rec = start_screen_bg.get_rect(center = (width/2, height/2))# get background center to position  
@@ -492,7 +501,7 @@ while lang_selected2:
         resetINI = font_mindustry(4).render(langs.selected_language.text_resetINI[0], True, (255, 255, 255)) # reset button
         resetINI_rec = resetINI.get_rect(center = (width/2, height*7/10)) # get reset button center to position
         ini_return = font_mindustry(4).render(langs.selected_language.text_return[0], True, (255, 255, 255)) # return button
-        ini_return_rec = ini_return.get_rect(center = (width/2, height*9.5/10))# get return button center to position
+        ini_return_rec = ini_return.get_rect(center = (width/2, height*9/10))# get return button center to position
         # gra ini
         graini_title = font_mindustry(2).render(langs.selected_language.text_graINI[0], True, (255, 255, 255)) # gra title
         graini_title_rec = graini_title.get_rect(center = (width/2, height/7))    # get gra title center to position
@@ -612,10 +621,23 @@ while lang_selected2:
 
 
     #----- clicking events
-    if game_ini_rec.collidepoint(mouse_pos) and CurretWindow == "START" and not title_delay:
+    if game_wiki_rec.collidepoint(mouse_pos) and CurretWindow == "START" and not title_delay:
+        webbrowser.open(r"https://shimyytrov-games.fandom.com/wiki/Shimyytrov_Studio")
+        mouse_pos = (0, 0)
+        sound_clickSCH.play()
+    elif game_wiki_rec.collidepoint(pygame.mouse.get_pos()):
+        game_wiki = font_mindustry(3).render(langs.selected_language.text_wiki[0], True, (255, 214, 99))
+    elif game_ini_rec.collidepoint(mouse_pos) and CurretWindow == "START" and not title_delay:
         CurretWindow = "INI"
         mouse_pos = (0, 0)
         sound_swap.play()
+    elif game_ini_rec.collidepoint(pygame.mouse.get_pos()):
+        game_ini = font_mindustry(3).render(langs.selected_language.text_ini[0], True, (255, 214, 99))
+    elif game_start_rec.collidepoint(mouse_pos) and CurretWindow == "START" and not title_delay:
+        mouse_pos = (0, 0)
+        sound_swap.play()
+    elif game_start_rec.collidepoint(pygame.mouse.get_pos()):
+        game_start = font_mindustry(3).render(langs.selected_language.text_play[0], True, (255, 214, 99))
     elif graINI_rec.collidepoint(mouse_pos) and CurretWindow == "INI":
         CurretWindow = "GRAINI"
         mouse_pos = (0, 0)
@@ -635,7 +657,7 @@ while lang_selected2:
         sound_swap.play()
     elif ini_return_rec.collidepoint(mouse_pos):
         if CurretWindow in ["GRAINI", "LANGINI", "SOUNDINI", "RESETINI"]:
-            ini_return_rec = ini_return.get_rect(center = (width/2, height*9.5/10))
+            ini_return_rec = ini_return.get_rect(center = (width/2, height*9/10))
             mouse_pos = (0, 0)
             CurretWindow = "INI"
             sound_swap.play()
@@ -643,6 +665,10 @@ while lang_selected2:
             mouse_pos = (0, 0)
             CurretWindow = "START"
             sound_swap.play()
+    else:
+        game_wiki = font_mindustry(3).render(langs.selected_language.text_wiki[0], True, (255, 255, 255))
+        game_ini = font_mindustry(3).render(langs.selected_language.text_ini[0], True, (255, 255, 255))
+        game_start = font_mindustry(3).render(langs.selected_language.text_play[0], True, (255, 255, 255))
 
     try:
         if CurretWindow == "GRAINI" and box_list[0].collidepoint(mouse_pos):
