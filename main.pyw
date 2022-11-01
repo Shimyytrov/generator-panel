@@ -179,7 +179,7 @@ def render_game_ini(CurretWindow):  # render inis windows
     elif CurretWindow == "LANGINI":
         for k,v in {langsini_title:[langsini_title_rec, None], langsini_zhTW:[langsini_zhTW_rec, langs.zhTW], langsini_zhCN:[langsini_zhCN_rec, langs.zhCN],
                     langsini_EN:[langsini_EN_rec, langs.EN], langsini_DE:[langsini_DE_rec, langs.DE], langsini_BURGER:[langsini_BURGER_rec, langs.BURGER],
-                    langsini_SCH:[langsini_SCH_rec, langs.SCH]}.items():
+                    langsini_SCH:[langsini_SCH_rec, langs.SCH], langsini_BRUH:[langsini_BRUH_rec, langs.BRUH]}.items():
             if langs.selected_language == v[1]:
                 langsini_UL = [v[0].center,k.get_size()[0]]
                 pygame.draw.rect(screen, (255,214,99), (langsini_UL[0][0]-(langsini_UL[1]/2)-langsini_UL_size[0],langsini_UL[0][1]-(langsini_UL_size[1]/2),langsini_UL_size[0]/3,langsini_UL_size[1]))
@@ -193,8 +193,12 @@ def render_game_ini(CurretWindow):  # render inis windows
         indicator1 = pygame.draw.rect(screen, (255, 214, 99), (indicator1_value[0]-(slider_size[1]/2), indicator1_value[1]-(slider_size[1]/2), slider_size[1],slider_size[1]))
         indicator2 = pygame.draw.rect(screen, (255, 214, 99), (indicator2_value[0]-(slider_size[1]/2), indicator2_value[1]-(slider_size[1]/2), slider_size[1],slider_size[1]))
     elif CurretWindow == "RESETINI":
-        for k,v in {resetini_title: resetini_title_rec, resetini1: resetini1_rec, resetini2: resetini2_rec, resetini_confirm:resetini_confirm_rec}.items():
-            screen.blit(k,v)
+        if langs.selected_language == langs.DE:
+            for k,v in {resetini_title: resetini_title_rec, resetini1: resetini1_rec, resetini2: resetini2_rec, resetini3: resetini3_rec, resetini_confirm:resetini_confirm_rec}.items():
+                screen.blit(k,v)
+        else:
+            for k,v in {resetini_title: resetini_title_rec, resetini1: resetini1_rec, resetini2: resetini2_rec, resetini_confirm:resetini_confirm_rec}.items():
+                screen.blit(k,v)
 
 
     screen.blit(ini_return, ini_return_rec)
@@ -275,11 +279,14 @@ def langini_pressed(lang, sound):
         # reset ini
         resetini_title = font_mindustry(2).render(langs.selected_language.text_resetINI[0], True, (255, 255, 255))
         resetini_title_rec = resetini_title.get_rect(center = (width/2, height/7))
-        resetini1 = font_mindustry(4).render(langs.selected_language.text_reset[0], True, (255, 255, 255))
+        resetini1 = font_mindustry(4).render(langs.selected_language.text_reset[0], True, (255,82,82))
         resetini1_rec = resetini1.get_rect(center = (width/2, height*3/10))
-        resetini2 = font_mindustry(4).render(langs.selected_language.text_reset[1], True, (255, 255, 255))
+        resetini2 = font_mindustry(4).render(langs.selected_language.text_reset[1], True, (255,82,82))
         resetini2_rec = resetini2.get_rect(center = (width/2, (height*3/10)+resetini1.get_size()[1]*1.1))
-        resetini_confirm = font_mindustry(4).render(langs.selected_language.text_reset_confirm[0], True, (255, 255, 255))
+        if langs.selected_language == langs.DE:
+            resetini3 = font_mindustry(4).render(langs.selected_language.text_reset[2], True, (255,82,82))
+            resetini3_rec = resetini3.get_rect(center = (width/2, (height*3/10)+(resetini2.get_size()[1]*1.1)+(resetini1.get_size()[1]*1.1)))
+        resetini_confirm = font_mindustry(4).render(langs.selected_language.text_reset_confirm[0], True, (255,82,82))
         resetini_confirm_rec = resetini_confirm.get_rect(center = (width*2/5, height*7/10))
 
         time.sleep(0.1)
@@ -538,7 +545,7 @@ while lang_selected2:
         resetini2_rec = resetini2.get_rect(center = (width/2, (height*3/10)+resetini1.get_size()[1]*1.1))
         if langs.selected_language == langs.DE:
             resetini3 = font_mindustry(4).render(langs.selected_language.text_reset[2], True, (255,82,82))
-            resetini3_rec = resetini3.get_rect(center = (width/2, (height*3/10)+resetini2.get_size()[1]*1.1))
+            resetini3_rec = resetini3.get_rect(center = (width/2, (height*3/10)+(resetini2.get_size()[1]*1.1)+(resetini1.get_size()[1]*1.1)))
         resetini_confirm = font_mindustry(4).render(langs.selected_language.text_reset_confirm[0], True, (255,82,82))
         resetini_confirm_rec = resetini_confirm.get_rect(center = (width*2/5, height*7/10))
 
@@ -661,6 +668,10 @@ while lang_selected2:
         settings["Default"] = False
         save_settings()
         langini_pressed(langs.SCH, sound_clickSCH)
+    elif CurretWindow == "LANGINI" and langsini_BRUH_rec.collidepoint(mouse_pos):
+        settings["Default"] = False
+        save_settings()
+        langini_pressed(langs.BRUH, sound_click)
     
     if CurretWindow == "SOUNDINI" and pygame.mouse.get_pressed()[0]: 
         drag_mouse_pos = pygame.mouse.get_pos()

@@ -50,7 +50,7 @@ class zhCN:
     text_freezedown = ["冻毁"]
     text_freezedownDES = ["由于温度过低(-4000°C)，一个黑洞产生了，并 ", "摧毁了整个设施，灾害甚至蔓延到整个 ", "世界。 ", "“游戏结束，伙计，游戏结束！” ", "提示：记得随时检查两个发电机的温度，并在适当时机关闭或开启冷冻液。"]
     text_blackout = ["设施停电"]
-    text_blackoutDES = ["由于发电机的能源用尽，没有能量继续泵动颜料， ", "设施无法再继续产生电力，游戏结束。 ", "提示：记得及时维修运输燃料的管道！"]
+    text_blackoutDES = ["由于能源短缺，燃油泵已停止运作。", "游戏结束。", "提示：记得及时维修燃料管！"]
 
 class zhTW:
     # Quit confirm
@@ -97,8 +97,8 @@ class zhTW:
     text_meltdownDES = ["發電機溫度超出了可承受的極限(4000°C)！整座 ", "設施發生了一場巨大的爆炸，並且摧毀了 ", "整個設施以及周邊的環境。 ", "提示：記得檢查冷凍液是否開啟，以及是否有管道破裂。"]
     text_freezedown = ["凍毀"]
     text_freezedownDES = ["由於溫度過低(-4000°C)，一個黑洞產生了，並 ", "摧毀了整個設施，災害甚至蔓延到整個 ", "世界。 ", "“遊戲結束，夥計，遊戲結束！” ", "提示：記得隨時檢查兩個發電機的溫度，並在適當時機關閉或開啟冷凍液。"]
-    text_blackout = ["設施停電"]
-    text_blackoutDES = ["由於發電機的能源用盡，沒有能量繼續泵動顏料， ", "設施無法再繼續產生電力，遊戲結束。 ", "提示：記得及時維修運輸燃料的管道！"]
+    text_blackout = ["設施大規模停電"]
+    text_blackoutDES = ["由於能源短缺，燃油泵已停止運作。", "遊戲結束。", "提示：記得及時維修燃料管！"]
 
 class EN:
     # Quit confirm
@@ -146,7 +146,7 @@ class EN:
     text_freezedown = ["Freezedown"]
     text_freezedownDES = ["Due to the low temperature(-4000°C), a black hole was created,", "and destroyed the whole facility. The disaster even spread to the whole world.", "“Game over, man, game over!” ", "Hint: Remember to check the temperature of both generators at all times,", "and turn off or turn on the coolant when appropriate."]
     text_blackout = ["Facility-wide Blackout"]
-    text_blackoutDES = ["With the generator running out of energy, there is no energy to continue pumping the paint,", "Game over.", "Hint: Remember to repair the pipes that transport fuel!"]
+    text_blackoutDES = ["Due to the shortage of electricity, the fuel pumps stopped working.", "Game over.", "Hint: Remember to repair the fuel pipes!"]
 
 class DE:
     # Quit confirm
@@ -167,7 +167,7 @@ class DE:
     text_title1 = ["Schmitrov"]
     text_title2 = ["Generator-Bedienfeld"]
     text_ini = ["Einstellungen"]
-    text_resetINI = ["Reset Settings(need translation)"]
+    text_resetINI = ["Einstellungen zurücksetzen"]
 
     # Settings
     text_return = ["Zurückkehren"]
@@ -194,7 +194,7 @@ class DE:
     text_freezedown = ["Kerneinfriere(Kern Einfrieren)"]
     text_freezedownDES = ["Aufgrund der niedrigen Temperatur(-4000 ° C) wurde ein Schwarzes Loch geschaffen,", "Es zerstörte die ganze Anlage. Die Katastrophe breitete sich sogar auf", "der ganzen Welt aus.", "“Game over, mann, game over!” ", "Hinweis: Denken Sie daran, die Temperatur beider Generatoren jederzeit", "zu überprüfen und gegebenenfalls das Kühlmittel aus- oder einzuschalten."]
     text_blackout = ["Anlagenweiter Blackout"]
-    text_blackoutDES = ["Wenn der Generator keine Energie mehr hat, gibt es keine Energie, um die Farbe weiter zu pumpen,", "Spiel vorbei.", "Hinweis: Denken Sie daran, die Rohre zu reparieren, die Kraftstoff transportieren!"]
+    text_blackoutDES = ["Aufgrund des Strommangels funktionierten die Kraftstoffpumpen nicht mehr.", "Spiel vorbei.", "Hinweis: Denken Sie daran, die Kraftstoffleitungen zu reparieren!"]
 
 class BURGER:
     # Quit confirm
@@ -290,7 +290,7 @@ class SCH:
     text_freezedown = ["Köśteinfriezen"]
     text_freezedownDES = ["Das öbuni Temperätuŕ bikönsen, din Bronkloçh haat schaffentvo,", "und haat das höłe Induska krorruptentvo. Das Disäska haat even das höłe Welt veŕbŕeitentvo.", "“Game over, mann, game over!”", "Hints: Zum alle Teim jerneśten, das Temperätuŕ deŕ beide Truktoneki checken,", "und das Akłafrieśkonpleitionsystemi aktiväten o' die'aktiväten wenn appropriät."]
     text_blackout = ["Höłeinduskaelektriksityinterruption"]
-    text_blackoutDES = ["Bruh.", "Bruh Over.", "Bruhman: a yo wtf."]
+    text_blackoutDES = ["Das Öśtyła deŕ das Elektriksity bikönsen, das Akłabetoypumpki kein Akłabetoy niçht pumpen.", "Śpiel finnen.", "Hints: Jerneśten, das Akłabetoypumpki ŕipeiten!"]
 
 class BRUH:
     # Quit confirm
