@@ -181,7 +181,7 @@ def drawbloom(cirs, expand, dens, center, color):   # draw light bloom effect
     surf_rec.center = center
     screen.blit(surf, surf_rec, special_flags = pygame.BLEND_RGB_ADD)
 def render_game_ini(CurretWindow):  # render inis windows
-    global langsini_UL, indicator1, indicator2
+    global langsini_UL, indicator1, indicator2, ini_return_rec
     graini_list = [i for i in settings["Gra"].values()]
     if CurretWindow == "INI":
         for k,v in {ini_title: ini_title_rec, graINI: graINI_rec, langINI: langINI_rec, soundINI: soundINI_rec, resetINI: resetINI_rec}.items():
@@ -221,7 +221,10 @@ def render_game_ini(CurretWindow):  # render inis windows
             for k,v in {resetini_title: resetini_title_rec, resetini1: resetini1_rec, resetini2: resetini2_rec, resetini_confirm:resetini_confirm_rec}.items():
                 screen.blit(k,v)
 
-
+    if CurretWindow == "RESETINI":
+        ini_return_rec = ini_return.get_rect(center = (width*3/5, height*7/10))
+    else:
+        ini_return_rec = ini_return.get_rect(center = (width/2, height*9/10))
     screen.blit(ini_return, ini_return_rec)
     pygame.draw.rect(screen, (255, 214, 99), ((width-(width/1.75))/2, (height/7)+(height/15), width/1.75, height/200))
 def graini_box_pressed(box):    # events for gra ini boxes
@@ -621,55 +624,67 @@ while lang_selected2:
 
 
     #----- clicking events
-    if game_wiki_rec.collidepoint(mouse_pos) and CurretWindow == "START" and not title_delay:
-        webbrowser.open(r"https://shimyytrov-games.fandom.com/wiki/Shimyytrov_Studio")
-        mouse_pos = (0, 0)
-        sound_clickSCH.play()
-    elif game_wiki_rec.collidepoint(pygame.mouse.get_pos()):
+    if game_wiki_rec.collidepoint(pygame.mouse.get_pos()):
+        if game_wiki_rec.collidepoint(mouse_pos) and CurretWindow == "START" and not title_delay:
+            webbrowser.open(r"https://shimyytrov-games.fandom.com/wiki/Shimyytrov_Studio")
+            mouse_pos = (0, 0)
+            sound_clickSCH.play()
         game_wiki = font_mindustry(3).render(langs.selected_language.text_wiki[0], True, (255, 214, 99))
-    elif game_ini_rec.collidepoint(mouse_pos) and CurretWindow == "START" and not title_delay:
-        CurretWindow = "INI"
-        mouse_pos = (0, 0)
-        sound_swap.play()
-    elif game_ini_rec.collidepoint(pygame.mouse.get_pos()):
-        game_ini = font_mindustry(3).render(langs.selected_language.text_ini[0], True, (255, 214, 99))
-    elif game_start_rec.collidepoint(mouse_pos) and CurretWindow == "START" and not title_delay:
-        mouse_pos = (0, 0)
-        sound_swap.play()
-    elif game_start_rec.collidepoint(pygame.mouse.get_pos()):
-        game_start = font_mindustry(3).render(langs.selected_language.text_play[0], True, (255, 214, 99))
-    elif graINI_rec.collidepoint(mouse_pos) and CurretWindow == "INI":
-        CurretWindow = "GRAINI"
-        mouse_pos = (0, 0)
-        sound_swap.play()
-    elif langINI_rec.collidepoint(mouse_pos) and CurretWindow == "INI":
-        CurretWindow = "LANGINI"
-        mouse_pos = (0, 0)
-        sound_swap.play()
-    elif soundINI_rec.collidepoint(mouse_pos) and CurretWindow == "INI":
-        CurretWindow = "SOUNDINI"
-        mouse_pos = (0, 0)
-        sound_swap.play()
-    elif resetINI_rec.collidepoint(mouse_pos) and CurretWindow == "INI":
-        ini_return_rec = ini_return.get_rect(center = (width*3/5, height*7/10))
-        CurretWindow = "RESETINI"
-        mouse_pos = (0, 0)
-        sound_swap.play()
-    elif ini_return_rec.collidepoint(mouse_pos):
-        if CurretWindow in ["GRAINI", "LANGINI", "SOUNDINI", "RESETINI"]:
-            ini_return_rec = ini_return.get_rect(center = (width/2, height*9/10))
-            mouse_pos = (0, 0)
+    elif game_ini_rec.collidepoint(pygame.mouse.get_pos()) and CurretWindow == "START" and not title_delay:
+        if game_ini_rec.collidepoint(mouse_pos):
             CurretWindow = "INI"
-            sound_swap.play()
-        elif CurretWindow == "INI":
             mouse_pos = (0, 0)
-            CurretWindow = "START"
             sound_swap.play()
+        game_ini = font_mindustry(3).render(langs.selected_language.text_ini[0], True, (255, 214, 99))
+    elif game_start_rec.collidepoint(pygame.mouse.get_pos()):
+        if game_start_rec.collidepoint(mouse_pos) and CurretWindow == "START" and not title_delay:
+            mouse_pos = (0, 0)
+            sound_swap.play()
+        game_start = font_mindustry(3).render(langs.selected_language.text_play[0], True, (255, 214, 99))
+    elif graINI_rec.collidepoint(pygame.mouse.get_pos()) and CurretWindow == "INI":
+        if graINI_rec.collidepoint(mouse_pos):
+            CurretWindow = "GRAINI"
+            mouse_pos = (0, 0)
+            sound_swap.play()
+        graINI = font_mindustry(4).render(langs.selected_language.text_graINI[0], True, (255, 214, 99))
+    elif langINI_rec.collidepoint(pygame.mouse.get_pos()) and CurretWindow == "INI":
+        if langINI_rec.collidepoint(mouse_pos):
+            CurretWindow = "LANGINI"
+            mouse_pos = (0, 0)
+            sound_swap.play()
+        langINI = font_mindustry(4).render(langs.selected_language.text_langINI[0], True, (255, 214, 99))
+    elif soundINI_rec.collidepoint(pygame.mouse.get_pos()) and CurretWindow == "INI":
+        if soundINI_rec.collidepoint(mouse_pos):
+            CurretWindow = "SOUNDINI"
+            mouse_pos = (0, 0)
+            sound_swap.play()
+        soundINI = font_mindustry(4).render(langs.selected_language.text_soundINI[0], True, (255, 214, 99))
+    elif resetINI_rec.collidepoint(pygame.mouse.get_pos()) and CurretWindow == "INI":
+        if resetINI_rec.collidepoint(mouse_pos):
+            CurretWindow = "RESETINI"
+            mouse_pos = (0, 0)
+            sound_swap.play()
+        resetINI = font_mindustry(4).render(langs.selected_language.text_resetINI[0], True, (255, 214, 99))
+    elif ini_return_rec.collidepoint(pygame.mouse.get_pos()):
+        if ini_return_rec.collidepoint(mouse_pos):
+            if CurretWindow in ["GRAINI", "LANGINI", "SOUNDINI", "RESETINI"]:
+                mouse_pos = (0, 0)
+                CurretWindow = "INI"
+                sound_swap.play()
+            elif CurretWindow == "INI":
+                mouse_pos = (0, 0)
+                CurretWindow = "START"
+                sound_swap.play()
+        ini_return = font_mindustry(4).render(langs.selected_language.text_return[0], True, (255, 214, 99))
     else:
         game_wiki = font_mindustry(3).render(langs.selected_language.text_wiki[0], True, (255, 255, 255))
         game_ini = font_mindustry(3).render(langs.selected_language.text_ini[0], True, (255, 255, 255))
         game_start = font_mindustry(3).render(langs.selected_language.text_play[0], True, (255, 255, 255))
-
+        graINI = font_mindustry(4).render(langs.selected_language.text_graINI[0], True, (255, 255, 255))
+        langINI = font_mindustry(4).render(langs.selected_language.text_langINI[0], True, (255, 255, 255))
+        soundINI = font_mindustry(4).render(langs.selected_language.text_soundINI[0], True, (255, 255, 255))
+        resetINI = font_mindustry(4).render(langs.selected_language.text_resetINI[0], True, (255, 255, 255))
+        ini_return = font_mindustry(4).render(langs.selected_language.text_return[0], True, (255, 255, 255))
     try:
         if CurretWindow == "GRAINI" and box_list[0].collidepoint(mouse_pos):
             graini_box_pressed("DynamicLight")
