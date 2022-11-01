@@ -37,8 +37,8 @@ screen_info = pygame.display.Info() # get screen info
 width, height = screen_info.current_w, screen_info.current_h    # get screen (width, height)
 screen = pygame.display.set_mode((width, height))   # full screen
 # load font
-font_conthrax64 = pygame.font.Font('./assets/fonts/conthrax-sb.ttf', 64)
-font_conthrax48 = pygame.font.Font('./assets/fonts/conthrax-sb.ttf', 48)
+font_mindustry64 = pygame.font.Font('./assets/fonts/mindustry.ttf', 64)
+font_mindustry48 = pygame.font.Font('./assets/fonts/mindustry.ttf', 48)
 def font_mindustry(fontsize):   # load font custom size function
     return pygame.font.Font('./assets/fonts/mindustry.ttf', int(128/fontsize))
 # load imgs
@@ -314,9 +314,9 @@ while not lang_selected2:
         sound_title_1.play()
     if 30 <= total_time <= 200:     # logo 1
         if total_time >= 120:
-            logo1_line_alpha -= 4
-        line1 = render_logo1("PRODUCED BY", font_conthrax64, -30)
-        line2 = render_logo1("Shimyytrov Studio", font_conthrax48, +30)
+            logo1_line_alpha -= 4 
+        line1 = render_logo1(langs.selected_language.text_intro1[0], font_mindustry64, -30)
+        line2 = render_logo1(langs.selected_language.text_intro2[0], font_mindustry48, +30)
         screen.blit(line1[0], line1[1])
         screen.blit(line2[0], line2[1])
     if total_time == 240:

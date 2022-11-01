@@ -5,6 +5,10 @@ with open('./assets/saves/settings.json', 'r') as settings_json:
     settings = json.load(settings_json)
 
 class zhCN:
+    # Title1
+    text_intro1 = ["希米特罗夫"]
+    text_intro2 = ["出品"]
+
     # Language window
     text_lang = ["中文(中国简体)"]
     text_lang_select = ["选择你的语言"]
@@ -45,6 +49,10 @@ class zhCN:
     text_blackoutDES = ["由于发电机的能源用尽，没有能量继续泵动颜料， ", "设施无法再继续产生电力，游戏结束。 ", "提示：记得及时维修运输燃料的管道！"]
 
 class zhTW:
+    # Title1
+    text_intro1 = ["希米特羅夫"]
+    text_intro2 = ["出品"]
+    
     # Language window
     text_lang = ["中文(台灣正體)"]
     text_lang_select = ["選擇你的語言"]
@@ -85,6 +93,10 @@ class zhTW:
     text_blackoutDES = ["由於發電機的能源用盡，沒有能量繼續泵動顏料， ", "設施無法再繼續產生電力，遊戲結束。 ", "提示：記得及時維修運輸燃料的管道！"]
 
 class EN:
+    # Title1
+    text_intro1 = ["PRODUCED BY"]
+    text_intro2 = ["Shimyytrov Studio"]
+    
     # Language window
     text_lang = ["English"]
     text_lang_select = ["Select Your Language"]
@@ -125,6 +137,10 @@ class EN:
     text_blackoutDES = ["With the generator running out of energy, there is no energy to continue pumping the paint,", "Game over.", "Hint: Remember to repair the pipes that transport fuel!"]
 
 class DE:
+    # Title1
+    text_intro1 = ["PRODUZIERT VON"]
+    text_intro2 = ["Schmitrov Studio"]
+    
     # Language window
     text_lang = ["Deutsch"]
     text_lang_select = ["Wähle deine Sprache"]
@@ -165,6 +181,10 @@ class DE:
     text_blackoutDES = ["Wenn der Generator keine Energie mehr hat, gibt es keine Energie, um die Farbe weiter zu pumpen,", "Spiel vorbei.", "Hinweis: Denken Sie daran, die Rohre zu reparieren, die Kraftstoff transportieren!"]
 
 class BURGER:
+    # Title1
+    text_intro1 = ["Press Space to"]
+    text_intro2 = ["Get a Fucking Burger"]
+    
     # Language window
     text_lang = ["Burgerishkiy"]
     text_lang_select = ["Select Your Burger"]
@@ -205,8 +225,12 @@ class BURGER:
     text_blackoutDES = ["Burgergertam ran out of burgers, the whole tomato and burger just ran away.", "Burger Over.", "Burger: Burh."]
 
 class SCH:
+    # Title1
+    text_intro1 = ["Schmitŕov-Studio"]
+    text_intro2 = ["PRODUZENTVA"]
+    
     # Language window
-    text_lang = ["Shimyytrovkiy"]
+    text_lang = ["Schmitŕovkiy"]
     text_lang_select = ["Duzhe Schtora Pikiten"]
     text_lang_continue = ["Kontinen"]
     
@@ -245,6 +269,10 @@ class SCH:
     text_blackoutDES = ["Bruh.", "Bruh Over.", "Bruhman: a yo wtf."]
 
 class BRUH:
+    # Title1
+    text_intro1 = ["Press ALT+F4"]
+    text_intro2 = ["To Get Free Robux"]
+    
     # Language window
     text_lang = ["WTF is this"]
     text_lang_select = ["SAMSUNG"]
