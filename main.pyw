@@ -27,6 +27,22 @@ settings = {    # default settings
 with open('./assets/saves/settings.json', 'r') as settings_json:
     settings = json.load(settings_json)
 
+achievements = {    # default achievements
+    "endings": {
+        "end_meltdown": False,
+        "end_freezedown": False,
+        "end_blackout": False,
+        "end_duo-meltdown": False,
+        "end_duo-freezedown": False,
+        "end_duo-disaster": False
+    },
+    "events": {
+        "earthquake": False
+    }
+}
+with open('./assets/saves/achievements.json', 'r') as achievements_json:
+    achievements = json.load(achievements_json)
+
 #========== configuration ==========#
 pygame.init()
 ICON = pygame.image.load('./assets/imgs/icon.png')  # load icon
