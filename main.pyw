@@ -340,6 +340,8 @@ while not lang_selected2:
     # language select menu
     if total_time == 450 and settings["Default"]:
         sound_swap.play()
+    if total_time == 500 and settings["Default"]:
+        play_track("duzhe_schtoka_pikiten", -1, 0)
     if total_time >= 450 and not lang_selected2 and settings["Default"]: # lang select
         lang_sel = font_mindustry(2).render(langs.selected_language.text_lang_select[0], True, (255, 255, 255))
         lang_sel_rec = lang_sel.get_rect()
