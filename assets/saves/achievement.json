@@ -1,0 +1,13 @@
+{
+    "endings": {
+        "end_meltdown": false,
+        "end_freezedown": false,
+        "end_blackout": false,
+        "end_duo-meltdown": false,
+        "end_duo-freezedown": false,
+        "end_duo-disaster": false
+    },
+    "events": {
+        "earthquake": false
+    }
+}
