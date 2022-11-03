@@ -1,8 +1,13 @@
+#install pygame for first time launch the game#
+import subprocess
+import sys
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+install('pygame')
 #========== imports ==========#
 from ctypes import alignment
 import time
 import pygame
-import sys
 import assets.languages.langs as langs
 import random
 import json
