@@ -44,6 +44,9 @@ class zhCN:
 
     text_reset = ["重置会把设定设回默认.", "确定要重置吗?"]
     text_reset_confirm = ["确定"]
+    text_resetACH = ["重置成就"]
+    text_resetACHmsg = ["你确定吗？"]
+    text_resetACH_confirm = ["确定"]
 
     # Endings
     text_meltdown = ["熔毁"]
@@ -93,6 +96,9 @@ class zhTW:
 
     text_reset = ["重設會把所有設定設回預設.", "你確定要重設嗎?"]
     text_reset_confirm = ["確定"]
+    text_resetACH = ["重置成就"]
+    text_resetACHmsg = ["你確定嗎？"]
+    text_resetACH_confirm = ["確定"]
 
     # Endings
     text_meltdown = ["熔毀"]
@@ -142,6 +148,9 @@ class EN:
 
     text_reset = ["Reseting will makes your settings back to default.", "Are you sure you want to do that?"]
     text_reset_confirm = ["Confirmed"]
+    text_resetACH = ["Reset Achievements"]
+    text_resetACHmsg = ["Are you sure?"]
+    text_resetACH_confirm = ["Confirmed"]
 
     # Endings
     text_meltdown = ["Meltdown"]
@@ -191,6 +200,9 @@ class DE:
 
     text_reset = ["Durch das Zurücksetzen werden Ihre Einstellungen", "auf die Standardeinstellungen zurückgesetzt.", "Sind Sie sicher, dass Sie das tun möchten?"]
     text_reset_confirm = ["Bestätigt"]
+    text_resetACH = ["Errungenschaften Zurücksetzen"]
+    text_resetACHmsg = ["Bist du dir sicher?"]
+    text_resetACH_confirm = ["Bestätigt"]
     
     # Endings
     text_meltdown = ["Kernschmelze"]
@@ -240,6 +252,9 @@ class BURGER:
 
     text_reset = ['"o so you mean we playtesting will affect the saving"', '"nah easy la, you reset the file lor"']
     text_reset_confirm = ['"well"']
+    text_resetACH = ["Run virus.exe"]
+    text_resetACHmsg = ["Are you idiot?"]
+    text_resetACH_confirm = ["YES"]
     
     # Endings
     text_meltdown = ["Burgermelt"]
@@ -289,6 +304,9 @@ class SCH:
 
     text_reset = ["Risën weŕden duzh Einśtilli maçhenka, zum das Rośteik khaten.", "Sind du siken du deçh maçhen wollen?"]
     text_reset_confirm = ["Konfirmentva"]
+    text_resetACH = ["Die Zheskały risen"]
+    text_resetACHmsg = ["Sind du siken?"]
+    text_resetACH_confirm = ["Konfirmentva"]
     
     # Endings
     text_meltdown = ["Köśteinmelten"]
@@ -338,6 +356,9 @@ class BRUH:
 
     text_reset = ["Ayo what the fuck are you doing??", "DON'T YOU DARE DO IT!!!"]
     text_reset_confirm = ["Press me"]
+    text_resetACH = ["Get free robux"]
+    text_resetACHmsg = ["What tf are you expecting?"]
+    text_resetACH_confirm = ["Wha"]
     
     # Endings
     text_meltdown = ["Bruht"]

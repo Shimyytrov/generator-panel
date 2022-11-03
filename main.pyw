@@ -184,7 +184,7 @@ def render_game_ini(CurretWindow):  # render inis windows
     global langsini_UL, indicator1, indicator2, ini_return_rec
     graini_list = [i for i in settings["Gra"].values()]
     if CurretWindow == "INI":
-        for k,v in {ini_title: ini_title_rec, graINI: graINI_rec, langINI: langINI_rec, soundINI: soundINI_rec, resetINI: resetINI_rec}.items():
+        for k,v in {ini_title: ini_title_rec, graINI: graINI_rec, langINI: langINI_rec, soundINI: soundINI_rec, resetINI: resetINI_rec, resetACH: resetACH_rec}.items():
             screen.blit(k,v)
     elif CurretWindow == "GRAINI":
         for i,(k,v) in enumerate({graini_title:graini_title_rec, graini_dynamic_light:graini_dynamic_light_rec, graini_bloom:graini_bloom_rec,
@@ -220,8 +220,11 @@ def render_game_ini(CurretWindow):  # render inis windows
         else:
             for k,v in {resetini_title: resetini_title_rec, resetini1: resetini1_rec, resetini2: resetini2_rec, resetini_confirm:resetini_confirm_rec}.items():
                 screen.blit(k,v)
+    elif CurrentWindow == "RESETACH":
+        for k,v in {resetach_title: resetach_title_rec, resetach1: resetach1_rec, resetach_confirm:resetach_confirm_rec}.items():
+            screen.blit(k,v)
 
-    if CurretWindow == "RESETINI":
+    if CurretWindow in ["RESETINI", "RESETACH"]:
         ini_return_rec = ini_return.get_rect(center = (width*3/5, height*7/10))
     else:
         ini_return_rec = ini_return.get_rect(center = (width/2, height*9/10))
@@ -264,8 +267,10 @@ def langini_pressed(lang, sound):
         langINI = font_mindustry(4).render(langs.selected_language.text_langINI[0], True, (255, 255, 255)) # language button
         langINI_rec = langINI.get_rect(center = (width/2, height*5/10)) # get language ini button center to position      
         soundINI = font_mindustry(4).render(langs.selected_language.text_soundINI[0], True, (255, 255, 255)) # sound button
-        resetINI = font_mindustry(4).render(langs.selected_language.text_resetINI[0], True, (255, 255, 255)) # reset button
+        resetINI = font_mindustry(4).render(langs.selected_language.text_resetINI[0], True, (255, 82, 82)) # reset button
         resetINI_rec = resetINI.get_rect(center = (width/2, height*7/10)) # get reset button center to position
+        resetACH = font_mindustry(4).render(langs.selected_language.text_resetACH[0], True, (255, 82, 82)) # reset button
+        resetACH_rec = resetACH.get_rect(center = (width/2, height*8/10)) # get reset button center to position
         soundINI_rec = soundINI.get_rect(center = (width/2, height*6/10))# get sound ini button center to position
         ini_return = font_mindustry(4).render(langs.selected_language.text_return[0], True, (255, 255, 255)) # return button
         ini_return_rec = ini_return.get_rect(center = (width/2, height*9/10))# get return button center to position
@@ -314,12 +319,22 @@ def langini_pressed(lang, sound):
             resetini3_rec = resetini3.get_rect(center = (width/2, (height*3/10)+(resetini2.get_size()[1]*1.1)+(resetini1.get_size()[1]*1.1)))
         resetini_confirm = font_mindustry(4).render(langs.selected_language.text_reset_confirm[0], True, (255,82,82))
         resetini_confirm_rec = resetini_confirm.get_rect(center = (width*2/5, height*7/10))
+        # reset achievements
+        resetach_title = font_mindustry(2).render(langs.selected_language.text_resetACH[0], True, (255, 255, 255))
+        resetach_title_rec = resetach_title.get_rect(center = (width/2, height/7))
+        resetach1 = font_mindustry(4).render(langs.selected_language.text_resetACHmsg[0], True, (255,82,82))
+        resetach1_rec = resetach1.get_rect(center = (width/2, height*3/10))
+        resetach_confirm = font_mindustry(4).render(langs.selected_language.text_resetACH_confirm[0], True, (255,82,82))
+        resetach_confirm_rec = resetach_confirm.get_rect(center = (width*2/5, height*7/10))
 
         time.sleep(0.1)
         button_cooldown = False
 def save_settings():
     with open('./assets/saves/settings.json', 'w') as settings_json:
         json.dump(settings, settings_json, indent = 4)
+def save_achievements():
+    with open('./assets/saves/achievements.json', 'w') as achievements_json:
+        json.dump(achievements, achievements_json, indent = 4)
 
 
 #========== intro loop ==========#
@@ -501,8 +516,10 @@ while lang_selected2:
         langINI_rec = langINI.get_rect(center = (width/2, height*5/10)) # get language ini button center to position      
         soundINI = font_mindustry(4).render(langs.selected_language.text_soundINI[0], True, (255, 255, 255)) # sound button
         soundINI_rec = soundINI.get_rect(center = (width/2, height*6/10))# get sound ini button center to position
-        resetINI = font_mindustry(4).render(langs.selected_language.text_resetINI[0], True, (255, 255, 255)) # reset button
+        resetINI = font_mindustry(4).render(langs.selected_language.text_resetINI[0], True, (255, 82, 82)) # reset button
         resetINI_rec = resetINI.get_rect(center = (width/2, height*7/10)) # get reset button center to position
+        resetACH = font_mindustry(4).render(langs.selected_language.text_resetACH[0], True, (255, 82, 82))
+        resetACH_rec = resetACH.get_rect(center = (width/2, height*8/10))
         ini_return = font_mindustry(4).render(langs.selected_language.text_return[0], True, (255, 255, 255)) # return button
         ini_return_rec = ini_return.get_rect(center = (width/2, height*9/10))# get return button center to position
         # gra ini
@@ -576,6 +593,13 @@ while lang_selected2:
             resetini3_rec = resetini3.get_rect(center = (width/2, (height*3/10)+(resetini2.get_size()[1]*1.1)+(resetini1.get_size()[1]*1.1)))
         resetini_confirm = font_mindustry(4).render(langs.selected_language.text_reset_confirm[0], True, (255,82,82))
         resetini_confirm_rec = resetini_confirm.get_rect(center = (width*2/5, height*7/10))
+        # reset achievements
+        resetach_title = font_mindustry(2).render(langs.selected_language.text_resetACH[0], True, (255, 255, 255))
+        resetach_title_rec = resetach_title.get_rect(center = (width/2, height/7))
+        resetach1 = font_mindustry(4).render(langs.selected_language.text_resetACHmsg[0], True, (255,82,82))
+        resetach1_rec = resetach1.get_rect(center = (width/2, height*3/10))
+        resetach_confirm = font_mindustry(4).render(langs.selected_language.text_resetACH_confirm[0], True, (255,82,82))
+        resetach_confirm_rec = resetach_confirm.get_rect(center = (width*2/5, height*7/10))
 
         
 
@@ -618,7 +642,7 @@ while lang_selected2:
             drawbloom(20, 80, 10, (start_center), (25,25,25))  # draw bloom
         screen.blit(rotated_start_core, rotated_start_core_rec) # draw core
         render_game_title() # draw game title
-    elif CurretWindow in ["GRAINI", "LANGINI", "SOUNDINI", "RESETINI", "INI"]:
+    elif CurretWindow in ["GRAINI", "LANGINI", "SOUNDINI", "RESETINI", "RESETACH", "INI"]:
         render_game_ini(CurretWindow)
     
 
@@ -664,10 +688,16 @@ while lang_selected2:
             CurretWindow = "RESETINI"
             mouse_pos = (0, 0)
             sound_swap.play()
-        resetINI = font_mindustry(4).render(langs.selected_language.text_resetINI[0], True, (255, 214, 99))
+        resetINI = font_mindustry(4).render(langs.selected_language.text_resetINI[0], True, (255, 0, 0))
+    elif resetACH_rec.collidepoint(pygame.mouse.get_pos()) and CurretWindow == "INI":
+        if resetACH_rec.collidepoint(mouse_pos):
+            CurretWindow = "RESETACH"
+            mouse_pos = (0, 0)
+            sound_swap.play()
+        resetACH = font_mindustry(4).render(langs.selected_language.text_resetACH[0], True, (255, 0, 0))
     elif ini_return_rec.collidepoint(pygame.mouse.get_pos()):
         if ini_return_rec.collidepoint(mouse_pos):
-            if CurretWindow in ["GRAINI", "LANGINI", "SOUNDINI", "RESETINI"]:
+            if CurretWindow in ["GRAINI", "LANGINI", "SOUNDINI", "RESETINI", "RESETACH"]:
                 mouse_pos = (0, 0)
                 CurretWindow = "INI"
                 sound_swap.play()
@@ -683,7 +713,8 @@ while lang_selected2:
         graINI = font_mindustry(4).render(langs.selected_language.text_graINI[0], True, (255, 255, 255))
         langINI = font_mindustry(4).render(langs.selected_language.text_langINI[0], True, (255, 255, 255))
         soundINI = font_mindustry(4).render(langs.selected_language.text_soundINI[0], True, (255, 255, 255))
-        resetINI = font_mindustry(4).render(langs.selected_language.text_resetINI[0], True, (255, 255, 255))
+        resetINI = font_mindustry(4).render(langs.selected_language.text_resetINI[0], True, (255, 82, 82))
+        resetACH = font_mindustry(4).render(langs.selected_language.text_resetACH[0], True, (255, 82, 82))
         ini_return = font_mindustry(4).render(langs.selected_language.text_return[0], True, (255, 255, 255))
     try:
         if CurretWindow == "GRAINI" and box_list[0].collidepoint(mouse_pos):
@@ -786,6 +817,24 @@ while lang_selected2:
         }
         save_settings()
         langini_pressed(langs.EN, sound_swap)
+        CurretWindow = "INI"
+
+    if CurretWindow == "RESETACH" and resetach_confirm_rec.collidepoint(mouse_pos):
+        achievements = {    # default achievements
+            "endings": {
+                "end_meltdown": False,
+                "end_freezedown": False,
+                "end_blackout": False,
+                "end_duo-meltdown": False,
+                "end_duo-freezedown": False,
+                "end_duo-disaster": False
+            },
+            "events": {
+                "earthquake": False
+            }
+        }
+        save_achievements()
+        sound_swap.play()
         CurretWindow = "INI"
                 
 
