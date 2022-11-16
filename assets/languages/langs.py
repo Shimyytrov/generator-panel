@@ -277,7 +277,7 @@ class SCH:
     text_soundINI = ["Klangeinśtilli"]
     text_resetINI = ["Das Einśtilli risen"]
 
-    text_gra_DynamicLight = ["Deinomiknaya Liçhtiki"]
+    text_gra_DynamicLight = ["Deinomikaya Liçhtiki"]
     text_gra_Bloom = ["Blühmi"]
     text_gra_PlayerAnimation = ["Śpiela-Animationi"]
     text_gra_Particles = ["Partikli"]
