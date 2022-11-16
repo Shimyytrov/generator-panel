@@ -279,7 +279,7 @@ class SCH:
 
     text_gra_DynamicLight = ["Deinomikaya Liçhtiki"]
     text_gra_Bloom = ["Blühmi"]
-    text_gra_PlayerAnimation = ["Śpiela-Animationi"]
+    text_gra_PlayerAnimation = ["Śpieleŕanimationi"]
     text_gra_Particles = ["Partikli"]
     text_gra_CameraShake = ["Kamerashäki"]
     text_gra_EnvAnimation = ["Enveironmentanimationi"]
