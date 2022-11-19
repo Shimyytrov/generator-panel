@@ -7,7 +7,6 @@ import assets.languages.langs as langs
 import random
 import json
 import webbrowser
-
 #========== saving ==========#
 settings = {    # default settings
     "Gra": {
@@ -17,6 +16,7 @@ settings = {    # default settings
         "Particles": True,
         "CameraShake": True,
         "EnvAnimation": True,
+        "FperS": 1,
     },
     "Lang": "EN",
     "Sound": {
@@ -50,6 +50,7 @@ ICON = pygame.image.load('./assets/imgs/icon.png')  # load icon
 pygame.display.set_icon(ICON)   # set icon
 pygame.display.set_caption("Generator Panel")   # set caption
 fps = 60    # fps
+FperS = settings["Gra"]["FperS"]
 fps_clock = pygame.time.Clock() # clock
 screen_info = pygame.display.Info() # get screen info
 width, height = screen_info.current_w, screen_info.current_h    # get screen (width, height)
@@ -148,28 +149,28 @@ def render_game_title(): # render the game title with delays
     title_delay = True
     if total_time == 0:
         total_time = 1
-    if total_time >= 60:
+    if total_time >= 60/FperS:
         screen.blit(game_title1, game_title1_rec)
-    if total_time == 60:
+    if total_time == 60/FperS:
         sound_title_1.play()
-    if total_time >= 120:
+    if total_time >= 120/FperS:
         screen.blit(game_title2, game_title2_rec)
-    if total_time == 120:
+    if total_time == 120/FperS:
         sound_endingBOOM.play()
-    if total_time == 240:
+    if total_time == 240/FperS:
         play_track("title", -1, 0)
-    if total_time >= 300:
+    if total_time >= 300/FperS:
         global game_start_alpha, game_ini_alpha, game_wiki_alpha
-        game_start_alpha += 2
-        game_ini_alpha += 2
-        game_wiki_alpha += 2
+        game_start_alpha += 2*FperS
+        game_ini_alpha += 2*FperS
+        game_wiki_alpha += 2*FperS
         game_start.set_alpha(game_start_alpha)
         game_ini.set_alpha(game_ini_alpha)
         game_wiki.set_alpha(game_wiki_alpha)
         screen.blit(game_start, game_start_rec)
         screen.blit(game_ini, game_ini_rec)
         screen.blit(game_wiki, game_wiki_rec)
-    if total_time == 360:
+    if total_time == 600/FperS:
         title_delay = False
 def drawbloom(cirs, expand, dens, center, color):   # draw light bloom effect
     surf = pygame.Surface((((dens*(cirs-1))+expand)*2,((dens*(cirs-1))+expand)*2))
@@ -222,6 +223,9 @@ def render_game_ini(CurretWindow):  # render inis windows
                 screen.blit(k,v)
     elif CurrentWindow == "RESETACH":
         for k,v in {resetach_title: resetach_title_rec, resetach1: resetach1_rec, resetach_confirm:resetach_confirm_rec}.items():
+            resetach_title.set_alpha(100)
+            resetach1.set_alpha(100)
+            resetach_confirm.set_alpha(100)
             screen.blit(k,v)
 
     if CurretWindow in ["RESETINI", "RESETACH"]:
@@ -344,41 +348,41 @@ while not lang_selected2:
 
     # events
     for event in pygame.event.get():
-        if event.type == pygame.MOUSEBUTTONDOWN and total_time >= 450:
+        if event.type == pygame.MOUSEBUTTONDOWN and total_time >= 450/FperS:
             mouse_pos = event.pos
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE or event.type == pygame.QUIT: # quit
             pygame.quit()
             sys.exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE: # skipping logo
-                if 31 <= total_time <= 199:
-                    total_time = 230
-                if 241  <= total_time <= 399:
-                    total_time = 400
+                if 30/FperS <= total_time <= 198/FperS:
+                    total_time = 230/FperS
+                if 240/FperS  <= total_time <= 398/FperS:
+                    total_time = 400/FperS
 
 
 
     # logo display
-    if total_time == 30:
+    if total_time == 30/FperS:
         sound_title_1.play()
-    if 30 <= total_time <= 200:     # logo 1
-        if total_time >= 120:
-            logo1_line_alpha -= 4 
+    if 30/FperS <= total_time <= 200/FperS:     # logo 1
+        if total_time >= 120/FperS:
+            logo1_line_alpha -= 4*FperS
         line1 = render_logo1(langs.selected_language.text_intro1[0], font_mindustry64, -30)
         line2 = render_logo1(langs.selected_language.text_intro2[0], font_mindustry48, +30)
         screen.blit(line1[0], line1[1])
         screen.blit(line2[0], line2[1])
-    if total_time == 240:
+    if total_time == 240/FperS:
         sound_title_2.play()
-    if 240 <= total_time <= 400:    # logo 2
-        if total_time >= 310:
-            logo2_alpha -= 4
+    if 240/FperS <= total_time <= 400/FperS:    # logo 2
+        if total_time >= 310/FperS:
+            logo2_alpha -= 4*FperS
         title2_pic.set_alpha(logo2_alpha)
         if one_time("title2_pic_render"):
             title2_pic_rec = pygame.transform.scale(title2_pic, (title2_size_width/2, title2_size_height/2)).get_rect()
             title2_pic_rec.center = (width/2, (height/2))
         screen.blit(pygame.transform.scale(title2_pic, (title2_size_width/2, title2_size_height/2)), (title2_pic_rec))
-    if total_time >= 401:
+    if total_time >= 402/FperS:
         if not settings["Default"]:
             lang_selected2 = True
             total_time = 0    
@@ -386,11 +390,11 @@ while not lang_selected2:
 
 
     # language select menu
-    if total_time == 450 and settings["Default"]:
+    if total_time == 450/FperS and settings["Default"]:
         sound_swap.play()
-    if total_time == 500 and settings["Default"]:
+    if total_time == 500/FperS and settings["Default"]:
         play_track("duzhe_schtoka_pikiten", -1, 0)
-    if total_time >= 450 and not lang_selected2 and settings["Default"]: # lang select
+    if total_time >= 450/FperS and not lang_selected2 and settings["Default"]: # lang select
         lang_sel = font_mindustry(2).render(langs.selected_language.text_lang_select[0], True, (255, 255, 255))
         lang_sel_rec = lang_sel.get_rect()
         lang_sel_rec.center = (width/2, height/7)
@@ -467,6 +471,18 @@ while lang_selected2:
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_pos = event.pos
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_3:
+            sound_click.play()
+            FperS = 2
+            settings["Gra"]["FperS"] = 2
+            settings["Default"] = False
+            save_settings()
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_6:
+            sound_swap.play()
+            FperS = 1
+            settings["Gra"]["FperS"] = 1
+            settings["Default"] = False
+            save_settings()
 
     
     #----- quit confirm
@@ -649,19 +665,19 @@ while lang_selected2:
 
     #----- clicking events
     if game_wiki_rec.collidepoint(pygame.mouse.get_pos()):
-        if game_wiki_rec.collidepoint(mouse_pos) and CurretWindow == "START" and not title_delay:
+        if game_wiki_rec.collidepoint(mouse_pos) and CurretWindow == "START":
             webbrowser.open(r"https://shimyytrov-games.fandom.com/wiki/Shimyytrov_Studio")
             mouse_pos = (0, 0)
             sound_clickSCH.play()
         game_wiki = font_mindustry(3).render(langs.selected_language.text_wiki[0], True, (255, 214, 99))
-    elif game_ini_rec.collidepoint(pygame.mouse.get_pos()) and CurretWindow == "START" and not title_delay:
+    elif game_ini_rec.collidepoint(pygame.mouse.get_pos()) and CurretWindow == "START":
         if game_ini_rec.collidepoint(mouse_pos):
             CurretWindow = "INI"
             mouse_pos = (0, 0)
             sound_swap.play()
         game_ini = font_mindustry(3).render(langs.selected_language.text_ini[0], True, (255, 214, 99))
     elif game_start_rec.collidepoint(pygame.mouse.get_pos()):
-        if game_start_rec.collidepoint(mouse_pos) and CurretWindow == "START" and not title_delay:
+        if game_start_rec.collidepoint(mouse_pos) and CurretWindow == "START":
             mouse_pos = (0, 0)
             sound_swap.play()
         game_start = font_mindustry(3).render(langs.selected_language.text_play[0], True, (255, 214, 99))
@@ -807,6 +823,7 @@ while lang_selected2:
                 "Particles": True,
                 "CameraShake": True,
                 "EnvAnimation": True,
+                "FperS": 1,
             },
             "Lang": "EN",
             "Sound": {
@@ -842,4 +859,4 @@ while lang_selected2:
     if title_delay:
         total_time += 1 # time + 1
     pygame.display.flip()   # update frame
-    fps_clock.tick(fps)
+    fps_clock.tick(fps/FperS)
