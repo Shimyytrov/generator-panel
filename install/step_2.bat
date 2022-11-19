@@ -1,6 +1,23 @@
 echo OFF
 echo Shimyytrov installer v0.1.2.2022.11.02
 echo =========================
+echo Checking if Python installed...
+:: Check for Python Installation
+python --version 2>NUL
+if errorlevel 1 goto errorNoPython
+
+:: Reaching here means Python is installed.
+goto EXECUTE
+
+:errorNoPython
+echo.
+echo Error^: Python not installed
+PAUSE
+goto:eof
+
+:EXECUTE
+echo Python exist. Executing program...
+echo =========================
 echo Checking PIP update...
 python.exe -m pip install --upgrade pip
 echo =========================
@@ -20,3 +37,4 @@ python.exe -m pip check pillow
 echo =========================
 echo Installation completed.
 PAUSE
+goto:eof
