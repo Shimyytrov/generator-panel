@@ -6,7 +6,7 @@
         "Particles": true,
         "CameraShake": true,
         "EnvAnimation": true,
-        "FperS": 2
+        "FperS": 1
     },
     "Lang": "SCH",
     "Sound": {
