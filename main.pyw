@@ -98,6 +98,8 @@ game_start_alpha = 0    # variable for controlling start button aphla
 game_ini_alpha = 0    # variable for controlling setting button aphla
 game_wiki_alpha = 0    # variable for controlling wiki button aphla
 box_list = []
+return_startscreen = False
+ingame = False
 
 
 #========== functions ============#
@@ -320,7 +322,11 @@ def langini_pressed(lang, sound):
 def save_settings():
     with open('./assets/saves/settings.json', 'w') as settings_json:
         json.dump(settings, settings_json, indent = 4)
-
+def load_imgs(path, scale):
+    img = pygame.image.load(path).convert()
+    img = pygame.transform.scale(img, (img.get_size()[0]*scale,img.get_size()[1]*scale))
+    img_rec = img.get_rect()
+    return img, img_rec
 
 #========== intro loop ==========#
 while not lang_selected2:
@@ -439,8 +445,8 @@ while not lang_selected2:
 settings["Default"] = False
 save_settings()
 
-#========== game loop ==========#
-while lang_selected2:
+#========== start screen loop ==========#
+while (lang_selected2 or return_startscreen) and not ingame:
     mouse_pos = (0, 0)
     drag_mouse_pos = (0, 0)
     screen.fill((0, 0, 0))
@@ -453,15 +459,6 @@ while lang_selected2:
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_pos = event.pos
 
-    
-    #----- quit confirm
-    if one_time("quit_confirm_render"): # load all things in quit confirm
-        CurrentWindow = "QUIT"
-        # quit confirm
-        quit_title = font_mindustry(2).render(langs.selected_language.text_quit[0], True, (255, 255, 255)) #quit title
-        quit_title_rec = quit_title.get_rect(center = (width/2, height/7))
-        quit_msg = font_mindustry(4).render(langs.selected_language.text_quitMSG[0], True, (255, 255, 255)) #quit confirm msg
-        quit_msg_rec = quit_msg.get_rect(center = (width/2, height/2))
 
     #----- start screen
     if one_time("game_tile_render"): # load all things in start screen 
@@ -640,6 +637,7 @@ while lang_selected2:
         if game_start_rec.collidepoint(mouse_pos) and CurretWindow == "START" and not title_delay:
             mouse_pos = (0, 0)
             sound_swap.play()
+            ingame = True
         game_start = font_mindustry(3).render(langs.selected_language.text_play[0], True, (255, 214, 99))
     elif graINI_rec.collidepoint(pygame.mouse.get_pos()) and CurretWindow == "INI":
         if graINI_rec.collidepoint(mouse_pos):
@@ -792,5 +790,34 @@ while lang_selected2:
     #----- loop repeat
     if title_delay:
         total_time += 1 # time + 1
+    pygame.display.flip()   # update frame
+    fps_clock.tick(fps)
+
+
+
+
+#========== game main loop ==========#
+while ingame:
+    mouse_pos = (0, 0)
+    screen.fill((16, 16, 16))
+
+    #----- events
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE or event.type == pygame.QUIT: # quit
+            pygame.quit()
+            sys.exit()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_pos = event.pos
+
+
+    #----- (dont know what should this tab call)
+    if one_time("load images"):
+        room1 = load_imgs('./assets/imgs/sprites/room1/room1.png', 4)
+    
+
+    room1[1].center = (width/2, height/2)
+    screen.blit(room1[0], room1[1])
+
+    #----- loop repeat
     pygame.display.flip()   # update frame
     fps_clock.tick(fps)
