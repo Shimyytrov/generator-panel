@@ -48,7 +48,7 @@ with open('./assets/saves/achievements.json', 'r') as achievements_json:
 pygame.init()
 ICON = pygame.image.load('./assets/imgs/icon.png')  # load icon
 pygame.display.set_icon(ICON)   # set icon
-pygame.display.set_caption("Generator Panel")   # set caption
+pygame.display.set_caption(langs.selected_language.text_title2[0])   # set caption
 fps = 60    # fps
 fps_clock = pygame.time.Clock() # clock
 screen_info = pygame.display.Info() # get screen info
@@ -458,6 +458,10 @@ while (lang_selected2 or return_startscreen) and not ingame:
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_pos = event.pos
+        if event.type == pygame.K_BACKSPACE:
+            sound_swap.play()
+            ingame = False
+            CurretWindow = "START"
 
 
     #----- start screen
@@ -609,6 +613,7 @@ while (lang_selected2 or return_startscreen) and not ingame:
 
 
     #----- rendering
+    pygame.display.set_caption(langs.selected_language.text_title2[0])   # set caption
     if CurretWindow == "START":
         screen.blit(start_screen_bg, start_screen_bg_rec)   # background
         if settings["Gra"]["Bloom"]:
@@ -790,14 +795,16 @@ while (lang_selected2 or return_startscreen) and not ingame:
     #----- loop repeat
     if title_delay:
         total_time += 1 # time + 1
+        pygame.display.set_caption(langs.selected_language.text_title2[0])   # set caption
     pygame.display.flip()   # update frame
     fps_clock.tick(fps)
-
+    
 
 
 
 #========== game main loop ==========#
 while ingame:
+    pygame.display.set_caption(langs.selected_language.text_title2[0])   # set caption
     mouse_pos = (0, 0)
     screen.fill((16, 16, 16))
 
@@ -808,6 +815,10 @@ while ingame:
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_pos = event.pos
+        if event.type == pygame.K_BACKSPACE:
+            sound_swap.play()
+            ingame = False
+            CurretWindow = "START"
 
 
     #----- (dont know what should this tab call)
