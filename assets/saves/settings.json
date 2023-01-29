@@ -7,10 +7,10 @@
         "CameraShake": true,
         "EnvAnimation": true
     },
-    "Lang": "EN",
+    "Lang": "BURGER",
     "Sound": {
-        "SoundEffects": 5,
-        "Music": 5
+        "SoundEffects": 10,
+        "Music": 10
     },
     "Default": false
 }
