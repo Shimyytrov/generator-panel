@@ -1,13 +1,13 @@
 {
     "Gra": {
-        "DynamicLight": true,
-        "Bloom": true,
-        "PlayerAnimation": true,
-        "Particles": true,
-        "CameraShake": true,
-        "EnvAnimation": true
+        "DynamicLight": false,
+        "Bloom": false,
+        "PlayerAnimation": false,
+        "Particles": false,
+        "CameraShake": false,
+        "EnvAnimation": false
     },
-    "Lang": "BURGER",
+    "Lang": "DE",
     "Sound": {
         "SoundEffects": 10,
         "Music": 10
